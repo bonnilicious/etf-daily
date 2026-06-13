@@ -1,0 +1,100 @@
+{
+  "date": "2026-06-13",
+  "date_display": "Saturday, 13 June 2026",
+  "refreshed": "13 Jun 2026, 15:16 SGT",
+  "newsletter": "Core watchlist was broadly higher (avg 2.02%). EIMI led (3.53%); AGGG lagged (0.67%). Among themes, SOXX stood out (1.59%).",
+  "core": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 55.41999816894531,
+      "change_pct": 3.530729371844127,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 188.0399932861328,
+      "change_pct": 2.3179859261789444,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "price": 143.55999755859375,
+      "change_pct": 2.01818953471754,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10601.0,
+      "change_pct": 1.551872784749497,
+      "ccy": "GBp"
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "price": 4.4019999504089355,
+      "change_pct": 0.6746714240238906,
+      "ccy": "USD"
+    }
+  ],
+  "themed": [
+    {
+      "name": "Uranium & Nuclear (URA)",
+      "short": "URA",
+      "ticker": "URA",
+      "blurb": "Global X Uranium",
+      "holdings": [
+        "CCJ",
+        "NXE",
+        "KAP.IL",
+        "PDN.AX"
+      ],
+      "price": 45.52000045776367,
+      "change_pct": 1.539144765840736,
+      "ccy": "USD"
+    },
+    {
+      "name": "Water Resources (PHO)",
+      "short": "PHO",
+      "ticker": "PHO",
+      "blurb": "Invesco Water Resources",
+      "holdings": [
+        "WAT",
+        "ECL",
+        "ROP",
+        "XYL"
+      ],
+      "price": 66.80999755859375,
+      "change_pct": 0.6326226431789949,
+      "ccy": "USD"
+    },
+    {
+      "name": "Semiconductors (SOXX)",
+      "short": "SOXX",
+      "ticker": "SOXX",
+      "blurb": "iShares Semiconductor",
+      "holdings": [
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "QCOM"
+      ],
+      "price": 596.25,
+      "change_pct": 1.5879248701756328,
+      "ccy": "USD"
+    }
+  ]
+}

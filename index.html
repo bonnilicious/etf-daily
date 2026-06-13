@@ -3,93 +3,107 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ETF Daily — Friday, 12 June 2026</title>
+<title>ETF Daily</title>
 <style>
   :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
            --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff; }
   * { box-sizing:border-box; }
   body { margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
           background:var(--bg); color:var(--txt); line-height:1.5; }
-  .wrap { max-width:860px; margin:0 auto; padding:24px 18px 60px; }
-  h1 { font-size:1.6rem; margin:0 0 2px; }
-  .date { color:var(--muted); margin-bottom:24px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:12px;
-           padding:18px 20px; margin-bottom:20px; }
-  h2 { font-size:1.1rem; margin:0 0 12px; color:var(--accent); }
+  .wrap { max-width:880px; margin:0 auto; padding:24px 18px 60px; }
+  h1 { font-size:1.7rem; margin:0 0 2px; }
+  .sub { color:var(--muted); margin-bottom:6px; }
+  .refresh { color:var(--accent); font-size:.85rem; margin-bottom:22px; }
+  details.day { background:var(--card); border:1px solid var(--line);
+                 border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  summary { cursor:pointer; padding:14px 18px; list-style:none;
+             display:flex; justify-content:space-between; align-items:center;
+             gap:12px; flex-wrap:wrap; }
+  summary::-webkit-details-marker { display:none; }
+  summary::before { content:"\25B6"; color:var(--muted); margin-right:8px;
+                     transition:transform .15s; }
+  details[open] summary::before { transform:rotate(90deg); }
+  .day-date { font-weight:600; }
+  .day-meta { color:var(--muted); font-size:.8rem; }
+  .day-body { padding:0 18px 16px; }
+  .card { border-top:1px solid var(--line); padding:14px 0; }
+  h3 { font-size:1rem; margin:0 0 8px; color:var(--accent); }
   table { width:100%; border-collapse:collapse; }
-  td { padding:10px 8px; border-top:1px solid var(--line); vertical-align:top; }
+  td { padding:8px 6px; border-top:1px solid var(--line); vertical-align:top; }
   tr:first-child td { border-top:none; }
   .num { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
   .up { color:var(--up); } .down { color:var(--down); }
   .muted { color:var(--muted); font-size:.85rem; }
   .ccy { color:var(--muted); font-size:.8rem; }
-  .pick { border-left:3px solid var(--accent); padding-left:14px; }
-  .badge { display:inline-block; background:#1f6feb22; color:var(--accent);
-            border:1px solid #1f6feb55; border-radius:20px; padding:2px 10px;
-            font-size:.75rem; margin-bottom:8px; }
-  footer { color:var(--muted); font-size:.78rem; margin-top:30px; }
-  a { color:var(--accent); }
+  .pick { border-left:3px solid var(--accent); padding-left:12px; }
+  .theme { border-left:3px solid var(--line); padding-left:12px; margin-bottom:12px; }
+  .theme-head { display:flex; justify-content:space-between; gap:10px; }
+  footer { color:var(--muted); font-size:.78rem; margin-top:28px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>ETF Daily</h1>
-  <div class="date">Friday, 12 June 2026 &middot; Singapore &middot; via Interactive Brokers</div>
-
-  <div class="card">
-    <h2>Today's Top Pick</h2>
-    <div class="pick">
-      <span class="badge">Best momentum today</span>
-      <p><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong> — Broad emerging-market exposure.<br>
-      Last: 54.87 USD &nbsp;|&nbsp;
-      Today: <span class="up">2.50%</span></p>
+  <div class="sub">Singapore &middot; via Interactive Brokers &middot; rules-based archive</div>
+  <div class="refresh">Last refresh: 13 Jun 2026, 15:16 SGT &middot; newest day expanded, click any date to expand/collapse</div>
+  
+  <details class="day" open>
+    <summary>
+      <span class="day-date">Saturday, 13 June 2026</span>
+      <span class="day-meta">Refreshed 13 Jun 2026, 15:16 SGT</span>
+    </summary>
+    <div class="day-body">
+      <div class="card">
+        <h3>Daily Newsletter</h3>
+        <p>Core watchlist was broadly higher (avg 2.02%). EIMI led (3.53%); AGGG lagged (0.67%). Among themes, SOXX stood out (1.59%).</p>
+      </div>
+      <div class="card">
+        <h3>Top Pick (best momentum)</h3>
+        <div class="pick"><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong> — Broad emerging-market exposure.<br>
+        Last 55.42 USD &nbsp;|&nbsp; <span class="up">&#9650; 3.53%</span></div>
+      </div>
+      <div class="card">
+        <h3>Core Watchlist</h3>
+        <table>
+        <tr><td><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong><br><span class="muted">Broad emerging-market exposure</span></td>
+        <td class="num">55.42 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 3.53%</span></td></tr>
+        <tr><td><strong>Vanguard FTSE All-World UCITS (VWRA)</strong><br><span class="muted">One-fund global equity, incl. emerging mkts</span></td>
+        <td class="num">188.04 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 2.32%</span></td></tr>
+        <tr><td><strong>Vanguard S&P 500 UCITS (VUAA)</strong><br><span class="muted">Core US large-cap, accumulating, Irish-domiciled</span></td>
+        <td class="num">143.56 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 2.02%</span></td></tr>
+        <tr><td><strong>iShares Core MSCI World UCITS (SWDA)</strong><br><span class="muted">Global developed-market core holding</span></td>
+        <td class="num">10601.00 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="up">&#9650; 1.55%</span></td></tr>
+        <tr><td><strong>iShares Core Global Aggregate Bond UCITS (AGGG)</strong><br><span class="muted">Diversified global bonds, ballast</span></td>
+        <td class="num">4.40 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.67%</span></td></tr></table>
+      </div>
+      <div class="card">
+        <h3>Themed ETFs &amp; Tickers Today</h3>
+        
+        <div class="theme">
+          <div class="theme-head"><strong>Uranium & Nuclear (URA)</strong> <span class="up">&#9650; 1.54%</span></div>
+          <div class="muted">Global X Uranium &middot; Last 45.52 USD</div>
+          <div class="muted">Top holdings: CCJ, NXE, KAP.IL, PDN.AX</div>
+        </div>
+        <div class="theme">
+          <div class="theme-head"><strong>Water Resources (PHO)</strong> <span class="up">&#9650; 0.63%</span></div>
+          <div class="muted">Invesco Water Resources &middot; Last 66.81 USD</div>
+          <div class="muted">Top holdings: WAT, ECL, ROP, XYL</div>
+        </div>
+        <div class="theme">
+          <div class="theme-head"><strong>Semiconductors (SOXX)</strong> <span class="up">&#9650; 1.59%</span></div>
+          <div class="muted">iShares Semiconductor &middot; Last 596.25 USD</div>
+          <div class="muted">Top holdings: NVDA, AVGO, AMD, QCOM</div>
+        </div>
+        <p class="muted">Holdings shown for context, not individual buy advice.
+        Niche themes are higher-risk satellites — size them small vs. your core.</p>
+      </div>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>Core Watchlist</h2>
-    <table>
-        <tr>
-          <td><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong><br><span class="muted">Broad emerging-market exposure</span></td>
-          <td class="num">54.87 <span class="ccy">USD</span></td>
-          <td class="num up">&#9650; 2.50%</td>
-        </tr>
-        <tr>
-          <td><strong>Vanguard FTSE All-World UCITS (VWRA)</strong><br><span class="muted">One-fund global equity, incl. emerging mkts</span></td>
-          <td class="num">186.38 <span class="ccy">USD</span></td>
-          <td class="num up">&#9650; 1.41%</td>
-        </tr>
-        <tr>
-          <td><strong>Vanguard S&P 500 UCITS (VUAA)</strong><br><span class="muted">Core US large-cap, accumulating, Irish-domiciled</span></td>
-          <td class="num">142.34 <span class="ccy">USD</span></td>
-          <td class="num up">&#9650; 1.15%</td>
-        </tr>
-        <tr>
-          <td><strong>iShares Core MSCI World UCITS (SWDA)</strong><br><span class="muted">Global developed-market core holding</span></td>
-          <td class="num">10516.65 <span class="ccy">GBp</span></td>
-          <td class="num up">&#9650; 0.74%</td>
-        </tr>
-        <tr>
-          <td><strong>iShares Core Global Aggregate Bond UCITS (AGGG)</strong><br><span class="muted">Diversified global bonds, ballast</span></td>
-          <td class="num">4.39 <span class="ccy">USD</span></td>
-          <td class="num up">&#9650; 0.41%</td>
-        </tr></table>
-    <p class="muted">Ranked by today's move. UCITS (.L) funds are Irish-domiciled —
-    generally preferable for SG investors on IBKR (lower withholding, no US estate-tax exposure).</p>
-  </div>
-
-  <div class="card">
-    <h2>Themed Spotlight of the Day</h2>
-    <div class="pick">
-      <span class="badge">Rotates daily</span>
-      <p><strong>Water Resources (PHO)</strong> — Invesco Water Resources ETF.<br>
-      Last: 66.56 USD &nbsp;|&nbsp;
-      Today: <span class="up">&#9650; 0.26%</span></p>
-      <p class="muted">Niche themes are higher-risk satellites — size them small
-      relative to your core. Tomorrow features a different theme.</p>
-    </div>
-  </div>
-
+  </details>
   <footer>
     Generated automatically by GitHub Actions &middot; rules-based, no manual input.<br>
     <strong>Not financial advice.</strong> Data: Yahoo Finance (delayed). Always do your own research.
