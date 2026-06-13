@@ -1,7 +1,7 @@
 {
   "date": "2026-06-13",
   "date_display": "Saturday, 13 June 2026",
-  "refreshed": "13 Jun 2026, 18:08 SGT",
+  "refreshed": "13 Jun 2026, 20:42 SGT",
   "newsletter": "Core watchlist was broadly higher (avg 2.02%). EIMI led (3.53%); AGGG lagged (0.67%). Among themes, SOXX stood out (1.59%).",
   "core": [
     {
@@ -95,6 +95,123 @@
       "price": 596.25,
       "change_pct": 1.5879248701756328,
       "ccy": "USD"
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 55.41999816894531,
+      "change_pct": 3.530729371844127,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 188.0399932861328,
+      "change_pct": 2.3179859261789444,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "price": 143.55999755859375,
+      "change_pct": 2.01818953471754,
+      "ccy": "USD"
+    },
+    {
+      "name": "Semiconductors (SOXX)",
+      "short": "SOXX",
+      "ticker": "SOXX",
+      "blurb": "iShares Semiconductor",
+      "holdings": [
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "QCOM"
+      ],
+      "price": 596.25,
+      "change_pct": 1.5879248701756328,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10601.0,
+      "change_pct": 1.551872784749497,
+      "ccy": "GBp"
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "AMD",
+      "price": 511.57000732421875,
+      "change_pct": 4.733339039694406,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "QCOM",
+      "price": 211.72000122070312,
+      "change_pct": 4.316118553930562,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "CCJ",
+      "price": 100.95999908447266,
+      "change_pct": 2.0107081329945986,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "NXE",
+      "price": 9.850000381469727,
+      "change_pct": 1.0256449381510415,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "XYL",
+      "price": 110.08000183105469,
+      "change_pct": 0.9445197161599457,
+      "ccy": "USD"
+    }
+  ],
+  "news": [
+    {
+      "title": "Chewy, Inc. (NYSE:CHWY) Just Reported, And Analysts Assigned A US$31.24 Price Target",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/chewy-inc-nyse-chwy-just-123326782.html",
+      "publisher": "Simply Wall St."
+    },
+    {
+      "title": "Reddit, Roku, and SoundHound AI: Which Cult Stock Is Takeover-Ready?",
+      "link": "https://finance.yahoo.com/m/a4d220b1-9c58-31b3-8227-5711ed8d9b6b/reddit%2C-roku%2C-and-soundhound.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "3 High Backlog Defense Stocks to Buy in June",
+      "link": "https://finance.yahoo.com/m/710a1845-245a-3b3a-ac36-8ea0f5c05c2c/3-high-backlog-defense-stocks.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "Load Up on Nuclear Before the Data Center Energy Race Accelerates: These 3 ETFs Cover Reactors, Uranium, and Smart Grid",
+      "link": "https://finance.yahoo.com/m/4acac85a-0c26-3e09-b071-0a107348bc53/load-up-on-nuclear-before-the.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "The Most-Compared ETFs Right Now — And What They Reveal",
+      "link": "https://finance.yahoo.com/m/9010f3e0-18ae-3e6f-933f-1dbb60418878/the-most-compared-etfs-right.html",
+      "publisher": "etf.com"
+    },
+    {
+      "title": "Nuclear Power Is the Only Real Answer to AI Electricity Demand and These 3 ETFs Own the Trade",
+      "link": "https://finance.yahoo.com/m/a8fb567a-bddf-34fd-a7b0-c04820f6ae20/nuclear-power-is-the-only.html",
+      "publisher": "24/7 Wall St."
     }
   ]
 }

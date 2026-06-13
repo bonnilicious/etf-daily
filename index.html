@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ETF Daily</title>
+<title>Daily Stock Market News</title>
 <style>
   :root { --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
            --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff; }
@@ -38,19 +38,23 @@
   .pick { border-left:3px solid var(--accent); padding-left:12px; }
   .theme { border-left:3px solid var(--line); padding-left:12px; margin-bottom:12px; }
   .theme-head { display:flex; justify-content:space-between; gap:10px; }
+  .news { margin:0; padding-left:18px; }
+  .news li { margin-bottom:7px; }
+  .news a { color:var(--accent); text-decoration:none; }
+  .news a:hover { text-decoration:underline; }
   footer { color:var(--muted); font-size:.78rem; margin-top:28px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>ETF Daily</h1>
+  <h1>Daily Stock Market News</h1>
   <div class="sub">Singapore &middot; via Interactive Brokers &middot; rules-based archive</div>
-  <div class="refresh">Last refresh: 13 Jun 2026, 18:08 SGT &middot; newest day expanded, click any date to expand/collapse</div>
+  <div class="refresh">Last refresh: 13 Jun 2026, 20:42 SGT &middot; newest day expanded, click any date to expand/collapse</div>
   
   <details class="day" open>
     <summary>
       <span class="day-date">Saturday, 13 June 2026</span>
-      <span class="day-meta">Refreshed 13 Jun 2026, 18:08 SGT</span>
+      <span class="day-meta">Refreshed 13 Jun 2026, 20:42 SGT</span>
     </summary>
     <div class="day-body">
       <div class="card">
@@ -58,9 +62,54 @@
         <p>Core watchlist was broadly higher (avg 2.02%). EIMI led (3.53%); AGGG lagged (0.67%). Among themes, SOXX stood out (1.59%).</p>
       </div>
       <div class="card">
+        <h3>News to Read</h3>
+        <ul class="news"><li><a href="https://finance.yahoo.com/markets/stocks/articles/chewy-inc-nyse-chwy-just-123326782.html" target="_blank" rel="noopener">Chewy, Inc. (NYSE:CHWY) Just Reported, And Analysts Assigned A US$31.24 Price Target</a> <span class="muted">&middot; Simply Wall St.</span></li><li><a href="https://finance.yahoo.com/m/a4d220b1-9c58-31b3-8227-5711ed8d9b6b/reddit%2C-roku%2C-and-soundhound.html" target="_blank" rel="noopener">Reddit, Roku, and SoundHound AI: Which Cult Stock Is Takeover-Ready?</a> <span class="muted">&middot; 24/7 Wall St.</span></li><li><a href="https://finance.yahoo.com/m/710a1845-245a-3b3a-ac36-8ea0f5c05c2c/3-high-backlog-defense-stocks.html" target="_blank" rel="noopener">3 High Backlog Defense Stocks to Buy in June</a> <span class="muted">&middot; 24/7 Wall St.</span></li><li><a href="https://finance.yahoo.com/m/4acac85a-0c26-3e09-b071-0a107348bc53/load-up-on-nuclear-before-the.html" target="_blank" rel="noopener">Load Up on Nuclear Before the Data Center Energy Race Accelerates: These 3 ETFs Cover Reactors, Uranium, and Smart Grid</a> <span class="muted">&middot; 24/7 Wall St.</span></li><li><a href="https://finance.yahoo.com/m/9010f3e0-18ae-3e6f-933f-1dbb60418878/the-most-compared-etfs-right.html" target="_blank" rel="noopener">The Most-Compared ETFs Right Now — And What They Reveal</a> <span class="muted">&middot; etf.com</span></li><li><a href="https://finance.yahoo.com/m/a8fb567a-bddf-34fd-a7b0-c04820f6ae20/nuclear-power-is-the-only.html" target="_blank" rel="noopener">Nuclear Power Is the Only Real Answer to AI Electricity Demand and These 3 ETFs Own the Trade</a> <span class="muted">&middot; 24/7 Wall St.</span></li></ul>
+      </div>
+      <div class="card">
         <h3>Top Pick (best momentum)</h3>
         <div class="pick"><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong> — Broad emerging-market exposure.<br>
         Last 55.42 USD &nbsp;|&nbsp; <span class="up">&#9650; 3.53%</span></div>
+      </div>
+      <div class="card">
+        <h3>ETFs in Focus (top momentum today)</h3>
+        <table>
+        <tr><td><strong>EIMI</strong> <span class="muted">EIMI.L</span></td>
+        <td class="num">55.42 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 3.53%</span></td></tr>
+        <tr><td><strong>VWRA</strong> <span class="muted">VWRA.L</span></td>
+        <td class="num">188.04 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 2.32%</span></td></tr>
+        <tr><td><strong>VUAA</strong> <span class="muted">VUAA.L</span></td>
+        <td class="num">143.56 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 2.02%</span></td></tr>
+        <tr><td><strong>SOXX</strong> <span class="muted">SOXX</span></td>
+        <td class="num">596.25 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 1.59%</span></td></tr>
+        <tr><td><strong>SWDA</strong> <span class="muted">SWDA.L</span></td>
+        <td class="num">10601.00 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="up">&#9650; 1.55%</span></td></tr></table>
+      </div>
+      <div class="card">
+        <h3>Stocks in Focus (from today's themes)</h3>
+        <table>
+        <tr><td><strong>AMD</strong></td>
+        <td class="num">511.57 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 4.73%</span></td></tr>
+        <tr><td><strong>QCOM</strong></td>
+        <td class="num">211.72 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 4.32%</span></td></tr>
+        <tr><td><strong>CCJ</strong></td>
+        <td class="num">100.96 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 2.01%</span></td></tr>
+        <tr><td><strong>NXE</strong></td>
+        <td class="num">9.85 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 1.03%</span></td></tr>
+        <tr><td><strong>XYL</strong></td>
+        <td class="num">110.08 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.94%</span></td></tr></table>
+        <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
+        shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
+        are especially high-risk. Always do your own due diligence.</p>
       </div>
       <div class="card">
         <h3>Core Watchlist</h3>
