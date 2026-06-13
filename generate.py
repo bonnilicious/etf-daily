@@ -98,6 +98,31 @@ def fetch_quotes(tickers):
 
 
 # --------------------------------------------------------------------------
+# NEWS FETCH — Yahoo Finance free search endpoint (real headlines + links)
+# --------------------------------------------------------------------------
+
+def fetch_news(query, count=3):
+    """Return [{title, link, publisher}] for a ticker/keyword; [] on failure."""
+    url = (f"https://query1.finance.yahoo.com/v1/finance/search?q={query}"
+           f"&newsCount={count}&quotesCount=0")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.load(resp)
+        items = []
+        for n in data.get("news", [])[:count]:
+            link = n.get("link", "")
+            title = n.get("title", "")
+            if link and title:
+                items.append({"title": title, "link": link,
+                              "publisher": n.get("publisher", "")})
+        return items
+    except (urllib.error.URLError, json.JSONDecodeError, KeyError, TimeoutError) as e:
+        print(f"WARN: news fetch failed for {query}: {e}")
+        return []
+
+
+# --------------------------------------------------------------------------
 # RULES
 # --------------------------------------------------------------------------
 
@@ -147,7 +172,16 @@ def build_day_record(today, now_sgt):
     themes = pick_themes(today, THEMES_PER_DAY)
     core_tickers = [t for _, t, _ in CORE_ETFS]
     theme_tickers = [t[1] for t in themes]
-    quotes = fetch_quotes(core_tickers + theme_tickers)
+
+    # Gather candidate stock tickers from the featured themes' holdings.
+    # Keep only real US-listed symbols (skip commodity words / non-equity).
+    stock_candidates = []
+    for _, _, _, holdings in themes:
+        for h in holdings:
+            if h.isupper() and h.isalpha() and 1 <= len(h) <= 5 and h not in stock_candidates:
+                stock_candidates.append(h)
+
+    quotes = fetch_quotes(core_tickers + theme_tickers + stock_candidates)
 
     core_rows = []
     for name, tic, why in CORE_ETFS:
@@ -166,6 +200,37 @@ def build_day_record(today, now_sgt):
                             "price": q.get("price"), "change_pct": q.get("change_pct"),
                             "ccy": q.get("currency")})
 
+    # ETFs in focus: top 5 by today's momentum across core + themed.
+    etf_pool = core_rows + themed_rows
+    etfs_focus = sorted([e for e in etf_pool if e["change_pct"] is not None],
+                        key=lambda e: e["change_pct"], reverse=True)[:5]
+
+    # Stocks in focus: theme holdings, ranked by today's momentum (top 5).
+    stock_rows = []
+    for tic in stock_candidates:
+        q = quotes.get(tic, {})
+        if q.get("change_pct") is not None:
+            stock_rows.append({"ticker": tic, "price": q.get("price"),
+                               "change_pct": q.get("change_pct"), "ccy": q.get("currency")})
+    stocks_focus = sorted(stock_rows, key=lambda s: s["change_pct"], reverse=True)[:5]
+
+    # News: a few headlines for the leading core ETF + the leading theme.
+    news = []
+    seen_links = set()
+    news_queries = []
+    if core_rows:
+        news_queries.append(core_rows[0]["ticker"])
+    if themed_rows:
+        news_queries.append(themed_rows[0]["ticker"])
+    if stocks_focus:
+        news_queries.append(stocks_focus[0]["ticker"])
+    for q in news_queries:
+        for item in fetch_news(q, count=3):
+            if item["link"] not in seen_links:
+                seen_links.add(item["link"])
+                news.append(item)
+    news = news[:6]
+
     return {
         "date": today.isoformat(),
         "date_display": today.strftime("%A, %d %B %Y"),
@@ -173,6 +238,9 @@ def build_day_record(today, now_sgt):
         "newsletter": newsletter(core_rows, themed_rows),
         "core": core_rows,
         "themed": themed_rows,
+        "etfs_focus": etfs_focus,
+        "stocks_focus": stocks_focus,
+        "news": news,
     }
 
 
@@ -204,6 +272,49 @@ def render_day(rec, open_default=False):
         </div>"""
 
     top = rec["core"][0]
+
+    # ETFs in focus (top momentum)
+    etfs_html = ""
+    for e in rec.get("etfs_focus", []):
+        etfs_html += f"""
+        <tr><td><strong>{e['short']}</strong> <span class="muted">{e.get('ticker','')}</span></td>
+        <td class="num">{fmt(e['price'])} <span class="ccy">{e.get('ccy','')}</span></td>
+        <td class="num">{chg_span(e['change_pct'])}</td></tr>"""
+
+    # Stocks in focus (theme holdings by momentum)
+    stocks_html = ""
+    for s in rec.get("stocks_focus", []):
+        stocks_html += f"""
+        <tr><td><strong>{s['ticker']}</strong></td>
+        <td class="num">{fmt(s['price'])} <span class="ccy">{s.get('ccy','')}</span></td>
+        <td class="num">{chg_span(s['change_pct'])}</td></tr>"""
+
+    # News links
+    news_html = ""
+    for n in rec.get("news", []):
+        pub = f" <span class=\"muted\">&middot; {n['publisher']}</span>" if n.get("publisher") else ""
+        news_html += f'<li><a href="{n["link"]}" target="_blank" rel="noopener">{n["title"]}</a>{pub}</li>'
+    news_block = (f"""
+      <div class="card">
+        <h3>News to Read</h3>
+        <ul class="news">{news_html}</ul>
+      </div>""" if news_html else "")
+
+    etfs_block = (f"""
+      <div class="card">
+        <h3>ETFs in Focus (top momentum today)</h3>
+        <table>{etfs_html}</table>
+      </div>""" if etfs_html else "")
+
+    stocks_block = (f"""
+      <div class="card">
+        <h3>Stocks in Focus (from today's themes)</h3>
+        <table>{stocks_html}</table>
+        <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
+        shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
+        are especially high-risk. Always do your own due diligence.</p>
+      </div>""" if stocks_html else "")
+
     openattr = " open" if open_default else ""
     return f"""
   <details class="day"{openattr}>
@@ -215,12 +326,12 @@ def render_day(rec, open_default=False):
       <div class="card">
         <h3>Daily Newsletter</h3>
         <p>{rec['newsletter']}</p>
-      </div>
+      </div>{news_block}
       <div class="card">
         <h3>Top Pick (best momentum)</h3>
         <div class="pick"><strong>{top['name']}</strong> — {top['why']}.<br>
         Last {fmt(top['price'])} {top['ccy']} &nbsp;|&nbsp; {chg_span(top['change_pct'])}</div>
-      </div>
+      </div>{etfs_block}{stocks_block}
       <div class="card">
         <h3>Core Watchlist</h3>
         <table>{core_html}</table>
@@ -245,7 +356,7 @@ def render_page(records):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ETF Daily</title>
+<title>Daily Stock Market News</title>
 <style>
   :root {{ --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
            --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff; }}
@@ -280,12 +391,16 @@ def render_page(records):
   .pick {{ border-left:3px solid var(--accent); padding-left:12px; }}
   .theme {{ border-left:3px solid var(--line); padding-left:12px; margin-bottom:12px; }}
   .theme-head {{ display:flex; justify-content:space-between; gap:10px; }}
+  .news {{ margin:0; padding-left:18px; }}
+  .news li {{ margin-bottom:7px; }}
+  .news a {{ color:var(--accent); text-decoration:none; }}
+  .news a:hover {{ text-decoration:underline; }}
   footer {{ color:var(--muted); font-size:.78rem; margin-top:28px; }}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>ETF Daily</h1>
+  <h1>Daily Stock Market News</h1>
   <div class="sub">Singapore &middot; via Interactive Brokers &middot; rules-based archive</div>
   <div class="refresh">Last refresh: {latest_refresh} &middot; newest day expanded, click any date to expand/collapse</div>
   {days_html}
