@@ -1,14 +1,12 @@
 name: ETF Daily
 
-# Runs every day at 23:00 UTC = 07:00 SGT (next morning).
-# You can also trigger it manually from the Actions tab.
 on:
   schedule:
     - cron: "0 23 * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write   # allows the job to commit the updated index.html
+  contents: write
 
 jobs:
   build:
@@ -30,5 +28,5 @@ jobs:
           git config user.name  "etf-daily-bot"
           git config user.email "actions@github.com"
           git add index.html
-          git commit -m "Daily ETF digest: $(date -u +%Y-%m-%d)" || echo "No changes"
+          git commit -m "Daily ETF digest" || echo "No changes"
           git push
