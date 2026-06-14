@@ -1,0 +1,217 @@
+{
+  "date": "2026-06-14",
+  "date_display": "Sunday, 14 June 2026",
+  "refreshed": "14 Jun 2026, 08:28 SGT",
+  "newsletter": "Core watchlist was broadly higher (avg 2.02%). EIMI led (3.53%); AGGG lagged (0.67%). Among themes, LIT stood out (2.02%).",
+  "core": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 55.41999816894531,
+      "change_pct": 3.530729371844127,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 188.0399932861328,
+      "change_pct": 2.3179859261789444,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "price": 143.55999755859375,
+      "change_pct": 2.01818953471754,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10601.0,
+      "change_pct": 1.551872784749497,
+      "ccy": "GBp"
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "price": 4.4019999504089355,
+      "change_pct": 0.6746714240238906,
+      "ccy": "USD"
+    }
+  ],
+  "themed": [
+    {
+      "name": "Genomics & Biotech (ARKG)",
+      "short": "ARKG",
+      "ticker": "ARKG",
+      "blurb": "ARK Genomic Revolution",
+      "holdings": [
+        "TEM",
+        "CRSP",
+        "TWST",
+        "RXRX"
+      ],
+      "price": 33.470001220703125,
+      "change_pct": -0.5349191590299038,
+      "ccy": "USD"
+    },
+    {
+      "name": "Infrastructure (IGF)",
+      "short": "IGF",
+      "ticker": "IGF",
+      "blurb": "iShares Global Infrastructure",
+      "holdings": [
+        "AENA.MC",
+        "NEE",
+        "TRP",
+        "ENB"
+      ],
+      "price": 67.30000305175781,
+      "change_pct": 0.673155703677277,
+      "ccy": "USD"
+    },
+    {
+      "name": "Lithium & Battery (LIT)",
+      "short": "LIT",
+      "ticker": "LIT",
+      "blurb": "Global X Lithium & Battery",
+      "holdings": [
+        "ALB",
+        "TSLA",
+        "BYDDY",
+        "SQM"
+      ],
+      "price": 82.37000274658203,
+      "change_pct": 2.0188319617778094,
+      "ccy": "USD"
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 55.41999816894531,
+      "change_pct": 3.530729371844127,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 188.0399932861328,
+      "change_pct": 2.3179859261789444,
+      "ccy": "USD"
+    },
+    {
+      "name": "Lithium & Battery (LIT)",
+      "short": "LIT",
+      "ticker": "LIT",
+      "blurb": "Global X Lithium & Battery",
+      "holdings": [
+        "ALB",
+        "TSLA",
+        "BYDDY",
+        "SQM"
+      ],
+      "price": 82.37000274658203,
+      "change_pct": 2.0188319617778094,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "price": 143.55999755859375,
+      "change_pct": 2.01818953471754,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10601.0,
+      "change_pct": 1.551872784749497,
+      "ccy": "GBp"
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "ALB",
+      "price": 170.4199981689453,
+      "change_pct": 7.1419595025247125,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "SQM",
+      "price": 84.12000274658203,
+      "change_pct": 4.5748386293950585,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "TWST",
+      "price": 76.16999816894531,
+      "change_pct": 2.862923740469954,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "TSLA",
+      "price": 406.42999267578125,
+      "change_pct": 1.823875458002605,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "NEE",
+      "price": 85.98999786376953,
+      "change_pct": 1.3554945491732664,
+      "ccy": "USD"
+    }
+  ],
+  "news": [
+    {
+      "title": "Vinicius earns Brazil draw with Morocco in World Cup opener",
+      "link": "https://finance.yahoo.com/m/bdc52ada-35ef-3c85-8053-79a96deda36c/vinicius-earns-brazil-draw.html",
+      "publisher": "AFP"
+    },
+    {
+      "title": "Meta reportedly moves to unwind $2B Manus deal after Beijing’s demand",
+      "link": "https://finance.yahoo.com/sectors/technology/articles/meta-reportedly-moves-unwind-2b-000349014.html",
+      "publisher": "TechCrunch"
+    },
+    {
+      "title": "Just Three Days Till SMIS Corporation Berhad (KLSE:SMISCOR) Will Be Trading Ex-Dividend",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/just-three-days-till-smis-000327275.html",
+      "publisher": "Simply Wall St."
+    },
+    {
+      "title": "3 ETFs For the Coming Genomics Revolution",
+      "link": "https://finance.yahoo.com/m/bb77ff23-e38a-3ba8-b1a3-8236d54585ae/3-etfs-for-the-coming.html",
+      "publisher": "MarketBeat"
+    },
+    {
+      "title": "Albemarle (ALB) Stock After 184% One Year Surge Are Recent Gains Already Priced In",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/albemarle-alb-stock-184-one-231416086.html",
+      "publisher": "Simply Wall St."
+    },
+    {
+      "title": "Analyst Report: Albemarle Corporation",
+      "link": "https://finance.yahoo.com/m/b84f435f-15bf-3d46-9d90-c1dbaff7f94b/analyst-report%3A-albemarle.html",
+      "publisher": "Morningstar Research"
+    }
+  ]
+}
