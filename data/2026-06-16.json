@@ -1,0 +1,223 @@
+{
+  "date": "2026-06-16",
+  "date_display": "Tuesday, 16 June 2026",
+  "refreshed": "16 Jun 2026, 02:02 SGT",
+  "newsletter": "Core watchlist was broadly higher (avg 1.51%). EIMI led (2.83%); AGGG lagged (0.32%). Among themes, QTUM stood out (4.19%).",
+  "core": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 56.9900016784668,
+      "change_pct": 2.832918732215402,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "price": 145.94000244140625,
+      "change_pct": 1.657846839849036,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 190.9199981689453,
+      "change_pct": 1.5315916749848602,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10731.0,
+      "change_pct": 1.2262994057164418,
+      "ccy": "GBp"
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "price": 4.415999889373779,
+      "change_pct": 0.3180358728432786,
+      "ccy": "USD"
+    }
+  ],
+  "themed": [
+    {
+      "name": "Cloud Computing (SKYY)",
+      "short": "SKYY",
+      "ticker": "SKYY",
+      "blurb": "First Trust Cloud Computing",
+      "holdings": [
+        "ORCL",
+        "MSFT",
+        "GOOGL",
+        "NET"
+      ],
+      "price": 136.5,
+      "change_pct": 1.8504668321732503,
+      "ccy": "USD"
+    },
+    {
+      "name": "Quantum Computing & ML (QTUM)",
+      "short": "QTUM",
+      "ticker": "QTUM",
+      "blurb": "Defiance Quantum ETF",
+      "holdings": [
+        "NVDA",
+        "IBM",
+        "MSFT",
+        "GOOGL"
+      ],
+      "price": 168.06500244140625,
+      "change_pct": 4.194047899352916,
+      "ccy": "USD"
+    },
+    {
+      "name": "Cybersecurity (BUG)",
+      "short": "BUG",
+      "ticker": "BUG",
+      "blurb": "Global X Cybersecurity",
+      "holdings": [
+        "CRWD",
+        "PANW",
+        "ZS",
+        "FTNT"
+      ],
+      "price": 34.48500061035156,
+      "change_pct": 1.0993843250949593,
+      "ccy": "USD"
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "Quantum Computing & ML (QTUM)",
+      "short": "QTUM",
+      "ticker": "QTUM",
+      "blurb": "Defiance Quantum ETF",
+      "holdings": [
+        "NVDA",
+        "IBM",
+        "MSFT",
+        "GOOGL"
+      ],
+      "price": 168.06500244140625,
+      "change_pct": 4.194047899352916,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 56.9900016784668,
+      "change_pct": 2.832918732215402,
+      "ccy": "USD"
+    },
+    {
+      "name": "Cloud Computing (SKYY)",
+      "short": "SKYY",
+      "ticker": "SKYY",
+      "blurb": "First Trust Cloud Computing",
+      "holdings": [
+        "ORCL",
+        "MSFT",
+        "GOOGL",
+        "NET"
+      ],
+      "price": 136.5,
+      "change_pct": 1.8504668321732503,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "price": 145.94000244140625,
+      "change_pct": 1.657846839849036,
+      "ccy": "USD"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 190.9199981689453,
+      "change_pct": 1.5315916749848602,
+      "ccy": "USD"
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "ORCL",
+      "price": 193.28500366210938,
+      "change_pct": 4.972029835725835,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "NET",
+      "price": 236.55999755859375,
+      "change_pct": 3.5364154333625066,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "GOOGL",
+      "price": 371.7200012207031,
+      "change_pct": 3.34742237269084,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "NVDA",
+      "price": 211.6999969482422,
+      "change_pct": 3.1726665185331933,
+      "ccy": "USD"
+    },
+    {
+      "ticker": "MSFT",
+      "price": 399.1448059082031,
+      "change_pct": 2.1509996119892207,
+      "ccy": "USD"
+    }
+  ],
+  "news": [
+    {
+      "title": "Google's Samsung Talks Highlight TSMC Capacity Crunch",
+      "link": "https://finance.yahoo.com/sectors/technology/articles/googles-samsung-talks-highlight-tsmc-180100438.html",
+      "publisher": "GuruFocus.com"
+    },
+    {
+      "title": "Quantum Stocks Jump as Growth Trade Revives",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/quantum-stocks-jump-growth-trade-180020171.html",
+      "publisher": "GuruFocus.com"
+    },
+    {
+      "title": "Salesforce Buys Fin for $3.6B",
+      "link": "https://finance.yahoo.com/sectors/technology/articles/salesforce-buys-fin-3-6b-175944865.html",
+      "publisher": "GuruFocus.com"
+    },
+    {
+      "title": "Top Cloud ETFs to Buy as Hyperscalers Pivot to AI-First Platforms",
+      "link": "https://finance.yahoo.com/sectors/technology/articles/top-cloud-etfs-buy-hyperscalers-135400605.html",
+      "publisher": "Zacks"
+    },
+    {
+      "title": "How Is International Business Machines’ Stock Performance Compared to Other Cloud Computing Stocks?",
+      "link": "https://finance.yahoo.com/m/735d9129-28f5-319c-b238-43af912c5f52/how-is-international-business.html",
+      "publisher": "Barchart"
+    },
+    {
+      "title": "Should You Invest in the First Trust Cloud Computing ETF (SKYY)?",
+      "link": "https://finance.yahoo.com/news/invest-first-trust-cloud-computing-102002634.html",
+      "publisher": "Zacks"
+    }
+  ]
+}
