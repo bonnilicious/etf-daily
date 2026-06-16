@@ -31,51 +31,53 @@ CORE_ETFS = [
     # on IBKR: 15% (not 30%) US dividend withholding, no US estate-tax exposure,
     # no SG capital-gains/dividend tax. Accumulating share classes preferred
     # (dividends auto-reinvested, no manual re-investing, tidier for SG holders).
-    ("Vanguard S&P 500 UCITS (VUAA)", "VUAA.L", "Core US large-cap, accumulating, Irish-domiciled"),
-    ("iShares Core MSCI World UCITS (SWDA)", "SWDA.L", "Global developed-market core holding"),
-    ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts"),
-    ("iShares Core MSCI EM IMI UCITS (EIMI)", "EIMI.L", "Broad emerging-market exposure"),
-    ("iShares Core Global Aggregate Bond UCITS (AGGG)", "AGGG.L", "Diversified global bonds, ballast"),
-    # --- Expanded SG/IBKR-relevant UCITS picks (added per request) ---
-    ("Invesco S&P 500 UCITS (SPXP)", "SPXP.L", "Lower-cost S&P 500 alt to VUAA (TER ~0.05%)"),
-    ("iShares Nasdaq 100 UCITS (CNX1)", "CNX1.L", "US tech/growth tilt, accumulating"),
-    ("iShares Core S&P 500 UCITS (CSPX)", "CSPX.L", "The classic large S&P 500 UCITS, deep liquidity"),
-    ("Vanguard FTSE Dev World UCITS (VHVG)", "VHVG.L", "Developed-world core, accumulating, low TER"),
-    ("iShares MSCI World SRI UCITS (SUWS)", "SUWS.L", "ESG-screened global developed alternative"),
-    ("Vanguard FTSE All-World High Div (VHYL)", "VHYL.L", "Global dividend tilt (distributing)"),
-    ("iShares $ Treasury 7-10y UCITS (IDTM)", "IDTM.L", "US Treasuries, rate-sensitive ballast"),
-    ("iShares Physical Gold ETC (SGLN)", "SGLN.L", "Gold exposure, LSE-listed, no estate-tax issue"),
-    ("iShares China Large Cap UCITS (FXC)", "FXC.L", "China large-cap satellite (higher risk)"),
-    ("WisdomTree Phys. Gold (PHAU)", "PHAU.L", "Alt physical-gold ETC, USD"),
+    # Format: (name, ticker, why, TER%, distribution)  — TER/dist are STATIC
+    # (no free live feed for fees); update by hand if a fund changes its fee.
+    ("Vanguard S&P 500 UCITS (VUAA)", "VUAA.L", "Core US large-cap, accumulating, Irish-domiciled", 0.07, "Acc"),
+    ("iShares Core MSCI World UCITS (SWDA)", "SWDA.L", "Global developed-market core holding", 0.20, "Acc"),
+    ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts", 0.22, "Acc"),
+    ("iShares Core MSCI EM IMI UCITS (EIMI)", "EIMI.L", "Broad emerging-market exposure", 0.18, "Acc"),
+    ("iShares Core Global Aggregate Bond UCITS (AGGG)", "AGGG.L", "Diversified global bonds, ballast", 0.10, "Dist"),
+    # --- Expanded SG/IBKR-relevant UCITS picks ---
+    ("Invesco S&P 500 UCITS (SPXP)", "SPXP.L", "Lower-cost S&P 500 alt to VUAA", 0.05, "Acc"),
+    ("iShares Nasdaq 100 UCITS (CNX1)", "CNX1.L", "US tech/growth tilt, accumulating", 0.33, "Acc"),
+    ("iShares Core S&P 500 UCITS (CSPX)", "CSPX.L", "The classic large S&P 500 UCITS, deep liquidity", 0.07, "Acc"),
+    ("Vanguard FTSE Dev World UCITS (VHVG)", "VHVG.L", "Developed-world core, accumulating, low TER", 0.12, "Acc"),
+    ("iShares MSCI World SRI UCITS (SUWS)", "SUWS.L", "ESG-screened global developed alternative", 0.20, "Acc"),
+    ("Vanguard FTSE All-World High Div (VHYL)", "VHYL.L", "Global dividend tilt (distributing)", 0.29, "Dist"),
+    ("iShares $ Treasury 7-10y UCITS (IDTM)", "IDTM.L", "US Treasuries, rate-sensitive ballast", 0.07, "Acc"),
+    ("iShares Physical Gold ETC (SGLN)", "SGLN.L", "Gold exposure, LSE-listed, no estate-tax issue", 0.12, "—"),
+    ("iShares China Large Cap UCITS (FXC)", "FXC.L", "China large-cap satellite (higher risk)", 0.74, "Dist"),
+    ("WisdomTree Phys. Gold (PHAU)", "PHAU.L", "Alt physical-gold ETC, USD", 0.39, "—"),
 ]
 
 # Map US-listed focus tickers -> a London-listed UCITS alternative where one
 # meaningfully exists. Used to surface a cost/tax-efficient wrapper for a
 # Singapore IBKR investor next to the US-domiciled momentum picks.
-# Format: US_ticker -> (UCITS name, LSE ticker, note)
+# Format: US_ticker -> (UCITS name, LSE ticker, note, TER%)  — TER is STATIC.
 UCITS_ALTERNATIVES = {
     # Broad / index
-    "SOXX": ("iShares Semiconductor / S&P US Tech UCITS (IUIT)", "IUIT.L", "Closest UCITS proxy for US tech/semis"),
-    "SMH":  ("iShares S&P 500 Info Tech UCITS (IITU)", "IITU.L", "US tech sector UCITS"),
-    "SKYY": ("iShares Digitalisation UCITS (DGTL)", "DGTL.L", "Digital/cloud-leaning UCITS proxy"),
-    "QTUM": ("L&G Artificial Intelligence UCITS (AIAI)", "AIAI.L", "No pure-quantum UCITS; AI is closest proxy"),
-    "BOTZ": ("L&G ROBO Global Robotics & Automation (ROBO)", "ROBO.L", "Robotics & automation UCITS"),
-    "ROBO": ("L&G ROBO Global Robotics & Automation (ROBO)", "ROBO.L", "Robotics & automation UCITS"),
-    "BUG":  ("L&G Cyber Security UCITS (ISPY)", "ISPY.L", "Cybersecurity UCITS"),
-    "HACK": ("L&G Cyber Security UCITS (ISPY)", "ISPY.L", "Cybersecurity UCITS"),
-    "ICLN": ("iShares Global Clean Energy UCITS (INRG)", "INRG.L", "Clean-energy UCITS (UK-listed)"),
-    "TAN":  ("iShares Global Clean Energy UCITS (INRG)", "INRG.L", "Solar-heavy theme via clean-energy UCITS"),
-    "URA":  ("Global X Uranium UCITS (URNU/URNG)", "URNU.L", "Uranium miners UCITS"),
-    "URNM": ("Global X Uranium UCITS (URNU/URNG)", "URNU.L", "Uranium miners UCITS"),
-    "LIT":  ("Global X Lithium & Battery Tech UCITS", "LITG.L", "Lithium/battery UCITS"),
-    "GDX":  ("VanEck Gold Miners UCITS (GDX)", "GDGB.L", "Gold-miners UCITS (LSE)"),
-    "GDXJ": ("VanEck Junior Gold Miners UCITS", "GJGB.L", "Junior gold-miners UCITS"),
-    "IGF":  ("iShares Global Infrastructure UCITS (INFR)", "INFR.L", "Global infrastructure UCITS"),
-    "ARKG": ("iShares Healthcare Innovation UCITS (HEAL)", "HEAL.L", "No ARK UCITS; healthcare-innovation proxy"),
-    "ARKK": ("iShares Healthcare Innovation UCITS (HEAL)", "HEAL.L", "Disruptive-innovation proxy (imperfect)"),
-    "PHO":  ("iShares Global Water UCITS (IH2O/DH2O)", "IH2O.L", "Global water UCITS"),
-    "PAVE": ("iShares Global Infrastructure UCITS (INFR)", "INFR.L", "Infrastructure UCITS proxy"),
-    "DBA":  ("WisdomTree Agriculture (AGAP)", "AGAP.L", "Agri-commodity ETC (UCITS-style, LSE)"),
+    "SOXX": ("iShares Semiconductor / S&P US Tech UCITS (IUIT)", "IUIT.L", "Closest UCITS proxy for US tech/semis", 0.15),
+    "SMH":  ("iShares S&P 500 Info Tech UCITS (IITU)", "IITU.L", "US tech sector UCITS", 0.15),
+    "SKYY": ("iShares Digitalisation UCITS (DGTL)", "DGTL.L", "Digital/cloud-leaning UCITS proxy", 0.40),
+    "QTUM": ("L&G Artificial Intelligence UCITS (AIAI)", "AIAI.L", "No pure-quantum UCITS; AI is closest proxy", 0.49),
+    "BOTZ": ("L&G ROBO Global Robotics & Automation (ROBO)", "ROBO.L", "Robotics & automation UCITS", 0.80),
+    "ROBO": ("L&G ROBO Global Robotics & Automation (ROBO)", "ROBO.L", "Robotics & automation UCITS", 0.80),
+    "BUG":  ("L&G Cyber Security UCITS (ISPY)", "ISPY.L", "Cybersecurity UCITS", 0.69),
+    "HACK": ("L&G Cyber Security UCITS (ISPY)", "ISPY.L", "Cybersecurity UCITS", 0.69),
+    "ICLN": ("iShares Global Clean Energy UCITS (INRG)", "INRG.L", "Clean-energy UCITS (UK-listed)", 0.65),
+    "TAN":  ("iShares Global Clean Energy UCITS (INRG)", "INRG.L", "Solar-heavy theme via clean-energy UCITS", 0.65),
+    "URA":  ("Global X Uranium UCITS (URNU/URNG)", "URNU.L", "Uranium miners UCITS", 0.69),
+    "URNM": ("Global X Uranium UCITS (URNU/URNG)", "URNU.L", "Uranium miners UCITS", 0.69),
+    "LIT":  ("Global X Lithium & Battery Tech UCITS", "LITG.L", "Lithium/battery UCITS", 0.60),
+    "GDX":  ("VanEck Gold Miners UCITS (GDX)", "GDGB.L", "Gold-miners UCITS (LSE)", 0.53),
+    "GDXJ": ("VanEck Junior Gold Miners UCITS", "GJGB.L", "Junior gold-miners UCITS", 0.55),
+    "IGF":  ("iShares Global Infrastructure UCITS (INFR)", "INFR.L", "Global infrastructure UCITS", 0.65),
+    "ARKG": ("iShares Healthcare Innovation UCITS (HEAL)", "HEAL.L", "No ARK UCITS; healthcare-innovation proxy", 0.40),
+    "ARKK": ("iShares Healthcare Innovation UCITS (HEAL)", "HEAL.L", "Disruptive-innovation proxy (imperfect)", 0.40),
+    "PHO":  ("iShares Global Water UCITS (IH2O/DH2O)", "IH2O.L", "Global water UCITS", 0.65),
+    "PAVE": ("iShares Global Infrastructure UCITS (INFR)", "INFR.L", "Infrastructure UCITS proxy", 0.65),
+    "DBA":  ("WisdomTree Agriculture (AGAP)", "AGAP.L", "Agri-commodity ETC (UCITS-style, LSE)", 0.49),
 }
 
 # Themed ETFs with representative top holdings (factual, for context — NOT
@@ -109,8 +111,10 @@ DATA_DIR = "data"
 # --------------------------------------------------------------------------
 
 def _fetch_one(ticker):
+    # 1y daily history with timestamps — lets us compute YTD/1M/3M/1Y, volatility
+    # and 52-week high/low for free from the same single request.
     url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
-           "?range=5d&interval=1d")
+           "?range=1y&interval=1d")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=20) as resp:
         data = json.load(resp)
@@ -118,15 +122,63 @@ def _fetch_one(ticker):
     meta = res["meta"]
     price = meta.get("regularMarketPrice")
     prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+
+    ts = res.get("timestamp", []) or []
+    raw_closes = []
     try:
-        closes = [c for c in res["indicators"]["quote"][0]["close"] if c is not None]
-        if len(closes) >= 2:
-            price, prev = closes[-1], closes[-2]
+        raw_closes = res["indicators"]["quote"][0]["close"]
     except (KeyError, IndexError, TypeError):
-        pass
+        raw_closes = []
+
+    # Pair timestamps with non-null closes.
+    series = [(t, c) for t, c in zip(ts, raw_closes) if c is not None]
+    closes = [c for _, c in series]
+    if len(closes) >= 2:
+        price, prev = closes[-1], closes[-2]
     change_pct = (price - prev) / prev * 100 if (price is not None and prev) else None
+
+    def ret_from(base):
+        return (price - base) / base * 100 if (price and base) else None
+
+    # Period returns by walking back N trading days (~21/day-month, 63/3m, 252/1y).
+    def ret_days(n):
+        return ret_from(closes[-(n + 1)]) if len(closes) > n else None
+
+    ret_1m = ret_days(21)
+    ret_3m = ret_days(63)
+    ret_1y = ret_from(closes[0]) if len(closes) > 200 else None
+
+    # YTD: first close on/after Jan 1 of the current year.
+    ytd = None
+    if series:
+        yr = datetime.datetime.now(SGT).year
+        for t, c in series:
+            if datetime.datetime.fromtimestamp(t, SGT).year == yr:
+                ytd = ret_from(c)
+                break
+
+    # 52-week high/low + % below high.
+    hi = max(closes) if closes else None
+    lo = min(closes) if closes else None
+    from_hi = (price - hi) / hi * 100 if (price and hi) else None
+
+    # Annualised volatility from daily returns. Broad ETFs realistically never
+    # move >25% in a day, so returns beyond that are Yahoo data glitches
+    # (bad single-day prints / split artefacts) — drop them before computing.
+    vol = None
+    if len(closes) > 30:
+        rets = [(closes[i] - closes[i - 1]) / closes[i - 1]
+                for i in range(1, len(closes)) if closes[i - 1]]
+        rets = [r for r in rets if abs(r) < 0.25]
+        if len(rets) > 20:
+            mean = sum(rets) / len(rets)
+            var = sum((r - mean) ** 2 for r in rets) / len(rets)
+            vol = (var ** 0.5) * (252 ** 0.5) * 100
+
     return {"price": price, "change_pct": change_pct,
-            "currency": meta.get("currency", ""), "name": meta.get("symbol", ticker)}
+            "currency": meta.get("currency", ""), "name": meta.get("symbol", ticker),
+            "ytd": ytd, "ret_1m": ret_1m, "ret_3m": ret_3m, "ret_1y": ret_1y,
+            "hi52": hi, "lo52": lo, "from_hi": from_hi, "vol": vol}
 
 
 def fetch_quotes(tickers):
@@ -137,7 +189,9 @@ def fetch_quotes(tickers):
         except (urllib.error.URLError, json.JSONDecodeError, KeyError,
                 IndexError, TimeoutError) as e:
             print(f"WARN: fetch failed for {tic}: {e}")
-            out[tic] = {"price": None, "change_pct": None, "currency": "", "name": tic}
+            out[tic] = {"price": None, "change_pct": None, "currency": "", "name": tic,
+                        "ytd": None, "ret_1m": None, "ret_3m": None, "ret_1y": None,
+                        "hi52": None, "lo52": None, "from_hi": None, "vol": None}
     return out
 
 
@@ -214,7 +268,7 @@ def short_name(full):
 
 def build_day_record(today, now_sgt):
     themes = pick_themes(today, THEMES_PER_DAY)
-    core_tickers = [t for _, t, _ in CORE_ETFS]
+    core_tickers = [t[1] for t in CORE_ETFS]
     theme_tickers = [t[1] for t in themes]
 
     # Gather candidate stock tickers from the featured themes' holdings.
@@ -228,11 +282,14 @@ def build_day_record(today, now_sgt):
     quotes = fetch_quotes(core_tickers + theme_tickers + stock_candidates)
 
     core_rows = []
-    for name, tic, why in CORE_ETFS:
+    for name, tic, why, ter, dist in CORE_ETFS:
         q = quotes.get(tic, {})
         core_rows.append({"name": name, "short": short_name(name), "ticker": tic,
-                          "why": why, "price": q.get("price"),
-                          "change_pct": q.get("change_pct"), "ccy": q.get("currency")})
+                          "why": why, "ter": ter, "dist": dist,
+                          "price": q.get("price"), "change_pct": q.get("change_pct"),
+                          "ccy": q.get("currency"), "ytd": q.get("ytd"),
+                          "ret_1m": q.get("ret_1m"),
+                          "ret_1y": q.get("ret_1y"), "vol": q.get("vol")})
     core_rows.sort(key=lambda r: (r["change_pct"] is not None, r["change_pct"] or -999),
                    reverse=True)
 
@@ -242,7 +299,8 @@ def build_day_record(today, now_sgt):
         themed_rows.append({"name": name, "short": short_name(name), "ticker": tic,
                             "blurb": blurb, "holdings": holdings,
                             "price": q.get("price"), "change_pct": q.get("change_pct"),
-                            "ccy": q.get("currency")})
+                            "ccy": q.get("currency"), "ytd": q.get("ytd"),
+                            "ret_1m": q.get("ret_1m"), "ret_1y": q.get("ret_1y")})
 
     # ETFs in focus: top 5 by today's momentum across core + themed.
     etf_pool = core_rows + themed_rows
@@ -255,7 +313,8 @@ def build_day_record(today, now_sgt):
         q = quotes.get(tic, {})
         if q.get("change_pct") is not None:
             stock_rows.append({"ticker": tic, "price": q.get("price"),
-                               "change_pct": q.get("change_pct"), "ccy": q.get("currency")})
+                               "change_pct": q.get("change_pct"), "ccy": q.get("currency"),
+                               "ret_1m": q.get("ret_1m"), "from_hi": q.get("from_hi")})
     stocks_focus = sorted(stock_rows, key=lambda s: s["change_pct"], reverse=True)[:5]
 
     # UCITS/LSE alternatives for today's US-listed themed ETFs — so a Singapore
@@ -269,7 +328,8 @@ def build_day_record(today, now_sgt):
         if alt and alt[1] not in seen_lse:
             seen_lse.add(alt[1])
             ucits_alts.append({"us_ticker": t["ticker"], "us_name": t["short"],
-                               "ucits_name": alt[0], "lse_ticker": alt[1], "note": alt[2]})
+                               "ucits_name": alt[0], "lse_ticker": alt[1],
+                               "note": alt[2], "ter": alt[3]})
 
     # News: a few headlines for the leading core ETF + the leading theme.
     news = []
@@ -312,12 +372,20 @@ def render_day(rec, open_default=False):
         arrow = "&#9650;" if (c or 0) >= 0 else "&#9660;"
         return f'<span class="{cls}">{arrow} {fmt(c, "%")}</span>'
 
-    core_html = ""
+    core_html = """
+        <tr class="hdr"><td>Fund</td><td class="num">TER</td><td class="num">Type</td>
+        <td class="num">Last</td><td class="num">Day</td><td class="num">YTD</td>
+        <td class="num">1Y</td><td class="num">Vol</td></tr>"""
     for r in rec["core"]:
         core_html += f"""
         <tr><td><strong>{r['name']}</strong><br><span class="muted">{r['why']}</span></td>
+        <td class="num">{fmt(r.get('ter'), '%')}</td>
+        <td class="num"><span class="ccy">{r.get('dist','')}</span></td>
         <td class="num">{fmt(r['price'])} <span class="ccy">{r['ccy']}</span></td>
-        <td class="num">{chg_span(r['change_pct'])}</td></tr>"""
+        <td class="num">{chg_span(r['change_pct'])}</td>
+        <td class="num">{chg_span(r.get('ytd'))}</td>
+        <td class="num">{chg_span(r.get('ret_1y'))}</td>
+        <td class="num">{fmt(r.get('vol'), '%', 1)}</td></tr>"""
 
     themed_html = ""
     for t in rec["themed"]:
@@ -326,6 +394,7 @@ def render_day(rec, open_default=False):
         <div class="theme">
           <div class="theme-head"><strong>{t['name']}</strong> {chg_span(t['change_pct'])}</div>
           <div class="muted">{t['blurb']} &middot; Last {fmt(t['price'])} {t['ccy']}</div>
+          <div class="muted">1M {fmt(t.get('ret_1m'), '%')} &middot; YTD {fmt(t.get('ytd'), '%')} &middot; 1Y {fmt(t.get('ret_1y'), '%')}</div>
           <div class="muted">Top holdings: {holdings}</div>
         </div>"""
 
@@ -333,19 +402,31 @@ def render_day(rec, open_default=False):
 
     # ETFs in focus (top momentum)
     etfs_html = ""
+    if rec.get("etfs_focus"):
+        etfs_html += """
+        <tr class="hdr"><td>ETF</td><td class="num">Last</td><td class="num">Day</td>
+        <td class="num">1M</td><td class="num">YTD</td></tr>"""
     for e in rec.get("etfs_focus", []):
         etfs_html += f"""
         <tr><td><strong>{e['short']}</strong> <span class="muted">{e.get('ticker','')}</span></td>
         <td class="num">{fmt(e['price'])} <span class="ccy">{e.get('ccy','')}</span></td>
-        <td class="num">{chg_span(e['change_pct'])}</td></tr>"""
+        <td class="num">{chg_span(e['change_pct'])}</td>
+        <td class="num">{chg_span(e.get('ret_1m'))}</td>
+        <td class="num">{chg_span(e.get('ytd'))}</td></tr>"""
 
     # Stocks in focus (theme holdings by momentum)
     stocks_html = ""
+    if rec.get("stocks_focus"):
+        stocks_html += """
+        <tr class="hdr"><td>Stock</td><td class="num">Last</td><td class="num">Day</td>
+        <td class="num">1M</td><td class="num">vs 52w hi</td></tr>"""
     for s in rec.get("stocks_focus", []):
         stocks_html += f"""
         <tr><td><strong>{s['ticker']}</strong></td>
         <td class="num">{fmt(s['price'])} <span class="ccy">{s.get('ccy','')}</span></td>
-        <td class="num">{chg_span(s['change_pct'])}</td></tr>"""
+        <td class="num">{chg_span(s['change_pct'])}</td>
+        <td class="num">{chg_span(s.get('ret_1m'))}</td>
+        <td class="num">{chg_span(s.get('from_hi'))}</td></tr>"""
 
     # News links
     news_html = ""
@@ -378,7 +459,7 @@ def render_day(rec, open_default=False):
     for a in rec.get("ucits_alts", []):
         ucits_html += f"""
         <tr><td><strong>{a['us_ticker']}</strong> <span class="muted">{a['us_name']} (US-listed)</span></td>
-        <td><span class="lse">{a['lse_ticker']}</span><br><span class="muted">{a['ucits_name']}</span><br>
+        <td><span class="lse">{a['lse_ticker']}</span> <span class="muted">&middot; TER {fmt(a.get('ter'), '%')}</span><br><span class="muted">{a['ucits_name']}</span><br>
         <span class="muted">{a['note']}</span></td></tr>"""
     ucits_block = (f"""
       <div class="card">
@@ -477,6 +558,8 @@ def render_page(records):
   .news a:hover {{ text-decoration:underline; }}
   .lse {{ color:var(--up); font-weight:600; font-variant-numeric:tabular-nums; }}
   .ucits td {{ vertical-align:top; }}
+  tr.hdr td {{ color:var(--muted); font-size:.75rem; text-transform:uppercase;
+               letter-spacing:.03em; border-top:none; padding-bottom:4px; }}
   footer {{ color:var(--muted); font-size:.78rem; margin-top:28px; }}
 </style>
 </head>
