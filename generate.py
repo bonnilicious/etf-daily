@@ -27,12 +27,56 @@ from zoneinfo import ZoneInfo
 # --------------------------------------------------------------------------
 
 CORE_ETFS = [
+    # All Irish-domiciled UCITS, LSE-listed (.L) — chosen for a Singapore investor
+    # on IBKR: 15% (not 30%) US dividend withholding, no US estate-tax exposure,
+    # no SG capital-gains/dividend tax. Accumulating share classes preferred
+    # (dividends auto-reinvested, no manual re-investing, tidier for SG holders).
     ("Vanguard S&P 500 UCITS (VUAA)", "VUAA.L", "Core US large-cap, accumulating, Irish-domiciled"),
     ("iShares Core MSCI World UCITS (SWDA)", "SWDA.L", "Global developed-market core holding"),
     ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts"),
     ("iShares Core MSCI EM IMI UCITS (EIMI)", "EIMI.L", "Broad emerging-market exposure"),
     ("iShares Core Global Aggregate Bond UCITS (AGGG)", "AGGG.L", "Diversified global bonds, ballast"),
+    # --- Expanded SG/IBKR-relevant UCITS picks (added per request) ---
+    ("Invesco S&P 500 UCITS (SPXP)", "SPXP.L", "Lower-cost S&P 500 alt to VUAA (TER ~0.05%)"),
+    ("iShares Nasdaq 100 UCITS (CNX1)", "CNX1.L", "US tech/growth tilt, accumulating"),
+    ("iShares Core S&P 500 UCITS (CSPX)", "CSPX.L", "The classic large S&P 500 UCITS, deep liquidity"),
+    ("Vanguard FTSE Dev World UCITS (VHVG)", "VHVG.L", "Developed-world core, accumulating, low TER"),
+    ("iShares MSCI World SRI UCITS (SUWS)", "SUWS.L", "ESG-screened global developed alternative"),
+    ("Vanguard FTSE All-World High Div (VHYL)", "VHYL.L", "Global dividend tilt (distributing)"),
+    ("iShares $ Treasury 7-10y UCITS (IDTM)", "IDTM.L", "US Treasuries, rate-sensitive ballast"),
+    ("iShares Physical Gold ETC (SGLN)", "SGLN.L", "Gold exposure, LSE-listed, no estate-tax issue"),
+    ("iShares China Large Cap UCITS (FXC)", "FXC.L", "China large-cap satellite (higher risk)"),
+    ("WisdomTree Phys. Gold (PHAU)", "PHAU.L", "Alt physical-gold ETC, USD"),
 ]
+
+# Map US-listed focus tickers -> a London-listed UCITS alternative where one
+# meaningfully exists. Used to surface a cost/tax-efficient wrapper for a
+# Singapore IBKR investor next to the US-domiciled momentum picks.
+# Format: US_ticker -> (UCITS name, LSE ticker, note)
+UCITS_ALTERNATIVES = {
+    # Broad / index
+    "SOXX": ("iShares Semiconductor / S&P US Tech UCITS (IUIT)", "IUIT.L", "Closest UCITS proxy for US tech/semis"),
+    "SMH":  ("iShares S&P 500 Info Tech UCITS (IITU)", "IITU.L", "US tech sector UCITS"),
+    "SKYY": ("iShares Digitalisation UCITS (DGTL)", "DGTL.L", "Digital/cloud-leaning UCITS proxy"),
+    "QTUM": ("L&G Artificial Intelligence UCITS (AIAI)", "AIAI.L", "No pure-quantum UCITS; AI is closest proxy"),
+    "BOTZ": ("L&G ROBO Global Robotics & Automation (ROBO)", "ROBO.L", "Robotics & automation UCITS"),
+    "ROBO": ("L&G ROBO Global Robotics & Automation (ROBO)", "ROBO.L", "Robotics & automation UCITS"),
+    "BUG":  ("L&G Cyber Security UCITS (ISPY)", "ISPY.L", "Cybersecurity UCITS"),
+    "HACK": ("L&G Cyber Security UCITS (ISPY)", "ISPY.L", "Cybersecurity UCITS"),
+    "ICLN": ("iShares Global Clean Energy UCITS (INRG)", "INRG.L", "Clean-energy UCITS (UK-listed)"),
+    "TAN":  ("iShares Global Clean Energy UCITS (INRG)", "INRG.L", "Solar-heavy theme via clean-energy UCITS"),
+    "URA":  ("Global X Uranium UCITS (URNU/URNG)", "URNU.L", "Uranium miners UCITS"),
+    "URNM": ("Global X Uranium UCITS (URNU/URNG)", "URNU.L", "Uranium miners UCITS"),
+    "LIT":  ("Global X Lithium & Battery Tech UCITS", "LITG.L", "Lithium/battery UCITS"),
+    "GDX":  ("VanEck Gold Miners UCITS (GDX)", "GDGB.L", "Gold-miners UCITS (LSE)"),
+    "GDXJ": ("VanEck Junior Gold Miners UCITS", "GJGB.L", "Junior gold-miners UCITS"),
+    "IGF":  ("iShares Global Infrastructure UCITS (INFR)", "INFR.L", "Global infrastructure UCITS"),
+    "ARKG": ("iShares Healthcare Innovation UCITS (HEAL)", "HEAL.L", "No ARK UCITS; healthcare-innovation proxy"),
+    "ARKK": ("iShares Healthcare Innovation UCITS (HEAL)", "HEAL.L", "Disruptive-innovation proxy (imperfect)"),
+    "PHO":  ("iShares Global Water UCITS (IH2O/DH2O)", "IH2O.L", "Global water UCITS"),
+    "PAVE": ("iShares Global Infrastructure UCITS (INFR)", "INFR.L", "Infrastructure UCITS proxy"),
+    "DBA":  ("WisdomTree Agriculture (AGAP)", "AGAP.L", "Agri-commodity ETC (UCITS-style, LSE)"),
+}
 
 # Themed ETFs with representative top holdings (factual, for context — NOT
 # individual stock buy calls). Format: (name, ticker, blurb, [top holdings])
@@ -214,6 +258,19 @@ def build_day_record(today, now_sgt):
                                "change_pct": q.get("change_pct"), "ccy": q.get("currency")})
     stocks_focus = sorted(stock_rows, key=lambda s: s["change_pct"], reverse=True)[:5]
 
+    # UCITS/LSE alternatives for today's US-listed themed ETFs — so a Singapore
+    # IBKR investor can see a more tax/cost-efficient wrapper next to each
+    # US-domiciled momentum pick. Only includes themes that HAVE a real UCITS
+    # proxy (from UCITS_ALTERNATIVES); de-duplicated by LSE ticker.
+    ucits_alts = []
+    seen_lse = set()
+    for t in themed_rows:
+        alt = UCITS_ALTERNATIVES.get(t["ticker"])
+        if alt and alt[1] not in seen_lse:
+            seen_lse.add(alt[1])
+            ucits_alts.append({"us_ticker": t["ticker"], "us_name": t["short"],
+                               "ucits_name": alt[0], "lse_ticker": alt[1], "note": alt[2]})
+
     # News: a few headlines for the leading core ETF + the leading theme.
     news = []
     seen_links = set()
@@ -240,6 +297,7 @@ def build_day_record(today, now_sgt):
         "themed": themed_rows,
         "etfs_focus": etfs_focus,
         "stocks_focus": stocks_focus,
+        "ucits_alts": ucits_alts,
         "news": news,
     }
 
@@ -315,6 +373,25 @@ def render_day(rec, open_default=False):
         are especially high-risk. Always do your own due diligence.</p>
       </div>""" if stocks_html else "")
 
+    # UCITS / LSE alternatives for the US-listed themes
+    ucits_html = ""
+    for a in rec.get("ucits_alts", []):
+        ucits_html += f"""
+        <tr><td><strong>{a['us_ticker']}</strong> <span class="muted">{a['us_name']} (US-listed)</span></td>
+        <td><span class="lse">{a['lse_ticker']}</span><br><span class="muted">{a['ucits_name']}</span><br>
+        <span class="muted">{a['note']}</span></td></tr>"""
+    ucits_block = (f"""
+      <div class="card">
+        <h3>UCITS / LSE Alternative (Singapore + IBKR friendly)</h3>
+        <table class="ucits"><tr><td class="muted">US-listed theme</td><td class="muted">London-listed UCITS to consider</td></tr>{ucits_html}</table>
+        <p class="muted">For each US-domiciled theme above, this is the closest
+        <strong>London-listed UCITS</strong> equivalent — Irish-domiciled funds pay
+        15% (not 30%) US dividend withholding and avoid US estate-tax exposure for a
+        Singapore investor on IBKR. Some are imperfect proxies (e.g. there is no pure
+        quantum-computing UCITS — AI is the nearest). Check TER, liquidity and tracking
+        before buying. Not financial advice.</p>
+      </div>""" if ucits_html else "")
+
     openattr = " open" if open_default else ""
     return f"""
   <details class="day"{openattr}>
@@ -331,10 +408,13 @@ def render_day(rec, open_default=False):
         <h3>Top Pick (best momentum)</h3>
         <div class="pick"><strong>{top['name']}</strong> — {top['why']}.<br>
         Last {fmt(top['price'])} {top['ccy']} &nbsp;|&nbsp; {chg_span(top['change_pct'])}</div>
-      </div>{etfs_block}{stocks_block}
+      </div>{etfs_block}{stocks_block}{ucits_block}
       <div class="card">
         <h3>Core Watchlist</h3>
         <table>{core_html}</table>
+        <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
+        Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
+        tax). Ranked by today's momentum. Not financial advice.</p>
       </div>
       <div class="card">
         <h3>Themed ETFs &amp; Tickers Today</h3>
@@ -395,6 +475,8 @@ def render_page(records):
   .news li {{ margin-bottom:7px; }}
   .news a {{ color:var(--accent); text-decoration:none; }}
   .news a:hover {{ text-decoration:underline; }}
+  .lse {{ color:var(--up); font-weight:600; font-variant-numeric:tabular-nums; }}
+  .ucits td {{ vertical-align:top; }}
   footer {{ color:var(--muted); font-size:.78rem; margin-top:28px; }}
 </style>
 </head>
