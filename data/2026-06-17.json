@@ -1,0 +1,472 @@
+{
+  "date": "2026-06-17",
+  "date_display": "Wednesday, 17 June 2026",
+  "refreshed": "17 Jun 2026, 00:14 SGT",
+  "newsletter": "Core watchlist was broadly lower (avg -0.36%). VHYL led (0.27%); FXC lagged (-1.76%). Among themes, URA stood out (5.70%).",
+  "core": [
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "ter": 0.29,
+      "dist": "Dist",
+      "price": 68.55000305175781,
+      "change_pct": 0.2706139015127885,
+      "ccy": "GBP",
+      "ytd": 12.496925423562226,
+      "ret_1m": 3.0827113560267856,
+      "ret_1y": 25.342850197622806,
+      "vol": 9.103891248014671
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 170.97000122070312,
+      "change_pct": 0.12298355623265168,
+      "ccy": "USD",
+      "ytd": -2.163089430212804,
+      "ret_1m": -0.869716466274334,
+      "ret_1y": 0.035104767016660834,
+      "vol": 5.612815074947456
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10730.0,
+      "change_pct": -0.009318796011555308,
+      "ccy": "GBp",
+      "ytd": 10.755573905862924,
+      "ret_1m": 1.6098484848484849,
+      "ret_1y": 26.413760603204523,
+      "vol": 26.562810266446498
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 112.44000244140625,
+      "change_pct": -0.017781116156141943,
+      "ccy": "GBP",
+      "ytd": 12.716160129565484,
+      "ret_1m": 2.1438958676377693,
+      "ret_1y": 29.196833297157337,
+      "vol": 10.783685038549093
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "ter": 0.1,
+      "dist": "Dist",
+      "price": 4.409999847412109,
+      "change_pct": -0.13587051884008927,
+      "ccy": "USD",
+      "ytd": -1.2981219467293486,
+      "ret_1m": 1.2629122410503248,
+      "ret_1y": -0.8877454942399101,
+      "vol": 5.666250945763682
+    },
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Lower-cost S&P 500 alt to VUAA",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1126.800048828125,
+      "change_pct": -0.1417915235129767,
+      "ccy": "GBp",
+      "ytd": 11.299883608781297,
+      "ret_1m": 0.8412407561017949,
+      "ret_1y": 27.914634759787276,
+      "vol": 10.926788475606743
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 190.5399932861328,
+      "change_pct": -0.1990388049743397,
+      "ccy": "USD",
+      "ytd": 11.740551555278792,
+      "ret_1m": 2.838943513326322,
+      "ret_1y": 27.33226013319116,
+      "vol": 12.870596476730606
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 145.6199951171875,
+      "change_pct": -0.21927320739029751,
+      "ccy": "USD",
+      "ytd": 10.619869182890914,
+      "ret_1m": 1.6189755868963527,
+      "ret_1y": 26.187169143608408,
+      "vol": 12.222522197384661
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 811.97998046875,
+      "change_pct": -0.22977147794852273,
+      "ccy": "USD",
+      "ytd": 10.69636258702785,
+      "ret_1m": 1.6079956336793872,
+      "ret_1y": 26.113226878638194,
+      "vol": 12.28418981564736
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.789999961853027,
+      "change_pct": -0.253804854024893,
+      "ccy": "USD",
+      "ytd": 9.470747082040074,
+      "ret_1m": 4.614014933168335,
+      "ret_1y": 20.79917710415628,
+      "vol": 13.732769512627934
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 6255.0,
+      "change_pct": -0.49315940184537066,
+      "ccy": "GBp",
+      "ytd": 0.7246376811594203,
+      "ret_1m": -5.485040797824116,
+      "ret_1y": 28.545006165228116,
+      "vol": 23.952242859486457
+    },
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 401.6499938964844,
+      "change_pct": -0.5521469147687001,
+      "ccy": "USD",
+      "ytd": 0.12214334178431978,
+      "ret_1m": -4.7794039446182035,
+      "ret_1y": 26.631566672317714,
+      "vol": 25.509772199946518
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 129400.0,
+      "change_pct": -0.7592606794999617,
+      "ccy": "GBp",
+      "ytd": 19.62651382083757,
+      "ret_1m": 2.714716621685982,
+      "ret_1y": 39.786107810305715,
+      "vol": 15.801182453309625
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 56.400001525878906,
+      "change_pct": -1.0352695827535259,
+      "ccy": "USD",
+      "ytd": 22.662031508005928,
+      "ret_1m": 5.716969332693236,
+      "ret_1y": 45.92496584538327,
+      "vol": 20.116090539334586
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 7444.0,
+      "change_pct": -1.755312128810875,
+      "ccy": "GBp",
+      "ytd": -11.947007333806482,
+      "ret_1m": -5.038908023982651,
+      "ret_1y": -4.2141156790838314,
+      "vol": 18.08700197750212
+    }
+  ],
+  "themed": [
+    {
+      "name": "Clean Energy (ICLN)",
+      "short": "ICLN",
+      "ticker": "ICLN",
+      "blurb": "iShares Global Clean Energy",
+      "holdings": [
+        "FSLR",
+        "ENPH",
+        "NEE",
+        "VWS.CO"
+      ],
+      "price": 21.100000381469727,
+      "change_pct": 0.8604221057329411,
+      "ccy": "USD",
+      "ytd": 23.391812343668523,
+      "ret_1m": -4.654310069396293,
+      "ret_1y": 58.527420858468794
+    },
+    {
+      "name": "Robotics & AI (BOTZ)",
+      "short": "BOTZ",
+      "ticker": "BOTZ",
+      "blurb": "Global X Robotics & AI",
+      "holdings": [
+        "NVDA",
+        "ISRG",
+        "ABBNY",
+        "KEYS"
+      ],
+      "price": 38.05500030517578,
+      "change_pct": -0.5098031237234477,
+      "ccy": "USD",
+      "ytd": 3.6638552281305405,
+      "ret_1m": -5.406411289607591,
+      "ret_1y": 21.698112401938065
+    },
+    {
+      "name": "Uranium & Nuclear (URA)",
+      "short": "URA",
+      "ticker": "URA",
+      "blurb": "Global X Uranium",
+      "holdings": [
+        "CCJ",
+        "NXE",
+        "KAP.IL",
+        "PDN.AX"
+      ],
+      "price": 48.1150016784668,
+      "change_pct": 5.700793485516177,
+      "ccy": "USD",
+      "ytd": 4.461572392326114,
+      "ret_1m": -8.352377755301339,
+      "ret_1y": 26.385610885645054
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "Uranium & Nuclear (URA)",
+      "short": "URA",
+      "ticker": "URA",
+      "blurb": "Global X Uranium",
+      "holdings": [
+        "CCJ",
+        "NXE",
+        "KAP.IL",
+        "PDN.AX"
+      ],
+      "price": 48.1150016784668,
+      "change_pct": 5.700793485516177,
+      "ccy": "USD",
+      "ytd": 4.461572392326114,
+      "ret_1m": -8.352377755301339,
+      "ret_1y": 26.385610885645054
+    },
+    {
+      "name": "Clean Energy (ICLN)",
+      "short": "ICLN",
+      "ticker": "ICLN",
+      "blurb": "iShares Global Clean Energy",
+      "holdings": [
+        "FSLR",
+        "ENPH",
+        "NEE",
+        "VWS.CO"
+      ],
+      "price": 21.100000381469727,
+      "change_pct": 0.8604221057329411,
+      "ccy": "USD",
+      "ytd": 23.391812343668523,
+      "ret_1m": -4.654310069396293,
+      "ret_1y": 58.527420858468794
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "ter": 0.29,
+      "dist": "Dist",
+      "price": 68.55000305175781,
+      "change_pct": 0.2706139015127885,
+      "ccy": "GBP",
+      "ytd": 12.496925423562226,
+      "ret_1m": 3.0827113560267856,
+      "ret_1y": 25.342850197622806,
+      "vol": 9.103891248014671
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 170.97000122070312,
+      "change_pct": 0.12298355623265168,
+      "ccy": "USD",
+      "ytd": -2.163089430212804,
+      "ret_1m": -0.869716466274334,
+      "ret_1y": 0.035104767016660834,
+      "vol": 5.612815074947456
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10730.0,
+      "change_pct": -0.009318796011555308,
+      "ccy": "GBp",
+      "ytd": 10.755573905862924,
+      "ret_1m": 1.6098484848484849,
+      "ret_1y": 26.413760603204523,
+      "vol": 26.562810266446498
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "ABBNY",
+      "price": 105.81999969482422,
+      "change_pct": 3.5724788013046362,
+      "ccy": "USD",
+      "ret_1m": -1.1120478624898091,
+      "from_hi": -2.8728750262424567
+    },
+    {
+      "ticker": "NVDA",
+      "price": 209.4499969482422,
+      "change_pct": 2.0761218656607867,
+      "ccy": "USD",
+      "ret_1m": -11.152120103638593,
+      "from_hi": -11.152120103638593
+    },
+    {
+      "ticker": "ISRG",
+      "price": 417.3599853515625,
+      "change_pct": 1.532620014203822,
+      "ccy": "USD",
+      "ret_1m": -2.4996524478012243,
+      "from_hi": -29.601079102842366
+    },
+    {
+      "ticker": "NEE",
+      "price": 87.23999786376953,
+      "change_pct": 1.45365743813638,
+      "ccy": "USD",
+      "ret_1m": -8.82107275761546,
+      "from_hi": -10.870453298134812
+    },
+    {
+      "ticker": "NXE",
+      "price": 10.6850004196167,
+      "change_pct": 1.375715923040473,
+      "ccy": "USD",
+      "ret_1m": -4.937716750916384,
+      "from_hi": -23.239939934961058
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "ICLN",
+      "us_name": "ICLN",
+      "ucits_name": "iShares Global Clean Energy UCITS (INRG)",
+      "lse_ticker": "INRG.L",
+      "note": "Clean-energy UCITS (UK-listed)",
+      "ter": 0.65
+    },
+    {
+      "us_ticker": "BOTZ",
+      "us_name": "BOTZ",
+      "ucits_name": "L&G ROBO Global Robotics & Automation (ROBO)",
+      "lse_ticker": "ROBO.L",
+      "note": "Robotics & automation UCITS",
+      "ter": 0.8
+    },
+    {
+      "us_ticker": "URA",
+      "us_name": "URA",
+      "ucits_name": "Global X Uranium UCITS (URNU/URNG)",
+      "lse_ticker": "URNU.L",
+      "note": "Uranium miners UCITS",
+      "ter": 0.69
+    }
+  ],
+  "news": [
+    {
+      "title": "With Cursor deal, SpaceX aims to become an AI contender",
+      "link": "https://finance.yahoo.com/technology/article/with-cursor-deal-spacex-aims-to-become-an-ai-contender-161048460.html",
+      "publisher": "Yahoo Finance"
+    },
+    {
+      "title": "Q1 Earnings Outperformers: Walmart (NASDAQ:WMT) And The Rest Of The Large-format Grocery & General Merchandise Retailer Stocks",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/q1-earnings-outperformers-walmart-nasdaq-160904233.html",
+      "publisher": "StockStory"
+    },
+    {
+      "title": "LivaNova's PolySync Algorithm Supports Improvement in Sleep Apnea Treatment Response Rate",
+      "link": "https://finance.yahoo.com/healthcare/articles/livanova-apos-polysync-algorithm-supports-160849955.html",
+      "publisher": "MT Newswires"
+    },
+    {
+      "title": "Clean Energy ETFs Are Up Over 25 Percent in 2026 and After Following Every Policy Cycle This Run Looks Structurally Different",
+      "link": "https://finance.yahoo.com/m/22b5f749-320c-3581-88f5-32c1d2ec234e/clean-energy-etfs-are-up-over.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "Which Energy ETF Should You Buy: State Street Energy or iShares Clean Energy?",
+      "link": "https://finance.yahoo.com/m/0629a559-0ff7-369a-856e-c37ee69a4212/which-energy-etf-should-you.html",
+      "publisher": "Motley Fool"
+    },
+    {
+      "title": "VanEck Uranium ETF Beats iShares Clean Energy ETF Returns Past 5 Years",
+      "link": "https://finance.yahoo.com/m/a312aacf-e6ee-3689-b03f-0e6e06e44726/vaneck-uranium-etf-beats.html",
+      "publisher": "Motley Fool"
+    }
+  ]
+}
