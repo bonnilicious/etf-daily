@@ -1,16 +1,70 @@
 {
   "date": "2026-06-16",
   "date_display": "Tuesday, 16 June 2026",
-  "refreshed": "16 Jun 2026, 02:02 SGT",
-  "newsletter": "Core watchlist was broadly higher (avg 1.51%). EIMI led (2.83%); AGGG lagged (0.32%). Among themes, QTUM stood out (4.19%).",
+  "refreshed": "16 Jun 2026, 21:36 SGT",
+  "newsletter": "Core watchlist was little changed (avg -0.11%). VHVG led (0.27%); FXC lagged (-1.79%). Among themes, SKYY stood out (1.28%).",
   "core": [
     {
-      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
-      "short": "EIMI",
-      "ticker": "EIMI.L",
-      "why": "Broad emerging-market exposure",
-      "price": 56.9900016784668,
-      "change_pct": 2.832918732215402,
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "price": 112.76000213623047,
+      "change_pct": 0.26676423101557173,
+      "ccy": "GBP"
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "price": 130710.0,
+      "change_pct": 0.24541759337372496,
+      "ccy": "GBp"
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "price": 68.52999877929688,
+      "change_pct": 0.2413529155023744,
+      "ccy": "GBP"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10755.0,
+      "change_pct": 0.22365110427732737,
+      "ccy": "GBp"
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "price": 170.9499969482422,
+      "change_pct": 0.11126870901758185,
+      "ccy": "USD"
+    },
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Lower-cost S&P 500 alt to VUAA (TER ~0.05%)",
+      "price": 1129.5999755859375,
+      "change_pct": 0.10634093813477995,
+      "ccy": "GBp"
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "price": 190.89999389648438,
+      "change_pct": -0.010477829799283623,
       "ccy": "USD"
     },
     {
@@ -18,36 +72,72 @@
       "short": "VUAA",
       "ticker": "VUAA.L",
       "why": "Core US large-cap, accumulating, Irish-domiciled",
-      "price": 145.94000244140625,
-      "change_pct": 1.657846839849036,
+      "price": 145.8800048828125,
+      "change_pct": -0.04111111250518071,
       "ccy": "USD"
     },
     {
-      "name": "Vanguard FTSE All-World UCITS (VWRA)",
-      "short": "VWRA",
-      "ticker": "VWRA.L",
-      "why": "One-fund global equity, incl. emerging mkts",
-      "price": 190.9199981689453,
-      "change_pct": 1.5315916749848602,
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "price": 813.2999877929688,
+      "change_pct": -0.06757852300392123,
       "ccy": "USD"
     },
     {
-      "name": "iShares Core MSCI World UCITS (SWDA)",
-      "short": "SWDA",
-      "ticker": "SWDA.L",
-      "why": "Global developed-market core holding",
-      "price": 10731.0,
-      "change_pct": 1.2262994057164418,
-      "ccy": "GBp"
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "price": 11.8100004196167,
+      "change_pct": -0.0845962391344058,
+      "ccy": "USD"
     },
     {
       "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
       "short": "AGGG",
       "ticker": "AGGG.L",
       "why": "Diversified global bonds, ballast",
-      "price": 4.415999889373779,
-      "change_pct": 0.3180358728432786,
+      "price": 4.4120001792907715,
+      "change_pct": -0.09057314726461645,
       "ccy": "USD"
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "price": 6278.6591796875,
+      "change_pct": -0.11678046949570474,
+      "ccy": "GBp"
+    },
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "price": 403.07000732421875,
+      "change_pct": -0.2005540132715345,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "price": 56.72999954223633,
+      "change_pct": -0.45622412453570504,
+      "ccy": "USD"
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "price": 7441.0,
+      "change_pct": -1.7949056354757817,
+      "ccy": "GBp"
     }
   ],
   "themed": [
@@ -62,8 +152,8 @@
         "GOOGL",
         "NET"
       ],
-      "price": 136.5,
-      "change_pct": 1.8504668321732503,
+      "price": 135.72999572753906,
+      "change_pct": 1.2759225492947563,
       "ccy": "USD"
     },
     {
@@ -77,8 +167,8 @@
         "MSFT",
         "GOOGL"
       ],
-      "price": 168.06500244140625,
-      "change_pct": 4.194047899352916,
+      "price": 167.40499877929688,
+      "change_pct": -0.38381687637475514,
       "ccy": "USD"
     },
     {
@@ -92,36 +182,12 @@
         "ZS",
         "FTNT"
       ],
-      "price": 34.48500061035156,
-      "change_pct": 1.0993843250949593,
+      "price": 34.060001373291016,
+      "change_pct": -1.1607594945116402,
       "ccy": "USD"
     }
   ],
   "etfs_focus": [
-    {
-      "name": "Quantum Computing & ML (QTUM)",
-      "short": "QTUM",
-      "ticker": "QTUM",
-      "blurb": "Defiance Quantum ETF",
-      "holdings": [
-        "NVDA",
-        "IBM",
-        "MSFT",
-        "GOOGL"
-      ],
-      "price": 168.06500244140625,
-      "change_pct": 4.194047899352916,
-      "ccy": "USD"
-    },
-    {
-      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
-      "short": "EIMI",
-      "ticker": "EIMI.L",
-      "why": "Broad emerging-market exposure",
-      "price": 56.9900016784668,
-      "change_pct": 2.832918732215402,
-      "ccy": "USD"
-    },
     {
       "name": "Cloud Computing (SKYY)",
       "short": "SKYY",
@@ -133,76 +199,117 @@
         "GOOGL",
         "NET"
       ],
-      "price": 136.5,
-      "change_pct": 1.8504668321732503,
+      "price": 135.72999572753906,
+      "change_pct": 1.2759225492947563,
       "ccy": "USD"
     },
     {
-      "name": "Vanguard S&P 500 UCITS (VUAA)",
-      "short": "VUAA",
-      "ticker": "VUAA.L",
-      "why": "Core US large-cap, accumulating, Irish-domiciled",
-      "price": 145.94000244140625,
-      "change_pct": 1.657846839849036,
-      "ccy": "USD"
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "price": 112.76000213623047,
+      "change_pct": 0.26676423101557173,
+      "ccy": "GBP"
     },
     {
-      "name": "Vanguard FTSE All-World UCITS (VWRA)",
-      "short": "VWRA",
-      "ticker": "VWRA.L",
-      "why": "One-fund global equity, incl. emerging mkts",
-      "price": 190.9199981689453,
-      "change_pct": 1.5315916749848602,
-      "ccy": "USD"
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "price": 130710.0,
+      "change_pct": 0.24541759337372496,
+      "ccy": "GBp"
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "price": 68.52999877929688,
+      "change_pct": 0.2413529155023744,
+      "ccy": "GBP"
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "price": 10755.0,
+      "change_pct": 0.22365110427732737,
+      "ccy": "GBp"
     }
   ],
   "stocks_focus": [
     {
       "ticker": "ORCL",
-      "price": 193.28500366210938,
-      "change_pct": 4.972029835725835,
-      "ccy": "USD"
-    },
-    {
-      "ticker": "NET",
-      "price": 236.55999755859375,
-      "change_pct": 3.5364154333625066,
+      "price": 189.4499969482422,
+      "change_pct": 2.889258634851793,
       "ccy": "USD"
     },
     {
       "ticker": "GOOGL",
-      "price": 371.7200012207031,
-      "change_pct": 3.34742237269084,
+      "price": 369.3999938964844,
+      "change_pct": 2.7024025296466294,
       "ccy": "USD"
     },
     {
       "ticker": "NVDA",
-      "price": 211.6999969482422,
-      "change_pct": 3.1726665185331933,
+      "price": 209.22999572753906,
+      "change_pct": 1.9689035713552696,
       "ccy": "USD"
     },
     {
       "ticker": "MSFT",
-      "price": 399.1448059082031,
-      "change_pct": 2.1509996119892207,
+      "price": 392.6400146484375,
+      "change_pct": 0.4862631062980835,
       "ccy": "USD"
+    },
+    {
+      "ticker": "IBM",
+      "price": 269.864990234375,
+      "change_pct": -0.8723920383465086,
+      "ccy": "USD"
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "SKYY",
+      "us_name": "SKYY",
+      "ucits_name": "iShares Digitalisation UCITS (DGTL)",
+      "lse_ticker": "DGTL.L",
+      "note": "Digital/cloud-leaning UCITS proxy"
+    },
+    {
+      "us_ticker": "QTUM",
+      "us_name": "QTUM",
+      "ucits_name": "L&G Artificial Intelligence UCITS (AIAI)",
+      "lse_ticker": "AIAI.L",
+      "note": "No pure-quantum UCITS; AI is closest proxy"
+    },
+    {
+      "us_ticker": "BUG",
+      "us_name": "BUG",
+      "ucits_name": "L&G Cyber Security UCITS (ISPY)",
+      "lse_ticker": "ISPY.L",
+      "note": "Cybersecurity UCITS"
     }
   ],
   "news": [
     {
-      "title": "Google's Samsung Talks Highlight TSMC Capacity Crunch",
-      "link": "https://finance.yahoo.com/sectors/technology/articles/googles-samsung-talks-highlight-tsmc-180100438.html",
-      "publisher": "GuruFocus.com"
+      "title": "D.A. Davidson Advises Elektrik on Significant Growth Investment from Lead Edge Capital",
+      "link": "https://finance.yahoo.com/technology/articles/d-davidson-advises-elektrik-significant-133000543.html",
+      "publisher": "Business Wire"
     },
     {
-      "title": "Quantum Stocks Jump as Growth Trade Revives",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/quantum-stocks-jump-growth-trade-180020171.html",
-      "publisher": "GuruFocus.com"
+      "title": "SageSpring Wealth Partners Welcomes Five New Equity Partners",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sagespring-wealth-partners-welcomes-five-133000570.html",
+      "publisher": "Business Wire"
     },
     {
-      "title": "Salesforce Buys Fin for $3.6B",
-      "link": "https://finance.yahoo.com/sectors/technology/articles/salesforce-buys-fin-3-6b-175944865.html",
-      "publisher": "GuruFocus.com"
+      "title": "Cendry Capital Launches Aerospace and Defense Platform Anchored by Rotorcraft Manufacturer VAERO",
+      "link": "https://finance.yahoo.com/small-business/articles/cendry-capital-launches-aerospace-defense-133000489.html",
+      "publisher": "Business Wire"
     },
     {
       "title": "Top Cloud ETFs to Buy as Hyperscalers Pivot to AI-First Platforms",
