@@ -29,7 +29,15 @@
   .card { border-top:1px solid var(--line); padding:14px 0; }
   h3 { font-size:1rem; margin:0 0 8px; color:var(--accent); }
   table { width:100%; border-collapse:collapse; }
+  /* Horizontal scroll wrapper so wide metric tables stay readable on mobile:
+     columns keep their width and you swipe sideways instead of squashing. */
+  .scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .scroll table { min-width:540px; }
   td { padding:8px 6px; border-top:1px solid var(--line); vertical-align:top; }
+  /* First column = fund/ticker name. Give it a sensible min width and let the
+     bold name stay on one line while the muted subtitle below may wrap. */
+  .scroll td:first-child { min-width:170px; }
+  .scroll td:first-child strong { white-space:nowrap; }
   tr:first-child td { border-top:none; }
   .num { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
   .up { color:var(--up); } .down { color:var(--down); }
@@ -53,88 +61,88 @@
 <div class="wrap">
   <h1>Daily Stock Market News</h1>
   <div class="sub">Singapore &middot; via Interactive Brokers &middot; rules-based archive</div>
-  <div class="refresh">Last refresh: 17 Jun 2026, 20:59 SGT &middot; newest day expanded, click any date to expand/collapse</div>
+  <div class="refresh">Last refresh: 17 Jun 2026, 21:52 SGT &middot; newest day expanded, click any date to expand/collapse</div>
   
   <details class="day" open>
     <summary>
       <span class="day-date">Wednesday, 17 June 2026</span>
-      <span class="day-meta">Refreshed 17 Jun 2026, 20:59 SGT</span>
+      <span class="day-meta">Refreshed 17 Jun 2026, 21:52 SGT</span>
     </summary>
     <div class="day-body">
       <div class="card">
         <h3>Daily Newsletter</h3>
-        <p>Core watchlist was little changed (avg -0.05%). EIMI led (0.74%); FXC lagged (-1.17%). Among themes, BOTZ stood out (3.04%).</p>
+        <p>Core watchlist was little changed (avg -0.00%). EIMI led (0.92%); FXC lagged (-1.01%). Among themes, BOTZ stood out (1.08%).</p>
       </div>
       <div class="card">
         <h3>News to Read</h3>
-        <ul class="news"><li><a href="https://finance.yahoo.com/technology/articles/nvidia-gets-china-trade-reprieve-125732662.html" target="_blank" rel="noopener">Nvidia Gets a China Trade Reprieve</a> <span class="muted">&middot; GuruFocus.com</span></li><li><a href="https://finance.yahoo.com/technology/ai/articles/apple-eyes-ai-powered-airpods-125646364.html" target="_blank" rel="noopener">Apple Eyes AI-Powered AirPods, Foldable iPhone Launches in 2027</a> <span class="muted">&middot; GuruFocus.com</span></li><li><a href="https://finance.yahoo.com/m/60451843-1e7c-344e-9eb7-5f5e874fbd8f/spain-logs-third-warmest-year.html" target="_blank" rel="noopener">Spain logs third-warmest year on record in 2025</a> <span class="muted">&middot; AFP</span></li><li><a href="https://finance.yahoo.com/m/22b5f749-320c-3581-88f5-32c1d2ec234e/clean-energy-etfs-are-up-over.html" target="_blank" rel="noopener">Clean Energy ETFs Are Up Over 25 Percent in 2026 and After Following Every Policy Cycle This Run Looks Structurally Different</a> <span class="muted">&middot; 24/7 Wall St.</span></li><li><a href="https://finance.yahoo.com/m/0629a559-0ff7-369a-856e-c37ee69a4212/which-energy-etf-should-you.html" target="_blank" rel="noopener">Which Energy ETF Should You Buy: State Street Energy or iShares Clean Energy?</a> <span class="muted">&middot; Motley Fool</span></li><li><a href="https://finance.yahoo.com/m/a312aacf-e6ee-3689-b03f-0e6e06e44726/vaneck-uranium-etf-beats.html" target="_blank" rel="noopener">VanEck Uranium ETF Beats iShares Clean Energy ETF Returns Past 5 Years</a> <span class="muted">&middot; Motley Fool</span></li></ul>
+        <ul class="news"><li><a href="https://finance.yahoo.com/markets/articles/poultry-processing-equipment-market-poised-134900493.html" target="_blank" rel="noopener">Poultry Processing Equipment Market Poised to Reach USD 8.61 Billion by 2035 Amid Rising Demand for Processed Poultry Products</a> <span class="muted">&middot; GlobeNewswire</span></li><li><a href="https://finance.yahoo.com/markets/stocks/articles/prosafe-se-annual-report-2025-134900548.html" target="_blank" rel="noopener">Prosafe SE: Annual report 2025 in ESEF format</a> <span class="muted">&middot; GlobeNewswire</span></li><li><a href="https://finance.yahoo.com/real-estate/articles/acrow-solution-maintains-uninterrupted-access-134800317.html" target="_blank" rel="noopener">Acrow Solution Maintains Uninterrupted Access During Bridge Rehabilitation in Brownsburg-Chatham, Quebec</a> <span class="muted">&middot; GlobeNewswire</span></li><li><a href="https://finance.yahoo.com/m/22b5f749-320c-3581-88f5-32c1d2ec234e/clean-energy-etfs-are-up-over.html" target="_blank" rel="noopener">Clean Energy ETFs Are Up Over 25 Percent in 2026 and After Following Every Policy Cycle This Run Looks Structurally Different</a> <span class="muted">&middot; 24/7 Wall St.</span></li><li><a href="https://finance.yahoo.com/m/0629a559-0ff7-369a-856e-c37ee69a4212/which-energy-etf-should-you.html" target="_blank" rel="noopener">Which Energy ETF Should You Buy: State Street Energy or iShares Clean Energy?</a> <span class="muted">&middot; Motley Fool</span></li><li><a href="https://finance.yahoo.com/m/a312aacf-e6ee-3689-b03f-0e6e06e44726/vaneck-uranium-etf-beats.html" target="_blank" rel="noopener">VanEck Uranium ETF Beats iShares Clean Energy ETF Returns Past 5 Years</a> <span class="muted">&middot; Motley Fool</span></li></ul>
       </div>
       <div class="card">
         <h3>Top Pick (best momentum)</h3>
         <div class="pick"><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong> — Broad emerging-market exposure.<br>
-        Last 56.82 USD &nbsp;|&nbsp; <span class="up">&#9650; 0.74%</span></div>
+        Last 56.92 USD &nbsp;|&nbsp; <span class="up">&#9650; 0.92%</span></div>
       </div>
       <div class="card">
         <h3>ETFs in Focus (top momentum today)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>ETF</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">YTD</td></tr>
         <tr><td><strong>BOTZ</strong> <span class="muted">BOTZ</span></td>
-        <td class="num">38.25 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 3.04%</span></td>
-        <td class="num"><span class="down">&#9660; -6.98%</span></td>
-        <td class="num"><span class="up">&#9650; 4.20%</span></td></tr>
+        <td class="num">38.29 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 1.08%</span></td>
+        <td class="num"><span class="down">&#9660; -3.87%</span></td>
+        <td class="num"><span class="up">&#9650; 4.30%</span></td></tr>
         <tr><td><strong>EIMI</strong> <span class="muted">EIMI.L</span></td>
-        <td class="num">56.82 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.74%</span></td>
-        <td class="num"><span class="up">&#9650; 7.15%</span></td>
-        <td class="num"><span class="up">&#9650; 23.58%</span></td></tr>
-        <tr><td><strong>VHYL</strong> <span class="muted">VHYL.L</span></td>
-        <td class="num">68.67 <span class="ccy">GBP</span></td>
-        <td class="num"><span class="up">&#9650; 0.18%</span></td>
-        <td class="num"><span class="up">&#9650; 3.54%</span></td>
-        <td class="num"><span class="up">&#9650; 12.69%</span></td></tr>
-        <tr><td><strong>AGGG</strong> <span class="muted">AGGG.L</span></td>
-        <td class="num">4.42 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.12%</span></td>
-        <td class="num"><span class="up">&#9650; 1.30%</span></td>
-        <td class="num"><span class="down">&#9660; -1.18%</span></td></tr>
+        <td class="num">56.92 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.92%</span></td>
+        <td class="num"><span class="up">&#9650; 7.34%</span></td>
+        <td class="num"><span class="up">&#9650; 23.79%</span></td></tr>
+        <tr><td><strong>URA</strong> <span class="muted">URA</span></td>
+        <td class="num">48.28 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.86%</span></td>
+        <td class="num"><span class="down">&#9660; -0.82%</span></td>
+        <td class="num"><span class="up">&#9650; 4.82%</span></td></tr>
+        <tr><td><strong>ICLN</strong> <span class="muted">ICLN</span></td>
+        <td class="num">20.93 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.53%</span></td>
+        <td class="num"><span class="down">&#9660; -1.88%</span></td>
+        <td class="num"><span class="up">&#9650; 22.40%</span></td></tr>
         <tr><td><strong>SGLN</strong> <span class="muted">SGLN.L</span></td>
-        <td class="num">6261.45 <span class="ccy">GBp</span></td>
-        <td class="num"><span class="up">&#9650; 0.10%</span></td>
-        <td class="num"><span class="down">&#9660; -4.78%</span></td>
-        <td class="num"><span class="up">&#9650; 0.83%</span></td></tr></table>
+        <td class="num">6272.70 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="up">&#9650; 0.28%</span></td>
+        <td class="num"><span class="down">&#9660; -4.61%</span></td>
+        <td class="num"><span class="up">&#9650; 1.01%</span></td></tr></table></div>
       </div>
       <div class="card">
         <h3>Stocks in Focus (from today's themes)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Stock</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">vs 52w hi</td></tr>
-        <tr><td><strong>NXE</strong></td>
-        <td class="num">10.54 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 7.01%</span></td>
-        <td class="num"><span class="down">&#9660; -11.95%</span></td>
-        <td class="num"><span class="down">&#9660; -24.28%</span></td></tr>
-        <tr><td><strong>KEYS</strong></td>
-        <td class="num">356.94 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 1.79%</span></td>
-        <td class="num"><span class="down">&#9660; -1.28%</span></td>
-        <td class="num"><span class="down">&#9660; -2.66%</span></td></tr>
         <tr><td><strong>ABBNY</strong></td>
-        <td class="num">105.44 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 1.48%</span></td>
-        <td class="num"><span class="up">&#9650; 1.47%</span></td>
-        <td class="num"><span class="down">&#9660; -3.22%</span></td></tr>
+        <td class="num">107.64 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 2.09%</span></td>
+        <td class="num"><span class="up">&#9650; 3.85%</span></td>
+        <td class="num"><span class="down">&#9660; -1.20%</span></td></tr>
+        <tr><td><strong>NXE</strong></td>
+        <td class="num">10.80 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 1.69%</span></td>
+        <td class="num"><span class="down">&#9660; -1.55%</span></td>
+        <td class="num"><span class="down">&#9660; -22.41%</span></td></tr>
+        <tr><td><strong>ENPH</strong></td>
+        <td class="num">51.10 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 1.67%</span></td>
+        <td class="num"><span class="up">&#9650; 2.84%</span></td>
+        <td class="num"><span class="down">&#9660; -29.35%</span></td></tr>
         <tr><td><strong>CCJ</strong></td>
-        <td class="num">107.88 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.80%</span></td>
-        <td class="num"><span class="up">&#9650; 0.34%</span></td>
-        <td class="num"><span class="down">&#9660; -19.55%</span></td></tr>
-        <tr><td><strong>NEE</strong></td>
-        <td class="num">86.23 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.13%</span></td>
-        <td class="num"><span class="down">&#9660; -7.64%</span></td>
-        <td class="num"><span class="down">&#9660; -11.90%</span></td></tr></table>
+        <td class="num">108.97 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 1.01%</span></td>
+        <td class="num"><span class="up">&#9650; 3.64%</span></td>
+        <td class="num"><span class="down">&#9660; -18.73%</span></td></tr>
+        <tr><td><strong>KEYS</strong></td>
+        <td class="num">353.51 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.92%</span></td>
+        <td class="num"><span class="up">&#9650; 3.83%</span></td>
+        <td class="num"><span class="down">&#9660; -3.59%</span></td></tr></table></div>
         <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
         shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
         are especially high-risk. Always do your own due diligence.</p>
@@ -160,130 +168,130 @@
       </div>
       <div class="card">
         <h3>Core Watchlist</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Fund</td><td class="num">TER</td><td class="num">Type</td>
         <td class="num">Last</td><td class="num">Day</td><td class="num">YTD</td>
         <td class="num">1Y</td><td class="num">Vol</td></tr>
         <tr><td><strong>iShares Core MSCI EM IMI UCITS (EIMI)</strong><br><span class="muted">Broad emerging-market exposure</span></td>
         <td class="num">0.18%</td>
         <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">56.82 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.74%</span></td>
-        <td class="num"><span class="up">&#9650; 23.58%</span></td>
-        <td class="num"><span class="up">&#9650; 48.51%</span></td>
+        <td class="num">56.92 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.92%</span></td>
+        <td class="num"><span class="up">&#9650; 23.79%</span></td>
+        <td class="num"><span class="up">&#9650; 48.77%</span></td>
         <td class="num">20.1%</td></tr>
-        <tr><td><strong>Vanguard FTSE All-World High Div (VHYL)</strong><br><span class="muted">Global dividend tilt (distributing)</span></td>
-        <td class="num">0.29%</td>
-        <td class="num"><span class="ccy">Dist</span></td>
-        <td class="num">68.67 <span class="ccy">GBP</span></td>
-        <td class="num"><span class="up">&#9650; 0.18%</span></td>
-        <td class="num"><span class="up">&#9650; 12.69%</span></td>
-        <td class="num"><span class="up">&#9650; 25.97%</span></td>
-        <td class="num">9.1%</td></tr>
-        <tr><td><strong>iShares Core Global Aggregate Bond UCITS (AGGG)</strong><br><span class="muted">Diversified global bonds, ballast</span></td>
-        <td class="num">0.10%</td>
-        <td class="num"><span class="ccy">Dist</span></td>
-        <td class="num">4.42 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.12%</span></td>
-        <td class="num"><span class="down">&#9660; -1.18%</span></td>
-        <td class="num"><span class="down">&#9660; -0.81%</span></td>
-        <td class="num">5.7%</td></tr>
         <tr><td><strong>iShares Physical Gold ETC (SGLN)</strong><br><span class="muted">Gold exposure, LSE-listed, no estate-tax issue</span></td>
         <td class="num">0.12%</td>
         <td class="num"><span class="ccy">—</span></td>
-        <td class="num">6261.45 <span class="ccy">GBp</span></td>
-        <td class="num"><span class="up">&#9650; 0.10%</span></td>
-        <td class="num"><span class="up">&#9650; 0.83%</span></td>
-        <td class="num"><span class="up">&#9650; 28.78%</span></td>
+        <td class="num">6272.70 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="up">&#9650; 0.28%</span></td>
+        <td class="num"><span class="up">&#9650; 1.01%</span></td>
+        <td class="num"><span class="up">&#9650; 29.01%</span></td>
         <td class="num">24.0%</td></tr>
-        <tr><td><strong>Vanguard FTSE All-World UCITS (VWRA)</strong><br><span class="muted">One-fund global equity, incl. emerging mkts</span></td>
-        <td class="num">0.22%</td>
-        <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">190.66 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.06%</span></td>
-        <td class="num"><span class="up">&#9650; 11.81%</span></td>
-        <td class="num"><span class="up">&#9650; 28.36%</span></td>
-        <td class="num">12.8%</td></tr>
-        <tr><td><strong>Vanguard FTSE Dev World UCITS (VHVG)</strong><br><span class="muted">Developed-world core, accumulating, low TER</span></td>
-        <td class="num">0.12%</td>
-        <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">112.50 <span class="ccy">GBP</span></td>
-        <td class="num"><span class="up">&#9650; 0.05%</span></td>
-        <td class="num"><span class="up">&#9650; 12.78%</span></td>
-        <td class="num"><span class="up">&#9650; 29.37%</span></td>
-        <td class="num">10.8%</td></tr>
-        <tr><td><strong>iShares MSCI World SRI UCITS (SUWS)</strong><br><span class="muted">ESG-screened global developed alternative</span></td>
-        <td class="num">0.20%</td>
-        <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">11.80 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.04%</span></td>
-        <td class="num"><span class="up">&#9650; 9.52%</span></td>
-        <td class="num"><span class="up">&#9650; 21.93%</span></td>
-        <td class="num">13.7%</td></tr>
-        <tr><td><strong>iShares $ Treasury 7-10y UCITS (IDTM)</strong><br><span class="muted">US Treasuries, rate-sensitive ballast</span></td>
-        <td class="num">0.07%</td>
-        <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">171.02 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.03%</span></td>
-        <td class="num"><span class="down">&#9660; -2.13%</span></td>
-        <td class="num"><span class="up">&#9650; 0.08%</span></td>
-        <td class="num">5.6%</td></tr>
         <tr><td><strong>WisdomTree Phys. Gold (PHAU)</strong><br><span class="muted">Alt physical-gold ETC, USD</span></td>
         <td class="num">0.39%</td>
         <td class="num"><span class="ccy">—</span></td>
-        <td class="num">401.72 <span class="ccy">USD</span></td>
-        <td class="num"><span class="up">&#9650; 0.02%</span></td>
-        <td class="num"><span class="up">&#9650; 0.14%</span></td>
-        <td class="num"><span class="up">&#9650; 27.56%</span></td>
+        <td class="num">402.68 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.26%</span></td>
+        <td class="num"><span class="up">&#9650; 0.38%</span></td>
+        <td class="num"><span class="up">&#9650; 27.87%</span></td>
         <td class="num">25.5%</td></tr>
+        <tr><td><strong>Vanguard FTSE All-World High Div (VHYL)</strong><br><span class="muted">Global dividend tilt (distributing)</span></td>
+        <td class="num">0.29%</td>
+        <td class="num"><span class="ccy">Dist</span></td>
+        <td class="num">68.71 <span class="ccy">GBP</span></td>
+        <td class="num"><span class="up">&#9650; 0.24%</span></td>
+        <td class="num"><span class="up">&#9650; 12.77%</span></td>
+        <td class="num"><span class="up">&#9650; 26.05%</span></td>
+        <td class="num">9.1%</td></tr>
+        <tr><td><strong>iShares MSCI World SRI UCITS (SUWS)</strong><br><span class="muted">ESG-screened global developed alternative</span></td>
+        <td class="num">0.20%</td>
+        <td class="num"><span class="ccy">Acc</span></td>
+        <td class="num">11.81 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.17%</span></td>
+        <td class="num"><span class="up">&#9650; 9.66%</span></td>
+        <td class="num"><span class="up">&#9650; 22.08%</span></td>
+        <td class="num">13.7%</td></tr>
+        <tr><td><strong>iShares Core Global Aggregate Bond UCITS (AGGG)</strong><br><span class="muted">Diversified global bonds, ballast</span></td>
+        <td class="num">0.10%</td>
+        <td class="num"><span class="ccy">Dist</span></td>
+        <td class="num">4.41 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.11%</span></td>
+        <td class="num"><span class="down">&#9660; -1.19%</span></td>
+        <td class="num"><span class="down">&#9660; -0.82%</span></td>
+        <td class="num">5.7%</td></tr>
+        <tr><td><strong>Vanguard FTSE All-World UCITS (VWRA)</strong><br><span class="muted">One-fund global equity, incl. emerging mkts</span></td>
+        <td class="num">0.22%</td>
+        <td class="num"><span class="ccy">Acc</span></td>
+        <td class="num">190.70 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.08%</span></td>
+        <td class="num"><span class="up">&#9650; 11.83%</span></td>
+        <td class="num"><span class="up">&#9650; 28.38%</span></td>
+        <td class="num">12.8%</td></tr>
+        <tr><td><strong>iShares $ Treasury 7-10y UCITS (IDTM)</strong><br><span class="muted">US Treasuries, rate-sensitive ballast</span></td>
+        <td class="num">0.07%</td>
+        <td class="num"><span class="ccy">Acc</span></td>
+        <td class="num">171.04 <span class="ccy">USD</span></td>
+        <td class="num"><span class="up">&#9650; 0.04%</span></td>
+        <td class="num"><span class="down">&#9660; -2.12%</span></td>
+        <td class="num"><span class="up">&#9650; 0.09%</span></td>
+        <td class="num">5.6%</td></tr>
         <tr><td><strong>iShares Core MSCI World UCITS (SWDA)</strong><br><span class="muted">Global developed-market core holding</span></td>
         <td class="num">0.20%</td>
         <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">10727.40 <span class="ccy">GBp</span></td>
-        <td class="num"><span class="down">&#9660; -0.02%</span></td>
-        <td class="num"><span class="up">&#9650; 10.73%</span></td>
-        <td class="num"><span class="up">&#9650; 26.55%</span></td>
+        <td class="num">10728.56 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="down">&#9660; -0.01%</span></td>
+        <td class="num"><span class="up">&#9650; 10.74%</span></td>
+        <td class="num"><span class="up">&#9650; 26.56%</span></td>
         <td class="num">26.6%</td></tr>
-        <tr><td><strong>iShares Nasdaq 100 UCITS (CNX1)</strong><br><span class="muted">US tech/growth tilt, accumulating</span></td>
-        <td class="num">0.33%</td>
-        <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">129200.00 <span class="ccy">GBp</span></td>
-        <td class="num"><span class="down">&#9660; -0.15%</span></td>
-        <td class="num"><span class="up">&#9650; 19.44%</span></td>
-        <td class="num"><span class="up">&#9650; 39.46%</span></td>
-        <td class="num">15.8%</td></tr>
         <tr><td><strong>Invesco S&P 500 UCITS (SPXP)</strong><br><span class="muted">Lower-cost S&P 500 alt to VUAA</span></td>
         <td class="num">0.05%</td>
         <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">1124.14 <span class="ccy">GBp</span></td>
-        <td class="num"><span class="down">&#9660; -0.24%</span></td>
-        <td class="num"><span class="up">&#9650; 11.04%</span></td>
-        <td class="num"><span class="up">&#9650; 27.32%</span></td>
+        <td class="num">1123.80 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="down">&#9660; -0.27%</span></td>
+        <td class="num"><span class="up">&#9650; 11.00%</span></td>
+        <td class="num"><span class="up">&#9650; 27.29%</span></td>
         <td class="num">10.9%</td></tr>
+        <tr><td><strong>iShares Nasdaq 100 UCITS (CNX1)</strong><br><span class="muted">US tech/growth tilt, accumulating</span></td>
+        <td class="num">0.33%</td>
+        <td class="num"><span class="ccy">Acc</span></td>
+        <td class="num">129040.00 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="down">&#9660; -0.28%</span></td>
+        <td class="num"><span class="up">&#9650; 19.29%</span></td>
+        <td class="num"><span class="up">&#9650; 39.29%</span></td>
+        <td class="num">15.8%</td></tr>
         <tr><td><strong>iShares Core S&P 500 UCITS (CSPX)</strong><br><span class="muted">The classic large S&P 500 UCITS, deep liquidity</span></td>
         <td class="num">0.07%</td>
         <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">809.69 <span class="ccy">USD</span></td>
+        <td class="num">809.71 <span class="ccy">USD</span></td>
         <td class="num"><span class="down">&#9660; -0.28%</span></td>
-        <td class="num"><span class="up">&#9650; 10.38%</span></td>
-        <td class="num"><span class="up">&#9650; 26.35%</span></td>
+        <td class="num"><span class="up">&#9650; 10.39%</span></td>
+        <td class="num"><span class="up">&#9650; 26.36%</span></td>
         <td class="num">12.3%</td></tr>
         <tr><td><strong>Vanguard S&P 500 UCITS (VUAA)</strong><br><span class="muted">Core US large-cap, accumulating, Irish-domiciled</span></td>
         <td class="num">0.07%</td>
         <td class="num"><span class="ccy">Acc</span></td>
-        <td class="num">145.20 <span class="ccy">USD</span></td>
-        <td class="num"><span class="down">&#9660; -0.29%</span></td>
-        <td class="num"><span class="up">&#9650; 10.30%</span></td>
-        <td class="num"><span class="up">&#9650; 26.35%</span></td>
+        <td class="num">145.17 <span class="ccy">USD</span></td>
+        <td class="num"><span class="down">&#9660; -0.31%</span></td>
+        <td class="num"><span class="up">&#9650; 10.28%</span></td>
+        <td class="num"><span class="up">&#9650; 26.32%</span></td>
         <td class="num">12.2%</td></tr>
         <tr><td><strong>iShares China Large Cap UCITS (FXC)</strong><br><span class="muted">China large-cap satellite (higher risk)</span></td>
         <td class="num">0.74%</td>
         <td class="num"><span class="ccy">Dist</span></td>
-        <td class="num">7357.00 <span class="ccy">GBp</span></td>
-        <td class="num"><span class="down">&#9660; -1.17%</span></td>
-        <td class="num"><span class="down">&#9660; -12.98%</span></td>
-        <td class="num"><span class="down">&#9660; -5.05%</span></td>
-        <td class="num">18.1%</td></tr></table>
+        <td class="num">7369.00 <span class="ccy">GBp</span></td>
+        <td class="num"><span class="down">&#9660; -1.01%</span></td>
+        <td class="num"><span class="down">&#9660; -12.83%</span></td>
+        <td class="num"><span class="down">&#9660; -4.90%</span></td>
+        <td class="num">18.1%</td></tr>
+        <tr><td><strong>Vanguard FTSE Dev World UCITS (VHVG)</strong><br><span class="muted">Developed-world core, accumulating, low TER</span></td>
+        <td class="num">0.12%</td>
+        <td class="num"><span class="ccy">Acc</span></td>
+        <td class="num">112.44 <span class="ccy">GBP</span></td>
+        <td class="num"><span class="up">&#9650; 0.00%</span></td>
+        <td class="num"><span class="up">&#9650; 12.72%</span></td>
+        <td class="num"><span class="up">&#9650; 29.30%</span></td>
+        <td class="num">10.8%</td></tr></table></div>
         <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
         Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
         tax). Ranked by today's momentum. Not financial advice.</p>
@@ -292,21 +300,21 @@
         <h3>Themed ETFs &amp; Tickers Today</h3>
         
         <div class="theme">
-          <div class="theme-head"><strong>Clean Energy (ICLN)</strong> <span class="down">&#9660; -1.00%</span></div>
-          <div class="muted">iShares Global Clean Energy &middot; Last 20.82 USD</div>
-          <div class="muted">1M -4.45% &middot; YTD 21.75% &middot; 1Y 63.55%</div>
+          <div class="theme-head"><strong>Clean Energy (ICLN)</strong> <span class="up">&#9650; 0.53%</span></div>
+          <div class="muted">iShares Global Clean Energy &middot; Last 20.93 USD</div>
+          <div class="muted">1M -1.88% &middot; YTD 22.40% &middot; 1Y 64.41%</div>
           <div class="muted">Top holdings: FSLR, ENPH, NEE, VWS.CO</div>
         </div>
         <div class="theme">
-          <div class="theme-head"><strong>Robotics & AI (BOTZ)</strong> <span class="up">&#9650; 3.04%</span></div>
-          <div class="muted">Global X Robotics & AI &middot; Last 38.25 USD</div>
-          <div class="muted">1M -6.98% &middot; YTD 4.20% &middot; 1Y 24.23%</div>
+          <div class="theme-head"><strong>Robotics & AI (BOTZ)</strong> <span class="up">&#9650; 1.08%</span></div>
+          <div class="muted">Global X Robotics & AI &middot; Last 38.29 USD</div>
+          <div class="muted">1M -3.87% &middot; YTD 4.30% &middot; 1Y 24.36%</div>
           <div class="muted">Top holdings: NVDA, ISRG, ABBNY, KEYS</div>
         </div>
         <div class="theme">
-          <div class="theme-head"><strong>Uranium & Nuclear (URA)</strong> <span class="down">&#9660; -0.40%</span></div>
-          <div class="muted">Global X Uranium &middot; Last 47.87 USD</div>
-          <div class="muted">1M -4.13% &middot; YTD 3.93% &middot; 1Y 27.45%</div>
+          <div class="theme-head"><strong>Uranium & Nuclear (URA)</strong> <span class="up">&#9650; 0.86%</span></div>
+          <div class="muted">Global X Uranium &middot; Last 48.28 USD</div>
+          <div class="muted">1M -0.82% &middot; YTD 4.82% &middot; 1Y 28.54%</div>
           <div class="muted">Top holdings: CCJ, NXE, KAP.IL, PDN.AX</div>
         </div>
         <p class="muted">Holdings shown for context, not individual buy advice.
@@ -335,7 +343,7 @@
       </div>
       <div class="card">
         <h3>ETFs in Focus (top momentum today)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>ETF</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">YTD</td></tr>
         <tr><td><strong>SKYY</strong> <span class="muted">SKYY</span></td>
@@ -362,11 +370,11 @@
         <td class="num">130702.09 <span class="ccy">GBp</span></td>
         <td class="num"><span class="up">&#9650; 0.24%</span></td>
         <td class="num"><span class="up">&#9650; 3.75%</span></td>
-        <td class="num"><span class="up">&#9650; 20.83%</span></td></tr></table>
+        <td class="num"><span class="up">&#9650; 20.83%</span></td></tr></table></div>
       </div>
       <div class="card">
         <h3>Stocks in Focus (from today's themes)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Stock</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">vs 52w hi</td></tr>
         <tr><td><strong>ORCL</strong></td>
@@ -393,7 +401,7 @@
         <td class="num">273.79 <span class="ccy">USD</span></td>
         <td class="num"><span class="up">&#9650; 0.57%</span></td>
         <td class="num"><span class="up">&#9650; 25.38%</span></td>
-        <td class="num"><span class="down">&#9660; -16.84%</span></td></tr></table>
+        <td class="num"><span class="down">&#9660; -16.84%</span></td></tr></table></div>
         <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
         shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
         are especially high-risk. Always do your own due diligence.</p>
@@ -419,7 +427,7 @@
       </div>
       <div class="card">
         <h3>Core Watchlist</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Fund</td><td class="num">TER</td><td class="num">Type</td>
         <td class="num">Last</td><td class="num">Day</td><td class="num">YTD</td>
         <td class="num">1Y</td><td class="num">Vol</td></tr>
@@ -542,7 +550,7 @@
         <td class="num"><span class="down">&#9660; -1.62%</span></td>
         <td class="num"><span class="down">&#9660; -11.83%</span></td>
         <td class="num"><span class="down">&#9660; -4.09%</span></td>
-        <td class="num">18.1%</td></tr></table>
+        <td class="num">18.1%</td></tr></table></div>
         <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
         Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
         tax). Ranked by today's momentum. Not financial advice.</p>
@@ -594,7 +602,7 @@
       </div>
       <div class="card">
         <h3>ETFs in Focus (top momentum today)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>ETF</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">YTD</td></tr>
         <tr><td><strong>EIMI</strong> <span class="muted">EIMI.L</span></td>
@@ -621,11 +629,11 @@
         <td class="num">10601.00 <span class="ccy">GBp</span></td>
         <td class="num"><span class="up">&#9650; 1.55%</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
-        <td class="num"><span class="up">&#9650; —</span></td></tr></table>
+        <td class="num"><span class="up">&#9650; —</span></td></tr></table></div>
       </div>
       <div class="card">
         <h3>Stocks in Focus (from today's themes)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Stock</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">vs 52w hi</td></tr>
         <tr><td><strong>ALB</strong></td>
@@ -652,14 +660,14 @@
         <td class="num">85.99 <span class="ccy">USD</span></td>
         <td class="num"><span class="up">&#9650; 1.36%</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
-        <td class="num"><span class="up">&#9650; —</span></td></tr></table>
+        <td class="num"><span class="up">&#9650; —</span></td></tr></table></div>
         <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
         shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
         are especially high-risk. Always do your own due diligence.</p>
       </div>
       <div class="card">
         <h3>Core Watchlist</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Fund</td><td class="num">TER</td><td class="num">Type</td>
         <td class="num">Last</td><td class="num">Day</td><td class="num">YTD</td>
         <td class="num">1Y</td><td class="num">Vol</td></tr>
@@ -702,7 +710,7 @@
         <td class="num"><span class="up">&#9650; 0.67%</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
-        <td class="num">—</td></tr></table>
+        <td class="num">—</td></tr></table></div>
         <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
         Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
         tax). Ranked by today's momentum. Not financial advice.</p>
@@ -754,7 +762,7 @@
       </div>
       <div class="card">
         <h3>ETFs in Focus (top momentum today)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>ETF</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">YTD</td></tr>
         <tr><td><strong>EIMI</strong> <span class="muted">EIMI.L</span></td>
@@ -781,11 +789,11 @@
         <td class="num">10601.00 <span class="ccy">GBp</span></td>
         <td class="num"><span class="up">&#9650; 1.55%</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
-        <td class="num"><span class="up">&#9650; —</span></td></tr></table>
+        <td class="num"><span class="up">&#9650; —</span></td></tr></table></div>
       </div>
       <div class="card">
         <h3>Stocks in Focus (from today's themes)</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Stock</td><td class="num">Last</td><td class="num">Day</td>
         <td class="num">1M</td><td class="num">vs 52w hi</td></tr>
         <tr><td><strong>AMD</strong></td>
@@ -812,14 +820,14 @@
         <td class="num">110.08 <span class="ccy">USD</span></td>
         <td class="num"><span class="up">&#9650; 0.94%</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
-        <td class="num"><span class="up">&#9650; —</span></td></tr></table>
+        <td class="num"><span class="up">&#9650; —</span></td></tr></table></div>
         <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
         shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
         are especially high-risk. Always do your own due diligence.</p>
       </div>
       <div class="card">
         <h3>Core Watchlist</h3>
-        <table>
+        <div class="scroll"><table>
         <tr class="hdr"><td>Fund</td><td class="num">TER</td><td class="num">Type</td>
         <td class="num">Last</td><td class="num">Day</td><td class="num">YTD</td>
         <td class="num">1Y</td><td class="num">Vol</td></tr>
@@ -862,7 +870,7 @@
         <td class="num"><span class="up">&#9650; 0.67%</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
         <td class="num"><span class="up">&#9650; —</span></td>
-        <td class="num">—</td></tr></table>
+        <td class="num">—</td></tr></table></div>
         <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
         Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
         tax). Ranked by today's momentum. Not financial advice.</p>
