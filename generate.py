@@ -442,13 +442,13 @@ def render_day(rec, open_default=False):
     etfs_block = (f"""
       <div class="card">
         <h3>ETFs in Focus (top momentum today)</h3>
-        <table>{etfs_html}</table>
+        <div class="scroll"><table>{etfs_html}</table></div>
       </div>""" if etfs_html else "")
 
     stocks_block = (f"""
       <div class="card">
         <h3>Stocks in Focus (from today's themes)</h3>
-        <table>{stocks_html}</table>
+        <div class="scroll"><table>{stocks_html}</table></div>
         <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
         shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
         are especially high-risk. Always do your own due diligence.</p>
@@ -492,7 +492,7 @@ def render_day(rec, open_default=False):
       </div>{etfs_block}{stocks_block}{ucits_block}
       <div class="card">
         <h3>Core Watchlist</h3>
-        <table>{core_html}</table>
+        <div class="scroll"><table>{core_html}</table></div>
         <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
         Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
         tax). Ranked by today's momentum. Not financial advice.</p>
@@ -543,7 +543,15 @@ def render_page(records):
   .card {{ border-top:1px solid var(--line); padding:14px 0; }}
   h3 {{ font-size:1rem; margin:0 0 8px; color:var(--accent); }}
   table {{ width:100%; border-collapse:collapse; }}
+  /* Horizontal scroll wrapper so wide metric tables stay readable on mobile:
+     columns keep their width and you swipe sideways instead of squashing. */
+  .scroll {{ overflow-x:auto; -webkit-overflow-scrolling:touch; }}
+  .scroll table {{ min-width:540px; }}
   td {{ padding:8px 6px; border-top:1px solid var(--line); vertical-align:top; }}
+  /* First column = fund/ticker name. Give it a sensible min width and let the
+     bold name stay on one line while the muted subtitle below may wrap. */
+  .scroll td:first-child {{ min-width:170px; }}
+  .scroll td:first-child strong {{ white-space:nowrap; }}
   tr:first-child td {{ border-top:none; }}
   .num {{ text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }}
   .up {{ color:var(--up); }} .down {{ color:var(--down); }}
