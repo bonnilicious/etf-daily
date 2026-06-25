@@ -1,0 +1,466 @@
+{
+  "date": "2026-06-25",
+  "date_display": "Thursday, 25 June 2026",
+  "refreshed": "25 Jun 2026, 18:24 SGT",
+  "newsletter": "Core watchlist was little changed (avg 0.00%). EIMI led (1.60%); FXC lagged (-2.47%). Among themes, SKYY stood out (-0.22%).",
+  "core": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 55.970001220703125,
+      "change_pct": 1.5973880299107166,
+      "ccy": "USD",
+      "ytd": 21.726841622280087,
+      "ret_1m": 0.5208349747447585,
+      "ret_1y": 43.25569914994836,
+      "vol": 20.581750296804024
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 130100.0,
+      "change_pct": 1.1742748269694376,
+      "ccy": "GBp",
+      "ytd": 20.273643339188315,
+      "ret_1m": 1.7837584102644344,
+      "ret_1y": 39.144385026737964,
+      "vol": 16.043010349601776
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.59000015258789,
+      "change_pct": 0.3463200103244532,
+      "ccy": "USD",
+      "ytd": 7.613738718396368,
+      "ret_1m": 1.0902747347263217,
+      "ret_1y": 18.780430592641533,
+      "vol": 13.781461085560395
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 187.63999938964844,
+      "change_pct": 0.3207902721626699,
+      "ccy": "USD",
+      "ytd": 10.039874905135918,
+      "ret_1m": -0.6144087094063079,
+      "ret_1y": 25.059989193555065,
+      "vol": 12.798887151933613
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 112.80000305175781,
+      "change_pct": 0.2488503528662881,
+      "ccy": "GBP",
+      "ytd": 13.077044917559629,
+      "ret_1m": 1.3659276501930797,
+      "ret_1y": 29.491450191028267,
+      "vol": 10.853947597513928
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "ter": 0.29,
+      "dist": "Dist",
+      "price": 68.04499816894531,
+      "change_pct": 0.08089470054990218,
+      "ccy": "GBP",
+      "ytd": 11.668165480292817,
+      "ret_1m": 1.0394193118330441,
+      "ret_1y": 27.12750346405148,
+      "vol": 8.95286665700356
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 171.3699951171875,
+      "change_pct": -0.011671785128756884,
+      "ccy": "USD",
+      "ytd": -1.934194496602289,
+      "ret_1m": 0.6223930325811123,
+      "ret_1y": -0.72413395629597,
+      "vol": 5.575777980927723
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 798.5900268554688,
+      "change_pct": -0.018774993206768842,
+      "ccy": "USD",
+      "ytd": 8.870924527158946,
+      "ret_1m": -1.2135078256218692,
+      "ret_1y": 22.97162961458498,
+      "vol": 12.174815898329406
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 143.22000122070312,
+      "change_pct": -0.02791657662035171,
+      "ccy": "USD",
+      "ytd": 8.796719754440598,
+      "ret_1m": -1.2003348596683046,
+      "ret_1y": 22.998967895739124,
+      "vol": 12.111593052223224
+    },
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Lower-cost S&P 500 alt to VUAA",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1128.800048828125,
+      "change_pct": -0.10619036919247789,
+      "ccy": "GBp",
+      "ytd": 11.497433979363077,
+      "ret_1m": 0.7317573996822425,
+      "ret_1y": 27.210241718072115,
+      "vol": 10.962850291326838
+    },
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 370.0199890136719,
+      "change_pct": -0.510869096973638,
+      "ccy": "USD",
+      "ytd": -7.7624923631883895,
+      "ret_1m": -10.19150500150214,
+      "ret_1y": 19.538663435803603,
+      "vol": 25.86894513399803
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 5870.0,
+      "change_pct": -0.6095496105655266,
+      "ccy": "GBp",
+      "ytd": -5.475040257648954,
+      "ret_1m": -8.438621119950087,
+      "ret_1y": 23.787431463517503,
+      "vol": 24.095622313630255
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 6930.4677734375,
+      "change_pct": -2.470197390409513,
+      "ccy": "GBp",
+      "ytd": -18.02143632082446,
+      "ret_1m": -8.43615043681464,
+      "ret_1y": -11.14784905849359,
+      "vol": 18.170521862182838
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10757.0,
+      "change_pct": 0.0,
+      "ccy": "GBp",
+      "ytd": 11.034269199009083,
+      "ret_1m": 1.0711265620595698,
+      "ret_1y": 26.664704150721224,
+      "vol": 26.556348586766905
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "ter": 0.1,
+      "dist": "Dist",
+      "price": 4.381499767303467,
+      "change_pct": 0.0,
+      "ccy": "USD",
+      "ytd": -1.935993041677895,
+      "ret_1m": -0.34118828489276015,
+      "ret_1y": -1.968906953116757,
+      "vol": 5.678607378681257
+    }
+  ],
+  "themed": [
+    {
+      "name": "Gold Miners (GDX)",
+      "short": "GDX",
+      "ticker": "GDX",
+      "blurb": "VanEck Gold Miners",
+      "holdings": [
+        "NEM",
+        "AEM",
+        "GOLD",
+        "WPM"
+      ],
+      "price": 74.58999633789062,
+      "change_pct": -3.953138268671778,
+      "ccy": "USD",
+      "ytd": -12.994292059761126,
+      "ret_1m": -12.267702560567407,
+      "ret_1y": 43.66332621040966
+    },
+    {
+      "name": "Cloud Computing (SKYY)",
+      "short": "SKYY",
+      "ticker": "SKYY",
+      "blurb": "First Trust Cloud Computing",
+      "holdings": [
+        "ORCL",
+        "MSFT",
+        "GOOGL",
+        "NET"
+      ],
+      "price": 129.0800018310547,
+      "change_pct": -0.21644927178090098,
+      "ccy": "USD",
+      "ytd": 1.0252838869894187,
+      "ret_1m": -2.9692527884597077,
+      "ret_1y": 9.149331557055142
+    },
+    {
+      "name": "Quantum Computing & ML (QTUM)",
+      "short": "QTUM",
+      "ticker": "QTUM",
+      "blurb": "Defiance Quantum ETF",
+      "holdings": [
+        "NVDA",
+        "IBM",
+        "MSFT",
+        "GOOGL"
+      ],
+      "price": 159.88999938964844,
+      "change_pct": -2.1121568664085233,
+      "ccy": "USD",
+      "ytd": 42.27620866469231,
+      "ret_1m": 4.203595441615841,
+      "ret_1y": 77.61609125983412
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 55.970001220703125,
+      "change_pct": 1.5973880299107166,
+      "ccy": "USD",
+      "ytd": 21.726841622280087,
+      "ret_1m": 0.5208349747447585,
+      "ret_1y": 43.25569914994836,
+      "vol": 20.581750296804024
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 130100.0,
+      "change_pct": 1.1742748269694376,
+      "ccy": "GBp",
+      "ytd": 20.273643339188315,
+      "ret_1m": 1.7837584102644344,
+      "ret_1y": 39.144385026737964,
+      "vol": 16.043010349601776
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.59000015258789,
+      "change_pct": 0.3463200103244532,
+      "ccy": "USD",
+      "ytd": 7.613738718396368,
+      "ret_1m": 1.0902747347263217,
+      "ret_1y": 18.780430592641533,
+      "vol": 13.781461085560395
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 187.63999938964844,
+      "change_pct": 0.3207902721626699,
+      "ccy": "USD",
+      "ytd": 10.039874905135918,
+      "ret_1m": -0.6144087094063079,
+      "ret_1y": 25.059989193555065,
+      "vol": 12.798887151933613
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 112.80000305175781,
+      "change_pct": 0.2488503528662881,
+      "ccy": "GBP",
+      "ytd": 13.077044917559629,
+      "ret_1m": 1.3659276501930797,
+      "ret_1y": 29.491450191028267,
+      "vol": 10.853947597513928
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "GOOGL",
+      "price": 345.2900085449219,
+      "change_pct": -0.2426823234163182,
+      "ccy": "USD",
+      "ret_1m": -9.83888883089475,
+      "from_hi": -14.239229861293657
+    },
+    {
+      "ticker": "NVDA",
+      "price": 199.0,
+      "change_pct": -0.5198926819824619,
+      "ccy": "USD",
+      "ret_1m": -7.583709512001495,
+      "from_hi": -15.584968455525654
+    },
+    {
+      "ticker": "NET",
+      "price": 223.47999572753906,
+      "change_pct": -0.6490649497736619,
+      "ccy": "USD",
+      "ret_1m": 3.381596715785093,
+      "from_hi": -18.037118489705605
+    },
+    {
+      "ticker": "IBM",
+      "price": 262.9599914550781,
+      "change_pct": -0.7473431599918632,
+      "ccy": "USD",
+      "ret_1m": 3.592812499511591,
+      "from_hi": -20.12879060833916
+    },
+    {
+      "ticker": "MSFT",
+      "price": 365.4599914550781,
+      "change_pct": -2.267746411446548,
+      "ccy": "USD",
+      "ret_1m": -12.688442778940518,
+      "from_hi": -32.58066550129345
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "GDX",
+      "us_name": "GDX",
+      "ucits_name": "VanEck Gold Miners UCITS (GDX)",
+      "lse_ticker": "GDGB.L",
+      "note": "Gold-miners UCITS (LSE)",
+      "ter": 0.53
+    },
+    {
+      "us_ticker": "SKYY",
+      "us_name": "SKYY",
+      "ucits_name": "iShares Digitalisation UCITS (DGTL)",
+      "lse_ticker": "DGTL.L",
+      "note": "Digital/cloud-leaning UCITS proxy",
+      "ter": 0.4
+    },
+    {
+      "us_ticker": "QTUM",
+      "us_name": "QTUM",
+      "ucits_name": "L&G Artificial Intelligence UCITS (AIAI)",
+      "lse_ticker": "AIAI.L",
+      "note": "No pure-quantum UCITS; AI is closest proxy",
+      "ter": 0.49
+    }
+  ],
+  "news": [
+    {
+      "title": "MSD’s Keytruda-Padcev combo secures EC approval for MIBC",
+      "link": "https://finance.yahoo.com/m/c5c6c9bb-6e62-32c7-b886-2e188f4afbe9/msd%E2%80%99s-keytruda-padcev-combo.html",
+      "publisher": "Pharmaceutical Technology"
+    },
+    {
+      "title": "Net Asset Value(s)",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/net-asset-value-102200129.html",
+      "publisher": "Business Wire"
+    },
+    {
+      "title": "Form 8.3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/form-8-3-102100470.html",
+      "publisher": "Business Wire"
+    },
+    {
+      "title": "Holding(s) in Company",
+      "link": "https://finance.yahoo.com/news/holding-company-060000420.html",
+      "publisher": "GlobeNewswire"
+    },
+    {
+      "title": "NYSE Content Update: Cannes Lions International Festival of Creativity Begins",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nyse-content-cannes-lions-international-125500627.html",
+      "publisher": "CNW Group"
+    },
+    {
+      "title": "Gold Bear Market: Time to Buy This Top Gold Stock/ETF",
+      "link": "https://finance.yahoo.com/m/65b392bc-1954-311c-9fc0-e99e881482e8/gold-bear-market%3A-time-to-buy.html",
+      "publisher": "Motley Fool"
+    }
+  ]
+}
