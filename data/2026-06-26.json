@@ -1,0 +1,472 @@
+{
+  "date": "2026-06-26",
+  "date_display": "Friday, 26 June 2026",
+  "refreshed": "26 Jun 2026, 18:37 SGT",
+  "newsletter": "Core watchlist was broadly lower (avg -0.67%). PHAU led (0.59%); EIMI lagged (-2.09%). Among themes, BUG stood out (0.20%).",
+  "core": [
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 375.82000732421875,
+      "change_pct": 0.5915318271209068,
+      "ccy": "USD",
+      "ytd": -6.3166806527487465,
+      "ret_1m": -9.632585622836553,
+      "ret_1y": 21.44184698481315,
+      "vol": 25.869321742561553
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 5936.5390625,
+      "change_pct": 0.4490535109983079,
+      "ccy": "GBp",
+      "ytd": -4.403557769726248,
+      "ret_1m": -8.216773925479282,
+      "ret_1y": 26.416930632453152,
+      "vol": 24.06405900827684
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "ter": 0.1,
+      "dist": "Dist",
+      "price": 4.392499923706055,
+      "change_pct": 0.10255041591219069,
+      "ccy": "USD",
+      "ytd": -1.6897943719767452,
+      "ret_1m": -0.39682368053423067,
+      "ret_1y": -2.2368151820365374,
+      "vol": 5.656798730052016
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 171.75,
+      "change_pct": -0.017463487897340986,
+      "ccy": "USD",
+      "ytd": -1.7167381974248928,
+      "ret_1m": 0.7922571313797904,
+      "ret_1y": -0.8200024160997894,
+      "vol": 5.571288292448974
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.524999618530273,
+      "change_pct": -0.5179147122928824,
+      "ccy": "USD",
+      "ytd": 7.010205465890692,
+      "ret_1m": 0.34828004395952966,
+      "ret_1y": 17.36252522089895,
+      "vol": 13.781457470612239
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "ter": 0.29,
+      "dist": "Dist",
+      "price": 67.80500030517578,
+      "change_pct": -0.6228975976074363,
+      "ccy": "GBP",
+      "ytd": 11.274306682622015,
+      "ret_1m": 0.8027962839920069,
+      "ret_1y": 26.596337876474323,
+      "vol": 8.98544386990694
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 787.8800048828125,
+      "change_pct": -0.7470292253838158,
+      "ccy": "USD",
+      "ytd": 7.410838682535319,
+      "ret_1m": -3.0814446531264066,
+      "ret_1y": 20.563122399818287,
+      "vol": 12.210373962641148
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 141.3000030517578,
+      "change_pct": -0.7724655139565421,
+      "ccy": "USD",
+      "ytd": 7.3381978934200705,
+      "ret_1m": -3.0465227624919424,
+      "ret_1y": 20.58371964820405,
+      "vol": 12.147613815943496
+    },
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Lower-cost S&P 500 alt to VUAA",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1110.4000244140625,
+      "change_pct": -0.8217177002938258,
+      "ccy": "GBp",
+      "ytd": 9.679968158507164,
+      "ret_1m": -1.4554511628854265,
+      "ret_1y": 25.51856596053596,
+      "vol": 11.03885402019499
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 111.05999755859375,
+      "change_pct": -0.8392878941127233,
+      "ccy": "GBP",
+      "ytd": 11.332765892877042,
+      "ret_1m": -0.6441234823456436,
+      "ret_1y": 27.699202023416813,
+      "vol": 10.90540908287796
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10601.0,
+      "change_pct": -0.8418295762791134,
+      "ccy": "GBp",
+      "ytd": 9.424029727497937,
+      "ret_1m": -0.748993539930718,
+      "ret_1y": 24.99705223440632,
+      "vol": 26.576036716253675
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 185.17999267578125,
+      "change_pct": -0.909681165781905,
+      "ccy": "USD",
+      "ytd": 8.597224980065231,
+      "ret_1m": -2.413576076958464,
+      "ret_1y": 22.473542601439917,
+      "vol": 12.818458220516144
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 126230.0,
+      "change_pct": -1.0348882791062328,
+      "ccy": "GBp",
+      "ytd": 16.6959415734492,
+      "ret_1m": -2.2079330647660362,
+      "ret_1y": 35.4035934566908,
+      "vol": 16.07456634201116
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 6771.0,
+      "change_pct": -1.954821894005213,
+      "ccy": "GBp",
+      "ytd": -19.907735982966642,
+      "ret_1m": -9.187231759656653,
+      "ret_1y": -12.868356710848024,
+      "vol": 18.31722882920968
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 54.31999969482422,
+      "change_pct": -2.090843289443458,
+      "ccy": "USD",
+      "ytd": 18.138321521571417,
+      "ret_1m": -2.7046428205391,
+      "ret_1y": 37.93803509773248,
+      "vol": 20.648712859603314
+    }
+  ],
+  "themed": [
+    {
+      "name": "Cybersecurity (BUG)",
+      "short": "BUG",
+      "ticker": "BUG",
+      "blurb": "Global X Cybersecurity",
+      "holdings": [
+        "CRWD",
+        "PANW",
+        "ZS",
+        "FTNT"
+      ],
+      "price": 34.27000045776367,
+      "change_pct": 0.2046774656802737,
+      "ccy": "USD",
+      "ytd": 15.193278849625788,
+      "ret_1m": -0.8104161663671771,
+      "ret_1y": -7.403399048995207
+    },
+    {
+      "name": "Clean Energy (ICLN)",
+      "short": "ICLN",
+      "ticker": "ICLN",
+      "blurb": "iShares Global Clean Energy",
+      "holdings": [
+        "FSLR",
+        "ENPH",
+        "NEE",
+        "VWS.CO"
+      ],
+      "price": 20.290000915527344,
+      "change_pct": -0.9277276902137926,
+      "ccy": "USD",
+      "ytd": 18.654973467219538,
+      "ret_1m": -11.513298536906404,
+      "ret_1y": 54.767364201974985
+    },
+    {
+      "name": "Robotics & AI (BOTZ)",
+      "short": "BOTZ",
+      "ticker": "BOTZ",
+      "blurb": "Global X Robotics & AI",
+      "holdings": [
+        "NVDA",
+        "ISRG",
+        "ABBNY",
+        "KEYS"
+      ],
+      "price": 36.61000061035156,
+      "change_pct": 0.08200868724781599,
+      "ccy": "USD",
+      "ytd": -0.27240118936257457,
+      "ret_1m": -10.48899940214649,
+      "ret_1y": 13.413884742250303
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 375.82000732421875,
+      "change_pct": 0.5915318271209068,
+      "ccy": "USD",
+      "ytd": -6.3166806527487465,
+      "ret_1m": -9.632585622836553,
+      "ret_1y": 21.44184698481315,
+      "vol": 25.869321742561553
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 5936.5390625,
+      "change_pct": 0.4490535109983079,
+      "ccy": "GBp",
+      "ytd": -4.403557769726248,
+      "ret_1m": -8.216773925479282,
+      "ret_1y": 26.416930632453152,
+      "vol": 24.06405900827684
+    },
+    {
+      "name": "Cybersecurity (BUG)",
+      "short": "BUG",
+      "ticker": "BUG",
+      "blurb": "Global X Cybersecurity",
+      "holdings": [
+        "CRWD",
+        "PANW",
+        "ZS",
+        "FTNT"
+      ],
+      "price": 34.27000045776367,
+      "change_pct": 0.2046774656802737,
+      "ccy": "USD",
+      "ytd": 15.193278849625788,
+      "ret_1m": -0.8104161663671771,
+      "ret_1y": -7.403399048995207
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "ter": 0.1,
+      "dist": "Dist",
+      "price": 4.392499923706055,
+      "change_pct": 0.10255041591219069,
+      "ccy": "USD",
+      "ytd": -1.6897943719767452,
+      "ret_1m": -0.39682368053423067,
+      "ret_1y": -2.2368151820365374,
+      "vol": 5.656798730052016
+    },
+    {
+      "name": "Robotics & AI (BOTZ)",
+      "short": "BOTZ",
+      "ticker": "BOTZ",
+      "blurb": "Global X Robotics & AI",
+      "holdings": [
+        "NVDA",
+        "ISRG",
+        "ABBNY",
+        "KEYS"
+      ],
+      "price": 36.61000061035156,
+      "change_pct": 0.08200868724781599,
+      "ccy": "USD",
+      "ytd": -0.27240118936257457,
+      "ret_1m": -10.48899940214649,
+      "ret_1y": 13.413884742250303
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "FTNT",
+      "price": 149.92999267578125,
+      "change_pct": 3.200711684716109,
+      "ccy": "USD",
+      "ret_1m": 11.921458018455661,
+      "from_hi": 0.0
+    },
+    {
+      "ticker": "PANW",
+      "price": 293.0899963378906,
+      "change_pct": 2.744859533132208,
+      "ccy": "USD",
+      "ret_1m": 14.153844727513388,
+      "from_hi": -2.4594030811499628
+    },
+    {
+      "ticker": "KEYS",
+      "price": 360.05999755859375,
+      "change_pct": 2.4935980842639616,
+      "ccy": "USD",
+      "ret_1m": 1.2143721377437957,
+      "from_hi": -3.557079045792307
+    },
+    {
+      "ticker": "ABBNY",
+      "price": 106.91999816894531,
+      "change_pct": 1.0204099285933628,
+      "ccy": "USD",
+      "ret_1m": -1.338012864157145,
+      "from_hi": -2.5608357805729742
+    },
+    {
+      "ticker": "CRWD",
+      "price": 678.6500244140625,
+      "change_pct": 0.8365285904472393,
+      "ccy": "USD",
+      "ret_1m": 1.0572610751476346,
+      "from_hi": -13.234969476958891
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "BUG",
+      "us_name": "BUG",
+      "ucits_name": "L&G Cyber Security UCITS (ISPY)",
+      "lse_ticker": "ISPY.L",
+      "note": "Cybersecurity UCITS",
+      "ter": 0.69
+    },
+    {
+      "us_ticker": "ICLN",
+      "us_name": "ICLN",
+      "ucits_name": "iShares Global Clean Energy UCITS (INRG)",
+      "lse_ticker": "INRG.L",
+      "note": "Clean-energy UCITS (UK-listed)",
+      "ter": 0.65
+    },
+    {
+      "us_ticker": "BOTZ",
+      "us_name": "BOTZ",
+      "ucits_name": "L&G ROBO Global Robotics & Automation (ROBO)",
+      "lse_ticker": "ROBO.L",
+      "note": "Robotics & automation UCITS",
+      "ter": 0.8
+    }
+  ],
+  "news": [
+    {
+      "title": "J&J starts SKYWARD study of carotid IVL system",
+      "link": "https://finance.yahoo.com/m/725ec308-e0c6-34c8-bcd5-a619247e2e93/j%26j-starts-skyward-study-of.html",
+      "publisher": "Medical Device Network"
+    },
+    {
+      "title": "JPMorgan Upgrades H.B. Fuller to Overweight From Neutral, Adjusts Price Target to $67 From $58",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-upgrades-h-b-fuller-103041125.html",
+      "publisher": "MT Newswires"
+    },
+    {
+      "title": "NEVADA KING GRADUATES TO THE PREMIUM OTCQX BEST MARKET, ENHANCING VISIBILITY FOR U.S. INVESTORS",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nevada-king-graduates-premium-otcqx-103000673.html",
+      "publisher": "CNW Group"
+    },
+    {
+      "title": "After Reviewing Every Cybersecurity ETF These 3 Capture the Full Stack Most Investors Miss",
+      "link": "https://finance.yahoo.com/m/0ee9e9a3-41b3-3a9b-8923-0edf2dfa283a/after-reviewing-every.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "The Asymmetric AI Winner: Cybersecurity ETFs Gaining From Cloud Buildout",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/asymmetric-ai-winner-cybersecurity-etfs-145800992.html",
+      "publisher": "Zacks"
+    },
+    {
+      "title": "Hack-Proof Your Portfolio: The Bull Case for Cybersecurity ETFs",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/hack-proof-portfolio-bull-case-155900412.html",
+      "publisher": "Zacks"
+    }
+  ]
+}
