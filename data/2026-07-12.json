@@ -1,0 +1,466 @@
+{
+  "date": "2026-07-12",
+  "date_display": "Sunday, 12 July 2026",
+  "refreshed": "12 Jul 2026, 15:38 SGT",
+  "newsletter": "Core watchlist was broadly higher (avg 0.17%). SUWS led (0.45%); SGLN lagged (-0.75%). Among themes, IGF stood out (0.24%).",
+  "core": [
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.710000038146973,
+      "change_pct": 0.4503518757503308,
+      "ccy": "USD",
+      "ytd": 8.727943736582592,
+      "ret_1m": 2.7869222432931395,
+      "ret_1y": 17.187887720969936,
+      "vol": 14.016182845129995
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 145.9199981689453,
+      "change_pct": 0.440528217941891,
+      "ccy": "USD",
+      "ytd": 10.847765759272548,
+      "ret_1m": 3.6952792091627336,
+      "ret_1y": 21.518983963912607,
+      "vol": 12.188016124342562
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 7191.0,
+      "change_pct": 0.43296089385474856,
+      "ccy": "GBp",
+      "ytd": -14.939673527324343,
+      "ret_1m": -2.824324324324324,
+      "ret_1y": -6.670992861778066,
+      "vol": 18.516318641687906
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 813.6699829101562,
+      "change_pct": 0.41836815554036316,
+      "ccy": "USD",
+      "ytd": 10.926758812953112,
+      "ret_1m": 3.6892156804791716,
+      "ret_1y": 21.5158322247771,
+      "vol": 12.258837314105076
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 190.0399932861328,
+      "change_pct": 0.3803010427107449,
+      "ccy": "USD",
+      "ytd": 11.447330826055088,
+      "ret_1m": 3.4062436328305914,
+      "ret_1y": 23.29051124863006,
+      "vol": 12.91977468083027
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "ter": 0.1,
+      "dist": "Dist",
+      "price": 4.373000144958496,
+      "change_pct": 0.2751681668284917,
+      "ccy": "USD",
+      "ytd": -2.1262263108886534,
+      "ret_1m": 0.01143972979990724,
+      "ret_1y": -2.1262263108886534,
+      "vol": 5.682968398842591
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 54.7400016784668,
+      "change_pct": 0.27477839432062223,
+      "ccy": "USD",
+      "ytd": 19.051766471166886,
+      "ret_1m": 2.260420188236394,
+      "ret_1y": 38.44208500503706,
+      "vol": 21.280016593995736
+    },
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Lower-cost S&P 500 alt to VUAA",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1129.199951171875,
+      "change_pct": 0.2663825368557626,
+      "ccy": "GBp",
+      "ytd": 11.536934407465244,
+      "ret_1m": 3.0856240646783197,
+      "ret_1y": 22.966347183100886,
+      "vol": 11.083674768523407
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 112.16000366210938,
+      "change_pct": 0.2502738787677723,
+      "ccy": "GBP",
+      "ytd": 12.435473660710631,
+      "ret_1m": 2.8236173261392645,
+      "ret_1y": 24.594543262236673,
+      "vol": 11.020938611035612
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 127390.0,
+      "change_pct": 0.23605319065229366,
+      "ccy": "GBp",
+      "ytd": 17.768327632430434,
+      "ret_1m": 2.808490033088532,
+      "ret_1y": 32.174725046690185,
+      "vol": 16.688768077450998
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10749.0,
+      "change_pct": 0.214432220771956,
+      "ccy": "GBp",
+      "ytd": 10.951692815854667,
+      "ret_1m": 2.969633106619408,
+      "ret_1y": 22.412025965152033,
+      "vol": 26.576867180439578
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "ter": 0.29,
+      "dist": "Dist",
+      "price": 68.05500030517578,
+      "change_pct": 0.15453033355332638,
+      "ccy": "GBP",
+      "ytd": 11.684579915354853,
+      "ret_1m": 1.1819776147718504,
+      "ret_1y": 22.665827084887123,
+      "vol": 8.915763972369305
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 170.27999877929688,
+      "change_pct": 0.08816428153734111,
+      "ccy": "USD",
+      "ytd": -2.557940612705651,
+      "ret_1m": 0.24726137256337505,
+      "ret_1y": -1.1149815348268575,
+      "vol": 5.601812894623222
+    },
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 380.5299987792969,
+      "change_pct": -0.6007856943396958,
+      "ccy": "USD",
+      "ytd": -5.142587669380126,
+      "ret_1m": 0.50446455198918,
+      "ret_1y": 23.04931245894806,
+      "vol": 26.176179357742136
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 5929.0,
+      "change_pct": -0.7532641446267158,
+      "ccy": "GBp",
+      "ytd": -4.524959742351046,
+      "ret_1m": -0.033721126285617936,
+      "ret_1y": 24.689800210304945,
+      "vol": 24.369161494567887
+    }
+  ],
+  "themed": [
+    {
+      "name": "Genomics & Biotech (ARKG)",
+      "short": "ARKG",
+      "ticker": "ARKG",
+      "blurb": "ARK Genomic Revolution",
+      "holdings": [
+        "TEM",
+        "CRSP",
+        "TWST",
+        "RXRX"
+      ],
+      "price": 41.31999969482422,
+      "change_pct": -3.9069774538971656,
+      "ccy": "USD",
+      "ytd": 41.60383571858673,
+      "ret_1m": 23.122759249077557,
+      "ret_1y": 63.54641081746405
+    },
+    {
+      "name": "Infrastructure (IGF)",
+      "short": "IGF",
+      "ticker": "IGF",
+      "blurb": "iShares Global Infrastructure",
+      "holdings": [
+        "AENA.MC",
+        "NEE",
+        "TRP",
+        "ENB"
+      ],
+      "price": 66.91000366210938,
+      "change_pct": 0.23970586083801498,
+      "ccy": "USD",
+      "ytd": 8.02390239843707,
+      "ret_1m": 1.3941594607096575,
+      "ret_1y": 14.005802057830655
+    },
+    {
+      "name": "Lithium & Battery (LIT)",
+      "short": "LIT",
+      "ticker": "LIT",
+      "blurb": "Global X Lithium & Battery",
+      "holdings": [
+        "ALB",
+        "TSLA",
+        "BYDDY",
+        "SQM"
+      ],
+      "price": 72.31999969482422,
+      "change_pct": -0.6866245565715625,
+      "ccy": "USD",
+      "ytd": 9.12932451821816,
+      "ret_1m": -8.001527625861717,
+      "ret_1y": 79.99004267182231
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.710000038146973,
+      "change_pct": 0.4503518757503308,
+      "ccy": "USD",
+      "ytd": 8.727943736582592,
+      "ret_1m": 2.7869222432931395,
+      "ret_1y": 17.187887720969936,
+      "vol": 14.016182845129995
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 145.9199981689453,
+      "change_pct": 0.440528217941891,
+      "ccy": "USD",
+      "ytd": 10.847765759272548,
+      "ret_1m": 3.6952792091627336,
+      "ret_1y": 21.518983963912607,
+      "vol": 12.188016124342562
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 7191.0,
+      "change_pct": 0.43296089385474856,
+      "ccy": "GBp",
+      "ytd": -14.939673527324343,
+      "ret_1m": -2.824324324324324,
+      "ret_1y": -6.670992861778066,
+      "vol": 18.516318641687906
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 813.6699829101562,
+      "change_pct": 0.41836815554036316,
+      "ccy": "USD",
+      "ytd": 10.926758812953112,
+      "ret_1m": 3.6892156804791716,
+      "ret_1y": 21.5158322247771,
+      "vol": 12.258837314105076
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 190.0399932861328,
+      "change_pct": 0.3803010427107449,
+      "ccy": "USD",
+      "ytd": 11.447330826055088,
+      "ret_1m": 3.4062436328305914,
+      "ret_1y": 23.29051124863006,
+      "vol": 12.91977468083027
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "BYDDY",
+      "price": 10.8100004196167,
+      "change_pct": 2.8544261103863025,
+      "ccy": "USD",
+      "ret_1m": -2.962297248974993,
+      "from_hi": -36.330611930345505
+    },
+    {
+      "ticker": "NEE",
+      "price": 87.95999908447266,
+      "change_pct": 0.987371556162637,
+      "ccy": "USD",
+      "ret_1m": 3.689729088597208,
+      "from_hi": -10.134857424711367
+    },
+    {
+      "ticker": "TSLA",
+      "price": 407.760009765625,
+      "change_pct": 0.29763178181976496,
+      "ccy": "USD",
+      "ret_1m": 2.7931877821979767,
+      "from_hi": -16.76328780490479
+    },
+    {
+      "ticker": "ENB",
+      "price": 54.65999984741211,
+      "change_pct": 0.1282280539083317,
+      "ccy": "USD",
+      "ret_1m": -1.5844455412481133,
+      "from_hi": -5.82357170020476
+    },
+    {
+      "ticker": "TRP",
+      "price": 67.33000183105469,
+      "change_pct": -0.9270118627207413,
+      "ccy": "USD",
+      "ret_1m": -1.232208244760205,
+      "from_hi": -5.0486555438829495
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "ARKG",
+      "us_name": "ARKG",
+      "ucits_name": "iShares Healthcare Innovation UCITS (HEAL)",
+      "lse_ticker": "HEAL.L",
+      "note": "No ARK UCITS; healthcare-innovation proxy",
+      "ter": 0.4
+    },
+    {
+      "us_ticker": "IGF",
+      "us_name": "IGF",
+      "ucits_name": "iShares Global Infrastructure UCITS (INFR)",
+      "lse_ticker": "INFR.L",
+      "note": "Global infrastructure UCITS",
+      "ter": 0.65
+    },
+    {
+      "us_ticker": "LIT",
+      "us_name": "LIT",
+      "ucits_name": "Global X Lithium & Battery Tech UCITS",
+      "lse_ticker": "LITG.L",
+      "note": "Lithium/battery UCITS",
+      "ter": 0.6
+    }
+  ],
+  "news": [
+    {
+      "title": "J.B. Hunt (JBHT) Stock Looks Fully Priced Despite Fair Value Support",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/j-b-hunt-jbht-stock-071247594.html",
+      "publisher": "Simply Wall St."
+    },
+    {
+      "title": "Renault (ENXTPA:RNO) Expands China R And D As New Leaders Take Key Roles",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/renault-enxtpa-rno-expands-china-071232927.html",
+      "publisher": "Simply Wall St."
+    },
+    {
+      "title": "Extreme Networks (EXTR) Stock Looks Below Fair Value On Sales Yet Near Fair Value On Cash Flow",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/extreme-networks-extr-stock-looks-071232078.html",
+      "publisher": "Simply Wall St."
+    },
+    {
+      "title": "3 ETFs For the Coming Genomics Revolution",
+      "link": "https://finance.yahoo.com/m/bb77ff23-e38a-3ba8-b1a3-8236d54585ae/3-etfs-for-the-coming.html",
+      "publisher": "MarketBeat"
+    },
+    {
+      "title": "Major German carmakers hit by steep China sales plunge as competition heats up",
+      "link": "https://finance.yahoo.com/economy/articles/major-german-carmakers-hit-steep-141707756.html",
+      "publisher": "Associated Press"
+    },
+    {
+      "title": "BYD to supply 11.28GWh of energy for Abu Dhabi RTC project",
+      "link": "https://finance.yahoo.com/m/ba0261a3-2908-3a35-afcf-7143bf0e8d97/byd-to-supply-11.28gwh-of.html",
+      "publisher": "Power Technology"
+    }
+  ]
+}
