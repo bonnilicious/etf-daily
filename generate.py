@@ -33,22 +33,22 @@ CORE_ETFS = [
     # (dividends auto-reinvested, no manual re-investing, tidier for SG holders).
     # Format: (name, ticker, why, TER%, distribution)  — TER/dist are STATIC
     # (no free live feed for fees); update by hand if a fund changes its fee.
+    # ACCUMULATING-ONLY core. All distributing (Dist) funds removed for a
+    # tax-tidy, auto-reinvesting core (dropped AGGG, VHYL, FXC); gold ETCs
+    # (SGLN, PHAU) also removed per preference. No fixed size cap — the list
+    # is simply "every Acc UCITS core holding we track".
     ("Vanguard S&P 500 UCITS (VUAA)", "VUAA.L", "Core US large-cap, accumulating, Irish-domiciled", 0.07, "Acc"),
-    ("iShares Core MSCI World UCITS (SWDA)", "SWDA.L", "Global developed-market core holding", 0.20, "Acc"),
-    ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts", 0.22, "Acc"),
-    ("iShares Core MSCI EM IMI UCITS (EIMI)", "EIMI.L", "Broad emerging-market exposure", 0.18, "Acc"),
-    ("iShares Core Global Aggregate Bond UCITS (AGGG)", "AGGG.L", "Diversified global bonds, ballast", 0.10, "Dist"),
-    # --- Expanded SG/IBKR-relevant UCITS picks ---
-    ("Invesco S&P 500 UCITS (SPXP)", "SPXP.L", "Lower-cost S&P 500 alt to VUAA", 0.05, "Acc"),
-    ("iShares Nasdaq 100 UCITS (CNX1)", "CNX1.L", "US tech/growth tilt, accumulating", 0.33, "Acc"),
+    ("Invesco S&P 500 UCITS (SPXP)", "SPXP.L", "Cheapest S&P 500 core, accumulating", 0.05, "Acc"),
     ("iShares Core S&P 500 UCITS (CSPX)", "CSPX.L", "The classic large S&P 500 UCITS, deep liquidity", 0.07, "Acc"),
-    ("Vanguard FTSE Dev World UCITS (VHVG)", "VHVG.L", "Developed-world core, accumulating, low TER", 0.12, "Acc"),
+    ("iShares Core MSCI World UCITS (SWDA)", "SWDA.L", "Global developed-market core holding", 0.20, "Acc"),
+    ("Vanguard FTSE Dev World UCITS (VHVG)", "VHVG.L", "Developed-world core, low TER, accumulating", 0.12, "Acc"),
+    ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts; largest/most liquid", 0.19, "Acc"),
+    ("iShares FTSE All-World UCITS (FTAW)", "FTAW.L", "Same FTSE All-World index as VWRA, cheaper TER (new/smaller AUM)", 0.12, "Acc"),
+    ("Xtrackers FTSE All-World UCITS 1C (ALLW)", "ALLW.L", "Same FTSE All-World index as VWRA, cheapest TER on market", 0.07, "Acc"),
+    ("iShares Core MSCI EM IMI UCITS (EIMI)", "EIMI.L", "Broad emerging-market exposure", 0.18, "Acc"),
+    ("iShares Nasdaq 100 UCITS (CNX1)", "CNX1.L", "US tech/growth tilt, accumulating", 0.33, "Acc"),
     ("iShares MSCI World SRI UCITS (SUWS)", "SUWS.L", "ESG-screened global developed alternative", 0.20, "Acc"),
-    ("Vanguard FTSE All-World High Div (VHYL)", "VHYL.L", "Global dividend tilt (distributing)", 0.29, "Dist"),
-    ("iShares $ Treasury 7-10y UCITS (IDTM)", "IDTM.L", "US Treasuries, rate-sensitive ballast", 0.07, "Acc"),
-    ("iShares Physical Gold ETC (SGLN)", "SGLN.L", "Gold exposure, LSE-listed, no estate-tax issue", 0.12, "—"),
-    ("iShares China Large Cap UCITS (FXC)", "FXC.L", "China large-cap satellite (higher risk)", 0.74, "Dist"),
-    ("WisdomTree Phys. Gold (PHAU)", "PHAU.L", "Alt physical-gold ETC, USD", 0.39, "—"),
+    ("iShares $ Treasury 7-10y UCITS (IDTM)", "IDTM.L", "US Treasuries, rate-sensitive ballast (Acc)", 0.07, "Acc"),
 ]
 
 # Map US-listed focus tickers -> a London-listed UCITS alternative where one
@@ -266,6 +266,122 @@ def short_name(full):
 # BUILD ONE DAY'S DATA RECORD
 # --------------------------------------------------------------------------
 
+# --------------------------------------------------------------------------
+# PRO SCORE — a rules-based, Investing.com-Pro+-style composite (0-100)
+# --------------------------------------------------------------------------
+# Five weighted pillars, tuned for a long-term Singapore UCITS/IBKR investor:
+#   SG tax efficiency 25% | Cost 20% | Risk-adjusted return 25%
+#   Momentum 15% | Liquidity/size proxy 15%
+# Every metric is converted to a 0-100 sub-score by PERCENTILE-RANK within the
+# scored peer set (self-calibrating — no magic thresholds to maintain), except
+# tax efficiency which uses fixed rules (domicile/dist policy are categorical).
+# Missing data for a pillar => that pillar is dropped and remaining weights are
+# renormalised, so a fund is never punished for a Yahoo data gap.
+
+SCORE_WEIGHTS = {"tax": 0.25, "cost": 0.20, "riskadj": 0.25,
+                 "momentum": 0.15, "liquidity": 0.15}
+
+
+def _pctile_scores(values, higher_is_better=True):
+    """Map a list of (key, value) into {key: 0-100} by percentile rank.
+    None values get no score (returned as None)."""
+    have = [(k, v) for k, v in values if v is not None]
+    out = {k: None for k, _ in values}
+    if not have:
+        return out
+    if len(have) == 1:
+        out[have[0][0]] = 100.0
+        return out
+    ranked = sorted(have, key=lambda kv: kv[1], reverse=not higher_is_better)
+    n = len(ranked)
+    for i, (k, _) in enumerate(ranked):
+        # rank 0 (worst) -> 0, rank n-1 (best) -> 100
+        out[k] = round(i / (n - 1) * 100, 1)
+    return out
+
+
+def score_etfs(core_rows):
+    """Attach a composite 'pro_score' (0-100) + pillar breakdown + verdict to
+    each core row, then return the rows sorted by score (best first)."""
+    keyed = [(r["ticker"], r) for r in core_rows]
+
+    # --- Pillar 1: SG tax efficiency (fixed-rule, 0-100) ---
+    # All core funds are Irish-domiciled UCITS (15% withholding, no US estate
+    # tax). Accumulating > Distributing for a compounding SG holder (no manual
+    # re-investing, no dividend leakage). Gold/'—' treated as neutral-high.
+    for tic, r in keyed:
+        dist = r.get("dist", "")
+        r["_s_tax"] = 100.0 if dist == "Acc" else (85.0 if dist == "—" else 60.0)
+
+    # --- Pillar 2: Cost (lower TER better) ---
+    cost = _pctile_scores([(t, r.get("ter")) for t, r in keyed],
+                          higher_is_better=False)
+
+    # --- Pillar 3: Risk-adjusted return (Sharpe-like = 1Y return / vol) ---
+    def sharpe_like(r):
+        ret, vol = r.get("ret_1y"), r.get("vol")
+        if ret is None or not vol:
+            return None
+        return ret / vol
+    riskadj = _pctile_scores([(t, sharpe_like(r)) for t, r in keyed])
+
+    # --- Pillar 4: Momentum (blend of 1M, 3M, 1Y trend + proximity to 52w hi) ---
+    def momentum(r):
+        parts = [r.get("ret_1m"), r.get("ret_3m"), r.get("ret_1y")]
+        parts = [p for p in parts if p is not None]
+        if not parts:
+            return None
+        base = sum(parts) / len(parts)
+        fh = r.get("from_hi")            # negative = below high
+        if fh is not None:
+            base += fh * 0.25            # small bonus for being near the high
+        return base
+    momo = _pctile_scores([(t, momentum(r)) for t, r in keyed])
+
+    # --- Pillar 5: Liquidity/size proxy ---
+    # No free AUM feed, so use realised annualised volatility as an inverse
+    # proxy (huge broad ETFs are lower-vol & deeply liquid). Lower vol => higher
+    # liquidity sub-score. Rough but consistent across the peer set.
+    liq = _pctile_scores([(t, r.get("vol")) for t, r in keyed],
+                         higher_is_better=False)
+
+    for tic, r in keyed:
+        pillars = {"tax": r["_s_tax"], "cost": cost[tic], "riskadj": riskadj[tic],
+                   "momentum": momo[tic], "liquidity": liq[tic]}
+        # Renormalise weights over the pillars that actually have a score.
+        avail = {k: v for k, v in pillars.items() if v is not None}
+        wsum = sum(SCORE_WEIGHTS[k] for k in avail) or 1.0
+        composite = sum(v * SCORE_WEIGHTS[k] for k, v in avail.items()) / wsum
+        r["pro_score"] = round(composite, 1)
+        r["pillars"] = {k: (round(v, 1) if v is not None else None)
+                        for k, v in pillars.items()}
+        r["verdict"] = _verdict(r)
+        r.pop("_s_tax", None)
+
+    return sorted(core_rows, key=lambda r: r["pro_score"], reverse=True)
+
+
+def _verdict(r):
+    """Plain-language, Pro-Tips-style one-liner from the score + pillars."""
+    s = r["pro_score"]
+    p = r.get("pillars", {})
+    tag = ("Strong" if s >= 70 else "Solid" if s >= 55
+           else "Fair" if s >= 40 else "Watch")
+    bits = []
+    if r.get("dist") == "Acc":
+        bits.append("tax-efficient Acc UCITS")
+    if p.get("cost") is not None and p["cost"] >= 70:
+        bits.append("low cost")
+    if p.get("riskadj") is not None and p["riskadj"] >= 70:
+        bits.append("good risk-adjusted return")
+    if p.get("momentum") is not None and p["momentum"] >= 70:
+        bits.append("positive momentum")
+    elif p.get("momentum") is not None and p["momentum"] <= 30:
+        bits.append("weak momentum")
+    detail = ", ".join(bits) if bits else "balanced profile"
+    return f"{tag} — {detail}."
+
+
 def build_day_record(today, now_sgt):
     themes = pick_themes(today, THEMES_PER_DAY)
     core_tickers = [t[1] for t in CORE_ETFS]
@@ -290,8 +406,13 @@ def build_day_record(today, now_sgt):
                           "ccy": q.get("currency"), "ytd": q.get("ytd"),
                           "ret_1m": q.get("ret_1m"),
                           "ret_1y": q.get("ret_1y"), "vol": q.get("vol")})
-    core_rows.sort(key=lambda r: (r["change_pct"] is not None, r["change_pct"] or -999),
-                   reverse=True)
+    # Core Watchlist display order: sort by TER, lowest to highest (cheapest
+    # first). None TERs sort last.
+    core_rows.sort(key=lambda r: (r.get("ter") is None, r.get("ter") or 999))
+
+    # Pro Score: rank the core watchlist by the composite 0-100 model. Uses a
+    # copy so the day-momentum ordering of `core` (above) is preserved.
+    scored_rows = score_etfs([dict(r) for r in core_rows])
 
     themed_rows = []
     for name, tic, blurb, holdings in themes:
@@ -336,7 +457,9 @@ def build_day_record(today, now_sgt):
     seen_links = set()
     news_queries = []
     if core_rows:
-        news_queries.append(core_rows[0]["ticker"])
+        _cv = [r for r in core_rows if r["change_pct"] is not None]
+        lead_core = max(_cv, key=lambda r: r["change_pct"]) if _cv else core_rows[0]
+        news_queries.append(lead_core["ticker"])
     if themed_rows:
         news_queries.append(themed_rows[0]["ticker"])
     if stocks_focus:
@@ -354,6 +477,7 @@ def build_day_record(today, now_sgt):
         "refreshed": now_sgt.strftime("%d %b %Y, %H:%M SGT"),
         "newsletter": newsletter(core_rows, themed_rows),
         "core": core_rows,
+        "scored": scored_rows,
         "themed": themed_rows,
         "etfs_focus": etfs_focus,
         "stocks_focus": stocks_focus,
@@ -398,7 +522,11 @@ def render_day(rec, open_default=False):
           <div class="muted">Top holdings: {holdings}</div>
         </div>"""
 
-    top = rec["core"][0]
+    # Top Pick = best momentum today (core is now TER-sorted for display, so
+    # pick the max-change fund explicitly rather than relying on order).
+    _core_valid = [r for r in rec["core"] if r["change_pct"] is not None]
+    top = (max(_core_valid, key=lambda r: r["change_pct"])
+           if _core_valid else rec["core"][0])
 
     # ETFs in focus (top momentum)
     etfs_html = ""
@@ -474,6 +602,48 @@ def render_day(rec, open_default=False):
       </div>""" if ucits_html else "")
 
     openattr = " open" if open_default else ""
+
+    # Ranked Watchlist (Pro Score) — the Investing.com-Pro+-style composite.
+    def score_badge(s):
+        cls = ("s-strong" if s >= 70 else "s-solid" if s >= 55
+               else "s-fair" if s >= 40 else "s-watch")
+        return f'<span class="score {cls}">{s:.0f}</span>'
+
+    def bar(v):
+        if v is None:
+            return '<span class="muted">—</span>'
+        return (f'<span class="mini"><span class="mini-fill" '
+                f'style="width:{max(0, min(100, v)):.0f}%"></span></span>')
+
+    scored_html = """
+        <tr class="hdr"><td>Fund</td><td class="num">Score</td>
+        <td class="num">Tax</td><td class="num">Cost</td><td class="num">Risk-adj</td>
+        <td class="num">Mom.</td><td class="num">Liq.</td></tr>"""
+    for r in rec.get("scored", []):
+        p = r.get("pillars", {})
+        scored_html += f"""
+        <tr><td><strong>{r['short']}</strong> <span class="muted">{r['ticker']}</span><br>
+        <span class="muted">{r.get('verdict','')}</span></td>
+        <td class="num">{score_badge(r['pro_score'])}</td>
+        <td class="num">{bar(p.get('tax'))}</td>
+        <td class="num">{bar(p.get('cost'))}</td>
+        <td class="num">{bar(p.get('riskadj'))}</td>
+        <td class="num">{bar(p.get('momentum'))}</td>
+        <td class="num">{bar(p.get('liquidity'))}</td></tr>"""
+
+    scored_block = (f"""
+      <div class="card">
+        <h3>Ranked Watchlist &mdash; Pro Score (0&ndash;100)</h3>
+        <div class="scroll"><table>{scored_html}</table></div>
+        <p class="muted">A rules-based composite scoring each core UCITS on
+        <strong>SG tax efficiency (25%)</strong>, cost/TER (20%), risk-adjusted
+        return (25%), momentum (15%) and a liquidity proxy (15%). Sub-scores are
+        percentile-ranked <em>within this watchlist</em>, so they compare the funds
+        against each other, not the whole market. Same-index funds (VWRA/FTAW/ALLW)
+        score close together and separate mainly on cost. Decision-support only &mdash;
+        <strong>not financial advice</strong>, and no model predicts markets.</p>
+      </div>""" if rec.get("scored") else "")
+
     return f"""
   <details class="day"{openattr}>
     <summary>
@@ -489,7 +659,7 @@ def render_day(rec, open_default=False):
         <h3>Top Pick (best momentum)</h3>
         <div class="pick"><strong>{top['name']}</strong> — {top['why']}.<br>
         Last {fmt(top['price'])} {top['ccy']} &nbsp;|&nbsp; {chg_span(top['change_pct'])}</div>
-      </div>{etfs_block}{stocks_block}{ucits_block}
+      </div>{etfs_block}{stocks_block}{ucits_block}{scored_block}
       <div class="card">
         <h3>Core Watchlist</h3>
         <div class="scroll"><table>{core_html}</table></div>
@@ -566,6 +736,15 @@ def render_page(records):
   .news a:hover {{ text-decoration:underline; }}
   .lse {{ color:var(--up); font-weight:600; font-variant-numeric:tabular-nums; }}
   .ucits td {{ vertical-align:top; }}
+  .score {{ display:inline-block; min-width:34px; padding:2px 7px; border-radius:6px;
+            font-weight:700; font-variant-numeric:tabular-nums; color:#0d1117; }}
+  .s-strong {{ background:var(--up); }}
+  .s-solid  {{ background:#7ee787; }}
+  .s-fair   {{ background:#d29922; color:#0d1117; }}
+  .s-watch  {{ background:var(--down); color:#fff; }}
+  .mini {{ display:inline-block; width:46px; height:7px; border-radius:4px;
+           background:var(--line); overflow:hidden; vertical-align:middle; }}
+  .mini-fill {{ display:block; height:100%; background:var(--accent); }}
   tr.hdr td {{ color:var(--muted); font-size:.75rem; text-transform:uppercase;
                letter-spacing:.03em; border-top:none; padding-bottom:4px; }}
   footer {{ color:var(--muted); font-size:.78rem; margin-top:28px; }}
