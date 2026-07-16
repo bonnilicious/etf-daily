@@ -1,0 +1,469 @@
+{
+  "date": "2026-07-16",
+  "date_display": "Thursday, 16 July 2026",
+  "refreshed": "16 Jul 2026, 08:00 SGT",
+  "newsletter": "Core watchlist was broadly higher (avg 0.43%). PHAU led (1.69%); SPXP lagged (-0.19%). Among themes, ARKG stood out (0.41%).",
+  "core": [
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 378.92498779296875,
+      "change_pct": 1.6948022569625882,
+      "ccy": "USD",
+      "ytd": -5.542680144122449,
+      "ret_1m": -6.178819646465181,
+      "ret_1y": 22.269363142632034,
+      "vol": 26.321048547025704
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 5914.0,
+      "change_pct": 1.5453296703296704,
+      "ccy": "GBp",
+      "ytd": -4.766505636070853,
+      "ret_1m": -5.917912822144448,
+      "ret_1y": 22.519163041226435,
+      "vol": 24.474253128914995
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 7273.0,
+      "change_pct": 0.7480260423881424,
+      "ccy": "GBp",
+      "ytd": -13.969718476460846,
+      "ret_1m": -4.012142008710572,
+      "ret_1y": -9.042021010505252,
+      "vol": 18.431092282388626
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 53.689998626708984,
+      "change_pct": 0.7128066847290537,
+      "ccy": "USD",
+      "ytd": 16.768158245391895,
+      "ret_1m": -5.790494743931007,
+      "ret_1y": 35.03521351416048,
+      "vol": 21.501521791796144
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 127120.0,
+      "change_pct": 0.41074249605055296,
+      "ccy": "GBp",
+      "ytd": 17.518720532495145,
+      "ret_1m": -2.507861032287752,
+      "ret_1y": 29.23952826352176,
+      "vol": 16.69967396441338
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.704999923706055,
+      "change_pct": 0.3429058035476685,
+      "ccy": "USD",
+      "ytd": 8.681517420627204,
+      "ret_1m": -0.972925330687788,
+      "ret_1y": 18.157727936464905,
+      "vol": 14.029999492911264
+    },
+    {
+      "name": "iShares Core Global Aggregate Bond UCITS (AGGG)",
+      "short": "AGGG",
+      "ticker": "AGGG.L",
+      "why": "Diversified global bonds, ballast",
+      "ter": 0.1,
+      "dist": "Dist",
+      "price": 4.365499973297119,
+      "change_pct": 0.2871538891365151,
+      "ccy": "USD",
+      "ytd": -2.2940904955403236,
+      "ret_1m": -1.1435669687895171,
+      "ret_1y": -1.4003342975980977,
+      "vol": 5.688883249016134
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts",
+      "ter": 0.22,
+      "dist": "Acc",
+      "price": 189.5,
+      "change_pct": 0.26455026455026454,
+      "ccy": "USD",
+      "ytd": 11.130656375783554,
+      "ret_1m": -0.7437660709009407,
+      "ret_1y": 23.501040787824472,
+      "vol": 12.949363985868192
+    },
+    {
+      "name": "Vanguard FTSE All-World High Div (VHYL)",
+      "short": "VHYL",
+      "ticker": "VHYL.L",
+      "why": "Global dividend tilt (distributing)",
+      "ter": 0.29,
+      "dist": "Dist",
+      "price": 68.30999755859375,
+      "change_pct": 0.24948366666868205,
+      "ccy": "GBP",
+      "ytd": 12.103054105345992,
+      "ret_1m": -0.08045097183412481,
+      "ret_1y": 23.392335269990433,
+      "vol": 8.91196698530068
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 169.97000122070312,
+      "change_pct": 0.1827169349890699,
+      "ccy": "USD",
+      "ytd": -2.7353354960211016,
+      "ret_1m": -0.46263370317758307,
+      "ret_1y": -0.5150745398740678,
+      "vol": 5.609258436612561
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, accumulating, low TER",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 112.16000366210938,
+      "change_pct": 0.160743257527895,
+      "ccy": "GBP",
+      "ytd": 12.435473660710631,
+      "ret_1m": -0.26675744691936565,
+      "ret_1y": 23.742282013870618,
+      "vol": 11.0356132728451
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10768.0,
+      "change_pct": 0.03716090672612412,
+      "ccy": "GBp",
+      "ytd": 11.147811725846408,
+      "ret_1m": 0.3447954524275464,
+      "ret_1y": 21.741096664782365,
+      "vol": 26.62402561701675
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 812.6300048828125,
+      "change_pct": -0.02214449580121887,
+      "ccy": "USD",
+      "ytd": 10.784979720405872,
+      "ret_1m": -0.14990117831565614,
+      "ret_1y": 21.542033286892085,
+      "vol": 12.278411309678626
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 145.72000122070312,
+      "change_pct": -0.04115623480322777,
+      "ccy": "USD",
+      "ytd": 10.695838572118586,
+      "ret_1m": -0.15074771620032948,
+      "ret_1y": 21.53461164823363,
+      "vol": 12.207312897202202
+    },
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Lower-cost S&P 500 alt to VUAA",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1129.800048828125,
+      "change_pct": -0.19434197631404593,
+      "ccy": "GBp",
+      "ytd": 11.596209164653965,
+      "ret_1m": 0.12407163982378344,
+      "ret_1y": 21.65392849981608,
+      "vol": 11.093820323569124
+    }
+  ],
+  "themed": [
+    {
+      "name": "Water Resources (PHO)",
+      "short": "PHO",
+      "ticker": "PHO",
+      "blurb": "Invesco Water Resources",
+      "holdings": [
+        "WAT",
+        "ECL",
+        "ROP",
+        "XYL"
+      ],
+      "price": 68.30999755859375,
+      "change_pct": -0.6544568988598183,
+      "ccy": "USD",
+      "ytd": -3.6122549580566328,
+      "ret_1m": 2.2451729603559243,
+      "ret_1y": -2.134678263637323
+    },
+    {
+      "name": "Semiconductors (SOXX)",
+      "short": "SOXX",
+      "ticker": "SOXX",
+      "blurb": "iShares Semiconductor",
+      "holdings": [
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "QCOM"
+      ],
+      "price": 555.27001953125,
+      "change_pct": -2.227420016827872,
+      "ccy": "USD",
+      "ytd": 77.01234186925296,
+      "ret_1m": -6.872952699161426,
+      "ret_1y": 126.09635075171859
+    },
+    {
+      "name": "Genomics & Biotech (ARKG)",
+      "short": "ARKG",
+      "ticker": "ARKG",
+      "blurb": "ARK Genomic Revolution",
+      "holdings": [
+        "TEM",
+        "CRSP",
+        "TWST",
+        "RXRX"
+      ],
+      "price": 41.220001220703125,
+      "change_pct": 0.41413395079700227,
+      "ccy": "USD",
+      "ytd": 41.261140471584426,
+      "ret_1m": 23.155063392128525,
+      "ret_1y": 65.67525165235197
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "WisdomTree Phys. Gold (PHAU)",
+      "short": "PHAU",
+      "ticker": "PHAU.L",
+      "why": "Alt physical-gold ETC, USD",
+      "ter": 0.39,
+      "dist": "—",
+      "price": 378.92498779296875,
+      "change_pct": 1.6948022569625882,
+      "ccy": "USD",
+      "ytd": -5.542680144122449,
+      "ret_1m": -6.178819646465181,
+      "ret_1y": 22.269363142632034,
+      "vol": 26.321048547025704
+    },
+    {
+      "name": "iShares Physical Gold ETC (SGLN)",
+      "short": "SGLN",
+      "ticker": "SGLN.L",
+      "why": "Gold exposure, LSE-listed, no estate-tax issue",
+      "ter": 0.12,
+      "dist": "—",
+      "price": 5914.0,
+      "change_pct": 1.5453296703296704,
+      "ccy": "GBp",
+      "ytd": -4.766505636070853,
+      "ret_1m": -5.917912822144448,
+      "ret_1y": 22.519163041226435,
+      "vol": 24.474253128914995
+    },
+    {
+      "name": "iShares China Large Cap UCITS (FXC)",
+      "short": "FXC",
+      "ticker": "FXC.L",
+      "why": "China large-cap satellite (higher risk)",
+      "ter": 0.74,
+      "dist": "Dist",
+      "price": 7273.0,
+      "change_pct": 0.7480260423881424,
+      "ccy": "GBp",
+      "ytd": -13.969718476460846,
+      "ret_1m": -4.012142008710572,
+      "ret_1y": -9.042021010505252,
+      "vol": 18.431092282388626
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 53.689998626708984,
+      "change_pct": 0.7128066847290537,
+      "ccy": "USD",
+      "ytd": 16.768158245391895,
+      "ret_1m": -5.790494743931007,
+      "ret_1y": 35.03521351416048,
+      "vol": 21.501521791796144
+    },
+    {
+      "name": "Genomics & Biotech (ARKG)",
+      "short": "ARKG",
+      "ticker": "ARKG",
+      "blurb": "ARK Genomic Revolution",
+      "holdings": [
+        "TEM",
+        "CRSP",
+        "TWST",
+        "RXRX"
+      ],
+      "price": 41.220001220703125,
+      "change_pct": 0.41413395079700227,
+      "ccy": "USD",
+      "ytd": 41.261140471584426,
+      "ret_1m": 23.155063392128525,
+      "ret_1y": 65.67525165235197
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "CRSP",
+      "price": 51.369998931884766,
+      "change_pct": 1.8034083708339401,
+      "ccy": "USD",
+      "ret_1m": 3.1526098772624964,
+      "from_hi": -33.094556201352425
+    },
+    {
+      "ticker": "AVGO",
+      "price": 394.2799987792969,
+      "change_pct": 1.3286766267545784,
+      "ccy": "USD",
+      "ret_1m": 3.195747172249748,
+      "from_hi": -18.12613061804606
+    },
+    {
+      "ticker": "ROP",
+      "price": 348.510009765625,
+      "change_pct": 0.5365688452012659,
+      "ccy": "USD",
+      "ret_1m": 4.042155564850332,
+      "from_hi": -38.1899132437861
+    },
+    {
+      "ticker": "NVDA",
+      "price": 212.5,
+      "change_pct": 0.3304990265137666,
+      "ccy": "USD",
+      "ret_1m": 3.562550549060587,
+      "from_hi": -9.858320586930661
+    },
+    {
+      "ticker": "ECL",
+      "price": 270.25,
+      "change_pct": 0.18535681186283595,
+      "ccy": "USD",
+      "ret_1m": 1.823592280286606,
+      "from_hi": -12.356090594895315
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "PHO",
+      "us_name": "PHO",
+      "ucits_name": "iShares Global Water UCITS (IH2O/DH2O)",
+      "lse_ticker": "IH2O.L",
+      "note": "Global water UCITS",
+      "ter": 0.65
+    },
+    {
+      "us_ticker": "SOXX",
+      "us_name": "SOXX",
+      "ucits_name": "iShares Semiconductor / S&P US Tech UCITS (IUIT)",
+      "lse_ticker": "IUIT.L",
+      "note": "Closest UCITS proxy for US tech/semis",
+      "ter": 0.15
+    },
+    {
+      "us_ticker": "ARKG",
+      "us_name": "ARKG",
+      "ucits_name": "iShares Healthcare Innovation UCITS (HEAL)",
+      "lse_ticker": "HEAL.L",
+      "note": "No ARK UCITS; healthcare-innovation proxy",
+      "ter": 0.4
+    }
+  ],
+  "news": [
+    {
+      "title": "Curaechoice and Symbol Health Solutions Partner to Transform Employer Healthcare with Integrated Onsite Care and Nationwide No-Cost Access",
+      "link": "https://finance.yahoo.com/healthcare/articles/curaechoice-symbol-health-solutions-partner-235200587.html",
+      "publisher": "GlobeNewswire"
+    },
+    {
+      "title": "Sheila Johnson’s Net Worth Reflects Her Status As America’s First Black Female Billionaire",
+      "link": "https://finance.yahoo.com/small-business/articles/sheila-johnson-net-worth-reflects-235104293.html",
+      "publisher": "AfroTech"
+    },
+    {
+      "title": "Cris Carter discusses the 2026 Pro Football Hall of Fame class, enshrinement weekend",
+      "link": "https://finance.yahoo.com/m/d6a6097a-e72e-3b6c-b547-ae78d4c9374c/cris-carter-discusses-the.html",
+      "publisher": "NFL Highlights"
+    },
+    {
+      "title": "These 3 Water ETFs Could be Quiet Winners From Infrastructure Spending",
+      "link": "https://finance.yahoo.com/m/f81c1355-47ef-3594-864a-75b20c46b3c0/these-3-water-etfs-could-be.html",
+      "publisher": "MarketBeat"
+    },
+    {
+      "title": "Is Invesco Water Resources ETF (PHO) a Strong ETF Right Now?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/invesco-water-resources-etf-pho-102002107.html",
+      "publisher": "Zacks"
+    },
+    {
+      "title": "2 ETFs to Watch for Outsized Volume on Water Resource & Small-Cap",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/2-etfs-watch-outsized-volume-140000097.html",
+      "publisher": "Zacks"
+    }
+  ]
+}
