@@ -1,0 +1,712 @@
+{
+  "date": "2026-07-22",
+  "date_display": "Wednesday, 22 July 2026",
+  "refreshed": "22 Jul 2026, 07:56 SGT",
+  "newsletter": "Core watchlist was broadly higher (avg 0.25%). CNX1 led (1.21%); IDTM lagged (-0.42%). Among themes, LIT stood out (3.23%).",
+  "core": [
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Cheapest S&P 500 core, accumulating",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1118.4000244140625,
+      "change_pct": 0.41299832862975044,
+      "ccy": "GBp",
+      "ytd": 10.470169640834278,
+      "ret_1m": -1.6012626748907504,
+      "ret_1y": 20.19990431954674,
+      "vol": 11.057687284611797
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 144.52000427246094,
+      "change_pct": 0.15246099518391176,
+      "ccy": "USD",
+      "ytd": 9.784263857893427,
+      "ret_1m": -0.11058087601568825,
+      "ret_1y": 19.240930619971415,
+      "vol": 12.173702603778318
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 805.9400024414062,
+      "change_pct": 0.1665457241025761,
+      "ccy": "USD",
+      "ytd": 9.872938840365347,
+      "ret_1m": -0.09545183650589383,
+      "ret_1y": 19.25364648974702,
+      "vol": 12.249362626337618
+    },
+    {
+      "name": "Xtrackers FTSE All-World UCITS 1C (ALLW)",
+      "short": "ALLW",
+      "ticker": "ALLW.L",
+      "why": "Same FTSE All-World index as VWRA, cheapest TER on market",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 10.4399995803833,
+      "change_pct": -0.08614008890190188,
+      "ccy": "USD",
+      "ytd": 8.303246990236206,
+      "ret_1m": -1.4350493498546844,
+      "ret_1y": null,
+      "vol": 12.635888269434767
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast (Acc)",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 169.88999938964844,
+      "change_pct": -0.42201583619210176,
+      "ccy": "USD",
+      "ytd": -2.7811162290996063,
+      "ret_1m": -0.2612541795159488,
+      "ret_1y": -1.5472868606402819,
+      "vol": 5.613046563485415
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, low TER, accumulating",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 110.68000030517578,
+      "change_pct": 0.28087120674041127,
+      "ccy": "GBP",
+      "ytd": 10.951835349164407,
+      "ret_1m": -2.553267722422238,
+      "ret_1y": 21.63974382204753,
+      "vol": 11.018226266580061
+    },
+    {
+      "name": "iShares FTSE All-World UCITS (FTAW)",
+      "short": "FTAW",
+      "ticker": "FTAW.L",
+      "why": "Same FTSE All-World index as VWRA, cheaper TER (new/smaller AUM)",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 3.8112499713897705,
+      "change_pct": 0.37529734822274236,
+      "ccy": "GBP",
+      "ytd": 1.369774148050285,
+      "ret_1m": -2.7804341374176538,
+      "ret_1y": null,
+      "vol": 11.474116772254268
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 52.2400016784668,
+      "change_pct": 0.8105017099884853,
+      "ccy": "USD",
+      "ytd": 13.614619831564273,
+      "ret_1m": -8.511378153288303,
+      "ret_1y": 28.95582286582934,
+      "vol": 21.646876660996934
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts; largest/most liquid",
+      "ter": 0.19,
+      "dist": "Acc",
+      "price": 187.32000732421875,
+      "change_pct": 0.18184383594442954,
+      "ccy": "USD",
+      "ytd": 9.852218291593735,
+      "ret_1m": -1.2546070966320546,
+      "ret_1y": 20.540549988050227,
+      "vol": 12.966313283591486
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10649.0,
+      "change_pct": 0.25418941818866503,
+      "ccy": "GBp",
+      "ytd": 9.919488026424442,
+      "ret_1m": -1.6076873325325696,
+      "ret_1y": 20.029305680793506,
+      "vol": 26.57586570312421
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.484999656677246,
+      "change_pct": -0.36868787983579676,
+      "ccy": "USD",
+      "ytd": 6.6388037931619515,
+      "ret_1m": -1.6484702908496427,
+      "ret_1y": 14.878711424125923,
+      "vol": 13.998443083824272
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 123440.0,
+      "change_pct": 1.2135126270908494,
+      "ccy": "GBp",
+      "ytd": 14.116668207451234,
+      "ret_1m": -6.364256997648486,
+      "ret_1y": 25.243506493506494,
+      "vol": 16.77424755426348
+    }
+  ],
+  "scored": [
+    {
+      "name": "Invesco S&P 500 UCITS (SPXP)",
+      "short": "SPXP",
+      "ticker": "SPXP.L",
+      "why": "Cheapest S&P 500 core, accumulating",
+      "ter": 0.05,
+      "dist": "Acc",
+      "price": 1118.4000244140625,
+      "change_pct": 0.41299832862975044,
+      "ccy": "GBp",
+      "ytd": 10.470169640834278,
+      "ret_1m": -1.6012626748907504,
+      "ret_1y": 20.19990431954674,
+      "vol": 11.057687284611797,
+      "pro_score": 86.3,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 100.0,
+        "riskadj": 88.9,
+        "momentum": 45.5,
+        "liquidity": 81.8
+      },
+      "verdict": "Strong — tax-efficient Acc UCITS, low cost, good risk-adjusted return."
+    },
+    {
+      "name": "Vanguard FTSE Dev World UCITS (VHVG)",
+      "short": "VHVG",
+      "ticker": "VHVG.L",
+      "why": "Developed-world core, low TER, accumulating",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 110.68000030517578,
+      "change_pct": 0.28087120674041127,
+      "ccy": "GBP",
+      "ytd": 10.951835349164407,
+      "ret_1m": -2.553267722422238,
+      "ret_1y": 21.63974382204753,
+      "vol": 11.018226266580061,
+      "pro_score": 82.3,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 45.5,
+        "riskadj": 100.0,
+        "momentum": 63.6,
+        "liquidity": 90.9
+      },
+      "verdict": "Strong — tax-efficient Acc UCITS, good risk-adjusted return."
+    },
+    {
+      "name": "Vanguard S&P 500 UCITS (VUAA)",
+      "short": "VUAA",
+      "ticker": "VUAA.L",
+      "why": "Core US large-cap, accumulating, Irish-domiciled",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 144.52000427246094,
+      "change_pct": 0.15246099518391176,
+      "ccy": "USD",
+      "ytd": 9.784263857893427,
+      "ret_1m": -0.11058087601568825,
+      "ret_1y": 19.240930619971415,
+      "vol": 12.173702603778318,
+      "pro_score": 74.8,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 63.6,
+        "riskadj": 66.7,
+        "momentum": 72.7,
+        "liquidity": 63.6
+      },
+      "verdict": "Strong — tax-efficient Acc UCITS, positive momentum."
+    },
+    {
+      "name": "iShares Core S&P 500 UCITS (CSPX)",
+      "short": "CSPX",
+      "ticker": "CSPX.L",
+      "why": "The classic large S&P 500 UCITS, deep liquidity",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 805.9400024414062,
+      "change_pct": 0.1665457241025761,
+      "ccy": "USD",
+      "ytd": 9.872938840365347,
+      "ret_1m": -0.09545183650589383,
+      "ret_1y": 19.25364648974702,
+      "vol": 12.249362626337618,
+      "pro_score": 73.9,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 72.7,
+        "riskadj": 55.6,
+        "momentum": 81.8,
+        "liquidity": 54.5
+      },
+      "verdict": "Strong — tax-efficient Acc UCITS, low cost, positive momentum."
+    },
+    {
+      "name": "Vanguard FTSE All-World UCITS (VWRA)",
+      "short": "VWRA",
+      "ticker": "VWRA.L",
+      "why": "One-fund global equity, incl. emerging mkts; largest/most liquid",
+      "ter": 0.19,
+      "dist": "Acc",
+      "price": 187.32000732421875,
+      "change_pct": 0.18184383594442954,
+      "ccy": "USD",
+      "ytd": 9.852218291593735,
+      "ret_1m": -1.2546070966320546,
+      "ret_1y": 20.540549988050227,
+      "vol": 12.966313283591486,
+      "pro_score": 69.0,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 27.3,
+        "riskadj": 77.8,
+        "momentum": 90.9,
+        "liquidity": 36.4
+      },
+      "verdict": "Solid — tax-efficient Acc UCITS, good risk-adjusted return, positive momentum."
+    },
+    {
+      "name": "Xtrackers FTSE All-World UCITS 1C (ALLW)",
+      "short": "ALLW",
+      "ticker": "ALLW.L",
+      "why": "Same FTSE All-World index as VWRA, cheapest TER on market",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 10.4399995803833,
+      "change_pct": -0.08614008890190188,
+      "ccy": "USD",
+      "ytd": 8.303246990236206,
+      "ret_1m": -1.4350493498546844,
+      "ret_1y": null,
+      "vol": 12.635888269434767,
+      "pro_score": 66.1,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 81.8,
+        "riskadj": null,
+        "momentum": 9.1,
+        "liquidity": 45.5
+      },
+      "verdict": "Solid — tax-efficient Acc UCITS, low cost, weak momentum."
+    },
+    {
+      "name": "iShares FTSE All-World UCITS (FTAW)",
+      "short": "FTAW",
+      "ticker": "FTAW.L",
+      "why": "Same FTSE All-World index as VWRA, cheaper TER (new/smaller AUM)",
+      "ter": 0.12,
+      "dist": "Acc",
+      "price": 3.8112499713897705,
+      "change_pct": 0.37529734822274236,
+      "ccy": "GBP",
+      "ytd": 1.369774148050285,
+      "ret_1m": -2.7804341374176538,
+      "ret_1y": null,
+      "vol": 11.474116772254268,
+      "pro_score": 62.4,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 54.5,
+        "riskadj": null,
+        "momentum": 0.0,
+        "liquidity": 72.7
+      },
+      "verdict": "Solid — tax-efficient Acc UCITS, weak momentum."
+    },
+    {
+      "name": "iShares $ Treasury 7-10y UCITS (IDTM)",
+      "short": "IDTM",
+      "ticker": "IDTM.L",
+      "why": "US Treasuries, rate-sensitive ballast (Acc)",
+      "ter": 0.07,
+      "dist": "Acc",
+      "price": 169.88999938964844,
+      "change_pct": -0.42201583619210176,
+      "ccy": "USD",
+      "ytd": -2.7811162290996063,
+      "ret_1m": -0.2612541795159488,
+      "ret_1y": -1.5472868606402819,
+      "vol": 5.613046563485415,
+      "pro_score": 60.9,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 90.9,
+        "riskadj": 0.0,
+        "momentum": 18.2,
+        "liquidity": 100.0
+      },
+      "verdict": "Solid — tax-efficient Acc UCITS, low cost, weak momentum."
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 52.2400016784668,
+      "change_pct": 0.8105017099884853,
+      "ccy": "USD",
+      "ytd": 13.614619831564273,
+      "ret_1m": -8.511378153288303,
+      "ret_1y": 28.95582286582934,
+      "vol": 21.646876660996934,
+      "pro_score": 57.0,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 36.4,
+        "riskadj": 33.3,
+        "momentum": 100.0,
+        "liquidity": 9.1
+      },
+      "verdict": "Solid — tax-efficient Acc UCITS, positive momentum."
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 123440.0,
+      "change_pct": 1.2135126270908494,
+      "ccy": "GBp",
+      "ytd": 14.116668207451234,
+      "ret_1m": -6.364256997648486,
+      "ret_1y": 25.243506493506494,
+      "vol": 16.77424755426348,
+      "pro_score": 47.0,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 0.0,
+        "riskadj": 44.4,
+        "momentum": 54.5,
+        "liquidity": 18.2
+      },
+      "verdict": "Fair — tax-efficient Acc UCITS."
+    },
+    {
+      "name": "iShares MSCI World SRI UCITS (SUWS)",
+      "short": "SUWS",
+      "ticker": "SUWS.L",
+      "why": "ESG-screened global developed alternative",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 11.484999656677246,
+      "change_pct": -0.36868787983579676,
+      "ccy": "USD",
+      "ytd": 6.6388037931619515,
+      "ret_1m": -1.6484702908496427,
+      "ret_1y": 14.878711424125923,
+      "vol": 13.998443083824272,
+      "pro_score": 42.4,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 18.2,
+        "riskadj": 22.2,
+        "momentum": 27.3,
+        "liquidity": 27.3
+      },
+      "verdict": "Fair — tax-efficient Acc UCITS, weak momentum."
+    },
+    {
+      "name": "iShares Core MSCI World UCITS (SWDA)",
+      "short": "SWDA",
+      "ticker": "SWDA.L",
+      "why": "Global developed-market core holding",
+      "ter": 0.2,
+      "dist": "Acc",
+      "price": 10649.0,
+      "change_pct": 0.25418941818866503,
+      "ccy": "GBp",
+      "ytd": 9.919488026424442,
+      "ret_1m": -1.6076873325325696,
+      "ret_1y": 20.029305680793506,
+      "vol": 26.57586570312421,
+      "pro_score": 35.1,
+      "pillars": {
+        "tax": 100.0,
+        "cost": 9.1,
+        "riskadj": 11.1,
+        "momentum": 36.4,
+        "liquidity": 0.0
+      },
+      "verdict": "Watch — tax-efficient Acc UCITS."
+    }
+  ],
+  "themed": [
+    {
+      "name": "Lithium & Battery (LIT)",
+      "short": "LIT",
+      "ticker": "LIT",
+      "blurb": "Global X Lithium & Battery",
+      "holdings": [
+        "ALB",
+        "TSLA",
+        "BYDDY",
+        "SQM"
+      ],
+      "price": 69.08000183105469,
+      "change_pct": 3.227740169173734,
+      "ccy": "USD",
+      "ytd": 4.24023740807339,
+      "ret_1m": -15.909920209443825,
+      "ret_1y": 57.32179929653542
+    },
+    {
+      "name": "Space Exploration (ARKX)",
+      "short": "ARKX",
+      "ticker": "ARKX",
+      "blurb": "ARK Space Exploration",
+      "holdings": [
+        "RKLB",
+        "KTOS",
+        "TER",
+        "TRMB"
+      ],
+      "price": 31.18000030517578,
+      "change_pct": 2.2965904640827097,
+      "ccy": "USD",
+      "ytd": 3.8640900390529946,
+      "ret_1m": -9.780095294577732,
+      "ret_1y": 18.33017022308161
+    },
+    {
+      "name": "Agriculture (DBA)",
+      "short": "DBA",
+      "ticker": "DBA",
+      "blurb": "Invesco DB Agriculture",
+      "holdings": [
+        "Corn",
+        "Soybeans",
+        "Sugar",
+        "Coffee"
+      ],
+      "price": 28.149999618530273,
+      "change_pct": 0.463951315641688,
+      "ccy": "USD",
+      "ytd": 10.133021152989288,
+      "ret_1m": 5.707850190258569,
+      "ret_1y": 8.394302513726924
+    }
+  ],
+  "etfs_focus": [
+    {
+      "name": "Lithium & Battery (LIT)",
+      "short": "LIT",
+      "ticker": "LIT",
+      "blurb": "Global X Lithium & Battery",
+      "holdings": [
+        "ALB",
+        "TSLA",
+        "BYDDY",
+        "SQM"
+      ],
+      "price": 69.08000183105469,
+      "change_pct": 3.227740169173734,
+      "ccy": "USD",
+      "ytd": 4.24023740807339,
+      "ret_1m": -15.909920209443825,
+      "ret_1y": 57.32179929653542
+    },
+    {
+      "name": "Space Exploration (ARKX)",
+      "short": "ARKX",
+      "ticker": "ARKX",
+      "blurb": "ARK Space Exploration",
+      "holdings": [
+        "RKLB",
+        "KTOS",
+        "TER",
+        "TRMB"
+      ],
+      "price": 31.18000030517578,
+      "change_pct": 2.2965904640827097,
+      "ccy": "USD",
+      "ytd": 3.8640900390529946,
+      "ret_1m": -9.780095294577732,
+      "ret_1y": 18.33017022308161
+    },
+    {
+      "name": "iShares Nasdaq 100 UCITS (CNX1)",
+      "short": "CNX1",
+      "ticker": "CNX1.L",
+      "why": "US tech/growth tilt, accumulating",
+      "ter": 0.33,
+      "dist": "Acc",
+      "price": 123440.0,
+      "change_pct": 1.2135126270908494,
+      "ccy": "GBp",
+      "ytd": 14.116668207451234,
+      "ret_1m": -6.364256997648486,
+      "ret_1y": 25.243506493506494,
+      "vol": 16.77424755426348
+    },
+    {
+      "name": "iShares Core MSCI EM IMI UCITS (EIMI)",
+      "short": "EIMI",
+      "ticker": "EIMI.L",
+      "why": "Broad emerging-market exposure",
+      "ter": 0.18,
+      "dist": "Acc",
+      "price": 52.2400016784668,
+      "change_pct": 0.8105017099884853,
+      "ccy": "USD",
+      "ytd": 13.614619831564273,
+      "ret_1m": -8.511378153288303,
+      "ret_1y": 28.95582286582934,
+      "vol": 21.646876660996934
+    },
+    {
+      "name": "Agriculture (DBA)",
+      "short": "DBA",
+      "ticker": "DBA",
+      "blurb": "Invesco DB Agriculture",
+      "holdings": [
+        "Corn",
+        "Soybeans",
+        "Sugar",
+        "Coffee"
+      ],
+      "price": 28.149999618530273,
+      "change_pct": 0.463951315641688,
+      "ccy": "USD",
+      "ytd": 10.133021152989288,
+      "ret_1m": 5.707850190258569,
+      "ret_1y": 8.394302513726924
+    }
+  ],
+  "stocks_focus": [
+    {
+      "ticker": "TER",
+      "price": 374.0400085449219,
+      "change_pct": 12.068551534254372,
+      "ccy": "USD",
+      "ret_1m": -14.58713987122993,
+      "from_hi": -22.693450029767632
+    },
+    {
+      "ticker": "RKLB",
+      "price": 69.12000274658203,
+      "change_pct": 5.1414739772531695,
+      "ccy": "USD",
+      "ret_1m": -35.546434051232055,
+      "from_hi": -53.99054468993009
+    },
+    {
+      "ticker": "KTOS",
+      "price": 48.209999084472656,
+      "change_pct": 4.941228832436054,
+      "ccy": "USD",
+      "ret_1m": -11.068068808948896,
+      "from_hi": -63.11964608761244
+    },
+    {
+      "ticker": "TSLA",
+      "price": 378.92999267578125,
+      "change_pct": 2.5326690927467803,
+      "ccy": "USD",
+      "ret_1m": -5.383404850137801,
+      "from_hi": -22.648405956795962
+    },
+    {
+      "ticker": "SQM",
+      "price": 68.83999633789062,
+      "change_pct": 1.69891247600387,
+      "ccy": "USD",
+      "ret_1m": -13.6152663710775,
+      "from_hi": -27.772533730713985
+    }
+  ],
+  "ucits_alts": [
+    {
+      "us_ticker": "LIT",
+      "us_name": "LIT",
+      "ucits_name": "Global X Lithium & Battery Tech UCITS",
+      "lse_ticker": "LITG.L",
+      "note": "Lithium/battery UCITS",
+      "ter": 0.6
+    },
+    {
+      "us_ticker": "DBA",
+      "us_name": "DBA",
+      "ucits_name": "WisdomTree Agriculture (AGAP)",
+      "lse_ticker": "AGAP.L",
+      "note": "Agri-commodity ETC (UCITS-style, LSE)",
+      "ter": 0.49
+    }
+  ],
+  "news": [
+    {
+      "title": "‘Stop Being a Wimp and Be the Woman You Were Born to Be’: Suze Orman to a Debt-Free 38-Year-Old Paralyzed by AI Fears",
+      "link": "https://finance.yahoo.com/m/79ab1b53-ed74-3d57-8924-5ce9b4d0e90a/%E2%80%98stop-being-a-wimp-and-be-the.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "OpenAI says its AI technology acted on its own in an 'unprecedented' hack of another company",
+      "link": "https://finance.yahoo.com/m/19a722b5-6135-3337-ae6a-65ce0dc245e1/openai-says-its-ai-technology.html",
+      "publisher": "Associated Press"
+    },
+    {
+      "title": "Inside Usain Bolt’s $90 Million Net Worth And Post-Retirement Business Moves",
+      "link": "https://finance.yahoo.com/m/b9fdc05e-0b1b-370a-9920-bacf5d2236af/inside-usain-bolt%E2%80%99s-%2490.html",
+      "publisher": "AfroTech"
+    },
+    {
+      "title": "Does LIT's History Justify Buying This Dip?",
+      "link": "https://finance.yahoo.com/m/720b6ea2-277b-374e-9ebf-44b5c4e057c3/does-lit%27s-history-justify.html",
+      "publisher": "Trefis"
+    },
+    {
+      "title": "Lithium ETF LIT Returned 125% to Investors Who Bought at Last Year’s Low",
+      "link": "https://finance.yahoo.com/m/adb68b0d-f468-3ce9-a716-c0d01e502b7e/lithium-etf-lit-returned-125%25.html",
+      "publisher": "24/7 Wall St."
+    },
+    {
+      "title": "3 Market Themes Driving Stocks Right Now: AI, Alt Energy and Commodities",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-market-themes-driving-stocks-143900163.html",
+      "publisher": "Zacks"
+    }
+  ]
+}
