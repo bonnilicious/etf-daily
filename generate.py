@@ -42,14 +42,30 @@ CORE_ETFS = [
     ("iShares Core S&P 500 UCITS (CSPX)", "CSPX.L", "The classic large S&P 500 UCITS, deep liquidity", 0.07, "Acc"),
     ("iShares Core MSCI World UCITS (SWDA)", "SWDA.L", "Global developed-market core holding", 0.20, "Acc"),
     ("Vanguard FTSE Dev World UCITS (VHVG)", "VHVG.L", "Developed-world core, low TER, accumulating", 0.12, "Acc"),
-    ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts; largest/most liquid", 0.19, "Acc"),
-    ("iShares FTSE All-World UCITS (FTAW)", "FTAW.L", "Same FTSE All-World index as VWRA, cheaper TER (new/smaller AUM)", 0.12, "Acc"),
+    ("Vanguard FTSE All-World UCITS (VWRA)", "VWRA.L", "One-fund global equity, incl. emerging mkts; largest/most liquid", 0.14, "Acc"),
+    ("Invesco FTSE All-World UCITS (FWRA)", "FWRA.L", "USD-quoted FTSE All-World (the USD line of the iShares FTAW index family); cheap all-in-one", 0.15, "Acc"),
     ("Xtrackers FTSE All-World UCITS 1C (ALLW)", "ALLW.L", "Same FTSE All-World index as VWRA, cheapest TER on market", 0.07, "Acc"),
+    ("iShares Core MSCI World UCITS (IWDA)", "IWDA.L", "USD-quoted twin of SWDA; developed-world core, deepest AUM/liquidity", 0.20, "Acc"),
+    ("State Street SPDR MSCI World UCITS (SWRD)", "SWRD.L", "Cheapest MSCI World developed-world core (USD)", 0.12, "Acc"),
     ("iShares Core MSCI EM IMI UCITS (EIMI)", "EIMI.L", "Broad emerging-market exposure", 0.18, "Acc"),
+    ("iShares MSCI World Small Cap UCITS (WSML)", "WSML.L", "Global small-cap tilt / diversifier vs large-cap core (USD)", 0.35, "Acc"),
+    ("iShares Edge MSCI World Quality Factor (IWQU)", "IWQU.L", "Quality factor tilt — profitable, low-debt global names (USD)", 0.25, "Acc"),
+    ("iShares Edge MSCI World Momentum Factor (IWMO)", "IWMO.L", "Momentum factor tilt for potential upside (USD)", 0.25, "Acc"),
+    ("iShares Edge MSCI World Value Factor (IWVL)", "IWVL.L", "Value factor tilt — cheaper valuations, diversifier (USD)", 0.25, "Acc"),
     ("iShares Nasdaq 100 UCITS (CNX1)", "CNX1.L", "US tech/growth tilt, accumulating", 0.33, "Acc"),
     ("iShares MSCI World SRI UCITS (SUWS)", "SUWS.L", "ESG-screened global developed alternative", 0.20, "Acc"),
     ("iShares $ Treasury 7-10y UCITS (IDTM)", "IDTM.L", "US Treasuries, rate-sensitive ballast (Acc)", 0.07, "Acc"),
 ]
+
+# Same-index groups: funds here track the SAME underlying index, so they are
+# largely interchangeable and differ mainly on cost (TER)/liquidity. Shown as a
+# small badge so you know which lines are substitutes rather than diversifiers.
+INDEX_GROUPS = {
+    "VUAA.L": "S&P 500", "SPXP.L": "S&P 500", "CSPX.L": "S&P 500",
+    "SWDA.L": "MSCI World", "IWDA.L": "MSCI World", "SWRD.L": "MSCI World",
+    "VHVG.L": "FTSE Dev World",
+    "VWRA.L": "FTSE All-World", "FWRA.L": "FTSE All-World", "ALLW.L": "FTSE All-World",
+}
 
 # Map US-listed focus tickers -> a London-listed UCITS alternative where one
 # meaningfully exists. Used to surface a cost/tax-efficient wrapper for a
@@ -195,6 +211,94 @@ def fetch_quotes(tickers):
     return out
 
 
+def _fetch_history(ticker):
+    """Full-history (range=max, monthly) fetch for a single ticker. Lets us
+    compute 6-month & since-inception returns and a 1Y sparkline that the 1y
+    daily feed can't provide. Returns {} on failure (caller degrades gracefully)."""
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+           "?range=max&interval=1mo")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        data = json.load(resp)
+    res = data["chart"]["result"][0]
+    ts = res.get("timestamp", []) or []
+    try:
+        raw = res["indicators"]["quote"][0]["close"]
+    except (KeyError, IndexError, TypeError):
+        raw = []
+    series = [(t, c) for t, c in zip(ts, raw) if c is not None]
+    if len(series) < 2:
+        return {}
+    closes = [c for _, c in series]
+    price = closes[-1]
+
+    def ret_from(base):
+        return (price - base) / base * 100 if (price and base) else None
+
+    # 6-month return: walk back 6 monthly points.
+    ret_6m = ret_from(closes[-7]) if len(closes) > 6 else None
+    # Since-inception: first available monthly close.
+    incep = ret_from(closes[0])
+    incep_ts = series[0][0]
+    incep_year = datetime.datetime.fromtimestamp(incep_ts, SGT).year
+    # Annualised (CAGR) since inception: (end/start)^(1/years) - 1.
+    now_ts = series[-1][0]
+    years = max((now_ts - incep_ts) / (365.25 * 86400), 0.5)
+    cagr = None
+    if closes[0] and price and closes[0] > 0:
+        cagr = ((price / closes[0]) ** (1.0 / years) - 1.0) * 100
+    # ~1Y sparkline: last 13 monthly closes, normalised to a 0-100 y-scale.
+    tail = closes[-13:] if len(closes) >= 13 else closes
+    lo, hi = min(tail), max(tail)
+    rng = (hi - lo) or 1.0
+    spark = [round((c - lo) / rng * 100, 1) for c in tail]
+    return {"ret_6m": ret_6m, "ret_incep": incep, "incep_year": incep_year,
+            "cagr": cagr, "spark": spark}
+
+
+def fetch_histories(tickers):
+    """Batch full-history fetch. Missing/failed tickers simply absent."""
+    out = {}
+    for tic in tickers:
+        try:
+            h = _fetch_history(tic)
+            if h:
+                out[tic] = h
+        except (urllib.error.URLError, json.JSONDecodeError, KeyError,
+                IndexError, TimeoutError, ValueError) as e:
+            print(f"WARN: history fetch failed for {tic}: {e}")
+    return out
+
+
+# Static SGD fallbacks used only if the live FX fetch fails (so the DCA tip is
+# never blank). GBp = pence = GBP/100.
+FX_FALLBACK = {"USD": 1.35, "GBP": 1.71, "GBp": 0.0171, "EUR": 1.46, "SGD": 1.0}
+
+
+def fetch_fx_to_sgd():
+    """Live FX -> SGD for the DCA 'shares per S$1,000' hint. Uses Yahoo FX
+    pairs (e.g. USDSGD=X). Falls back to static rates per-currency on failure."""
+    rates = dict(FX_FALLBACK)
+    pairs = {"USD": "USDSGD=X", "GBP": "GBPSGD=X", "EUR": "EURSGD=X"}
+    for ccy, sym in pairs.items():
+        url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}"
+               "?range=5d&interval=1d")
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = json.load(resp)
+            px = data["chart"]["result"][0]["meta"].get("regularMarketPrice")
+            if px:
+                rates[ccy] = px
+        except (urllib.error.URLError, json.JSONDecodeError, KeyError,
+                IndexError, TimeoutError) as e:
+            print(f"WARN: FX fetch failed for {sym}: {e}")
+    # GBp (pence) is GBP/100.
+    rates["GBp"] = rates.get("GBP", FX_FALLBACK["GBP"]) / 100.0
+    rates["SGD"] = 1.0
+    return rates
+
+
 # --------------------------------------------------------------------------
 # NEWS FETCH — Yahoo Finance free search endpoint (real headlines + links)
 # --------------------------------------------------------------------------
@@ -260,6 +364,15 @@ def short_name(full):
     if "(" in full and ")" in full:
         return full[full.rfind("(") + 1: full.rfind(")")]
     return full
+
+
+def _is_not_gbp(ccy):
+    """True if the quote currency is NOT sterling. Drops both GBP (pounds) and
+    GBp (pence). A missing/blank currency (feed miss) is kept rather than
+    silently dropped, so a transient fetch gap doesn't erase a fund."""
+    if not ccy:
+        return True
+    return ccy.strip().upper() != "GBP"
 
 
 # --------------------------------------------------------------------------
@@ -398,32 +511,74 @@ def build_day_record(today, now_sgt):
                 stock_candidates.append(h)
 
     quotes = fetch_quotes(core_tickers + theme_tickers + stock_candidates)
+    # UCITS/LSE alternative tickers for today's themes (fetch quotes for them
+    # too, so the alternatives table can show live price/returns + a popup).
+    alt_tickers = []
+    for tt in theme_tickers:
+        alt = UCITS_ALTERNATIVES.get(tt)
+        if alt and alt[1] not in alt_tickers:
+            alt_tickers.append(alt[1])
+    if alt_tickers:
+        quotes.update(fetch_quotes(alt_tickers))
+    # Extended full-history (range=max) for EVERY ticker we display in a table
+    # with a click popup — core watchlist, themed ETFs, stocks in focus and the
+    # UCITS/LSE alternatives — so each popup has 6-month & since-inception
+    # returns, a CAGR and a 1Y sparkline. Missing/failed tickers degrade
+    # gracefully (popup simply omits those rows).
+    hist_tickers = list(dict.fromkeys(
+        core_tickers + theme_tickers + stock_candidates + alt_tickers))
+    histories = fetch_histories(hist_tickers)
+    # Live FX -> SGD for the DCA "shares per S$1,000" hint.
+    fx = fetch_fx_to_sgd()
 
     core_rows = []
     for name, tic, why, ter, dist in CORE_ETFS:
         q = quotes.get(tic, {})
+        h = histories.get(tic, {})
         core_rows.append({"name": name, "short": short_name(name), "ticker": tic,
                           "why": why, "ter": ter, "dist": dist,
                           "price": q.get("price"), "change_pct": q.get("change_pct"),
                           "ccy": q.get("currency"), "ytd": q.get("ytd"),
-                          "ret_1m": q.get("ret_1m"),
-                          "ret_1y": q.get("ret_1y"), "vol": q.get("vol")})
+                          "ret_1m": q.get("ret_1m"), "ret_3m": q.get("ret_3m"),
+                          "ret_1y": q.get("ret_1y"), "vol": q.get("vol"),
+                          "hi52": q.get("hi52"), "lo52": q.get("lo52"),
+                          "from_hi": q.get("from_hi"),
+                          "ret_6m": h.get("ret_6m"), "ret_incep": h.get("ret_incep"),
+                          "incep_year": h.get("incep_year"), "cagr": h.get("cagr"),
+                          "spark": h.get("spark"),
+                          "index_group": INDEX_GROUPS.get(tic)})
+    # Remove GBP-quoted lines per user preference: keep only funds/stocks the
+    # live feed reports in a non-GBP currency (USD/EUR/etc.). Covers both GBP
+    # (pounds) and GBp (pence). A row with no currency yet (feed miss) is kept.
+    core_rows = [r for r in core_rows if _is_not_gbp(r.get("ccy"))]
     # Core Watchlist display order: sort by TER, lowest to highest (cheapest
     # first). None TERs sort last.
     core_rows.sort(key=lambda r: (r.get("ter") is None, r.get("ter") or 999))
 
     # Pro Score: rank the core watchlist by the composite 0-100 model. Uses a
     # copy so the day-momentum ordering of `core` (above) is preserved.
-    scored_rows = score_etfs([dict(r) for r in core_rows])
+    # Per user preference, HIDE anything scoring below 50 (keep the shortlist to
+    # genuinely strong/solid candidates only).
+    scored_rows = [r for r in score_etfs([dict(r) for r in core_rows])
+                   if r.get("pro_score") is not None and r["pro_score"] >= 50]
 
     themed_rows = []
     for name, tic, blurb, holdings in themes:
         q = quotes.get(tic, {})
+        h = histories.get(tic, {})
         themed_rows.append({"name": name, "short": short_name(name), "ticker": tic,
                             "blurb": blurb, "holdings": holdings,
                             "price": q.get("price"), "change_pct": q.get("change_pct"),
                             "ccy": q.get("currency"), "ytd": q.get("ytd"),
-                            "ret_1m": q.get("ret_1m"), "ret_1y": q.get("ret_1y")})
+                            "ret_1m": q.get("ret_1m"), "ret_3m": q.get("ret_3m"),
+                            "ret_1y": q.get("ret_1y"), "vol": q.get("vol"),
+                            "hi52": q.get("hi52"), "lo52": q.get("lo52"),
+                            "from_hi": q.get("from_hi"), "dist": "—", "ter": None,
+                            "ret_6m": h.get("ret_6m"), "ret_incep": h.get("ret_incep"),
+                            "incep_year": h.get("incep_year"), "cagr": h.get("cagr"),
+                            "spark": h.get("spark"),
+                            "index_group": INDEX_GROUPS.get(tic)})
+    themed_rows = [r for r in themed_rows if _is_not_gbp(r.get("ccy"))]
 
     # ETFs in focus: top 5 by today's momentum across core + themed.
     etf_pool = core_rows + themed_rows
@@ -434,10 +589,21 @@ def build_day_record(today, now_sgt):
     stock_rows = []
     for tic in stock_candidates:
         q = quotes.get(tic, {})
+        h = histories.get(tic, {})
         if q.get("change_pct") is not None:
-            stock_rows.append({"ticker": tic, "price": q.get("price"),
+            stock_rows.append({"ticker": tic, "short": tic,
+                               "name": q.get("name") or tic,
+                               "price": q.get("price"),
                                "change_pct": q.get("change_pct"), "ccy": q.get("currency"),
-                               "ret_1m": q.get("ret_1m"), "from_hi": q.get("from_hi")})
+                               "ytd": q.get("ytd"),
+                               "ret_1m": q.get("ret_1m"), "ret_3m": q.get("ret_3m"),
+                               "ret_1y": q.get("ret_1y"), "vol": q.get("vol"),
+                               "hi52": q.get("hi52"), "lo52": q.get("lo52"),
+                               "from_hi": q.get("from_hi"), "dist": "—", "ter": None,
+                               "ret_6m": h.get("ret_6m"), "ret_incep": h.get("ret_incep"),
+                               "incep_year": h.get("incep_year"), "cagr": h.get("cagr"),
+                               "spark": h.get("spark"), "index_group": None})
+    stock_rows = [s for s in stock_rows if _is_not_gbp(s.get("ccy"))]
     stocks_focus = sorted(stock_rows, key=lambda s: s["change_pct"], reverse=True)[:5]
 
     # UCITS/LSE alternatives for today's US-listed themed ETFs — so a Singapore
@@ -450,9 +616,25 @@ def build_day_record(today, now_sgt):
         alt = UCITS_ALTERNATIVES.get(t["ticker"])
         if alt and alt[1] not in seen_lse:
             seen_lse.add(alt[1])
+            lse = alt[1]
+            q = quotes.get(lse, {})
+            h = histories.get(lse, {})
             ucits_alts.append({"us_ticker": t["ticker"], "us_name": t["short"],
-                               "ucits_name": alt[0], "lse_ticker": alt[1],
-                               "note": alt[2], "ter": alt[3]})
+                               "ucits_name": alt[0], "lse_ticker": lse,
+                               "note": alt[2], "ter": alt[3],
+                               # fields for the sortable table + click popup
+                               "ticker": lse, "short": lse, "name": alt[0],
+                               "dist": "Acc", "index_group": None,
+                               "price": q.get("price"), "change_pct": q.get("change_pct"),
+                               "ccy": q.get("currency"), "ytd": q.get("ytd"),
+                               "ret_1m": q.get("ret_1m"), "ret_3m": q.get("ret_3m"),
+                               "ret_1y": q.get("ret_1y"), "vol": q.get("vol"),
+                               "hi52": q.get("hi52"), "lo52": q.get("lo52"),
+                               "from_hi": q.get("from_hi"),
+                               "ret_6m": h.get("ret_6m"), "ret_incep": h.get("ret_incep"),
+                               "incep_year": h.get("incep_year"), "cagr": h.get("cagr"),
+                               "spark": h.get("spark")})
+    ucits_alts = [a for a in ucits_alts if _is_not_gbp(a.get("ccy"))]
 
     # News: a few headlines for the leading core ETF + the leading theme.
     news = []
@@ -478,6 +660,7 @@ def build_day_record(today, now_sgt):
         "date_display": today.strftime("%A, %d %B %Y"),
         "refreshed": now_sgt.strftime("%d %b %Y, %H:%M SGT"),
         "newsletter": newsletter(core_rows, themed_rows),
+        "fx": fx,
         "core": core_rows,
         "scored": scored_rows,
         "themed": themed_rows,
@@ -492,26 +675,76 @@ def build_day_record(today, now_sgt):
 # HTML RENDERING
 # --------------------------------------------------------------------------
 
+
+def _pop_payload(r, fx=None):
+    """Build the per-fund JS payload consumed by the click/tap popup."""
+    fx = fx or FX_FALLBACK
+    price, ccy = r.get("price"), (r.get("ccy") or "")
+    dca = None
+    rate = fx.get(ccy)
+    if price and rate:
+        shares = 1000.0 / (price * rate)
+        dca = f"≈ S$1,000 buys ~{shares:.1f} shares at today's price."
+    incep_lbl = "Since inception"
+    if r.get("incep_year"):
+        incep_lbl = f"Since inception ({r['incep_year']})"
+    rng = None
+    if r.get("lo52") is not None and r.get("hi52") is not None:
+        fh = r.get("from_hi")
+        fh_txt = f" · {abs(fh):.1f}% below high" if fh is not None else ""
+        rng = f"52-week range: {r['lo52']:.2f} – {r['hi52']:.2f} {ccy}{fh_txt}"
+    cagr = r.get("cagr")
+    cagr_txt = (f"Annualised since inception (CAGR): {cagr:+.1f}% / yr."
+                if cagr is not None else None)
+    # Header line: ticker + last price, then Acc/Dist + TER only when meaningful
+    # (stocks have neither, so we skip the trailing '· — · TER —').
+    tk = f"{r.get('ticker','')} · Last {fmt(price)} {ccy}"
+    dist = r.get("dist", "")
+    if dist and dist != "—":
+        tk += f" · {dist}"
+    if r.get("ter") is not None:
+        tk += f" · TER {fmt(r.get('ter'), '%')}"
+    return {
+        "nm": r.get("name", r.get("short", "")),
+        "tk": tk,
+        "grp": r.get("index_group"),
+        "r": [
+            ["1 Month", r.get("ret_1m")], ["3 Months", r.get("ret_3m")],
+            ["6 Months", r.get("ret_6m")], ["12 Months", r.get("ret_1y")],
+            ["YTD", r.get("ytd")], [incep_lbl, r.get("ret_incep")],
+        ],
+        "spark": r.get("spark") or [],
+        "rng": rng, "cagr": cagr_txt, "dca": dca,
+    }
+
+
 def render_day(rec, open_default=False):
     def chg_span(c):
         cls = "up" if (c or 0) >= 0 else "down"
         arrow = "&#9650;" if (c or 0) >= 0 else "&#9660;"
         return f'<span class="{cls}">{arrow} {fmt(c, "%")}</span>'
 
-    core_html = """
-        <tr class="hdr"><td>Fund</td><td class="num">TER</td><td class="num">Type</td>
-        <td class="num">Last</td><td class="num">Day</td><td class="num">YTD</td>
-        <td class="num">1Y</td><td class="num">Vol</td></tr>"""
-    for r in rec["core"]:
-        core_html += f"""
-        <tr><td><strong>{r['name']}</strong><br><span class="muted">{r['why']}</span></td>
-        <td class="num">{fmt(r.get('ter'), '%')}</td>
-        <td class="num"><span class="ccy">{r.get('dist','')}</span></td>
-        <td class="num">{fmt(r['price'])} <span class="ccy">{r['ccy']}</span></td>
-        <td class="num">{chg_span(r['change_pct'])}</td>
-        <td class="num">{chg_span(r.get('ytd'))}</td>
-        <td class="num">{chg_span(r.get('ret_1y'))}</td>
-        <td class="num">{fmt(r.get('vol'), '%', 1)}</td></tr>"""
+    # Collect popup payloads for this day, keyed date+ticker so days don't clash.
+    payloads = {}
+
+    def pop_key(r):
+        k = f"{rec['date']}::{r.get('ticker','')}"
+        payloads[k] = _pop_payload(r, rec.get("fx"))
+        return k
+
+    def fund_link(r, label):
+        k = pop_key(r)
+        return (f'<span class="lnk" role="button" tabindex="0" '
+                f'onclick="pop(this)" onkeydown="if(event.key==\'Enter\')pop(this)" '
+                f'data-k="{k}">{label}</span>')
+
+    def grp_badge(r):
+        g = r.get("index_group")
+        return (f' <span class="grp" title="Same index as other funds tagged '
+                f'{g} — interchangeable, differ mainly on cost">{g}</span>'
+                if g else "")
+
+    core_html = ""  # Core Watchlist merged into the unified Watchlist below.
 
     themed_html = ""
     for t in rec["themed"]:
@@ -530,33 +763,45 @@ def render_day(rec, open_default=False):
     top = (max(_core_valid, key=lambda r: r["change_pct"])
            if _core_valid else rec["core"][0])
 
-    # ETFs in focus (top momentum)
+    # ETFs in focus (top momentum) — sortable + click-for-popup, matching the
+    # Ranked Watchlist treatment.
+    def _chgv(c):
+        return c if c is not None else -1e9
+
     etfs_html = ""
     if rec.get("etfs_focus"):
         etfs_html += """
-        <tr class="hdr"><td>ETF</td><td class="num">Last</td><td class="num">Day</td>
-        <td class="num">1M</td><td class="num">YTD</td></tr>"""
+        <tr class="hdr"><td data-c="0" data-t="s">ETF</td>
+        <td class="num sortable" data-c="1" data-t="n">Last</td>
+        <td class="num sortable" data-c="2" data-t="n">Day</td>
+        <td class="num sortable" data-c="3" data-t="n">1M</td>
+        <td class="num sortable" data-c="4" data-t="n">YTD</td></tr>"""
     for e in rec.get("etfs_focus", []):
+        nm = f"<strong>{e['short']}</strong> <span class=\"muted\">{e.get('ticker','')}</span>"
         etfs_html += f"""
-        <tr><td><strong>{e['short']}</strong> <span class="muted">{e.get('ticker','')}</span></td>
-        <td class="num">{fmt(e['price'])} <span class="ccy">{e.get('ccy','')}</span></td>
-        <td class="num">{chg_span(e['change_pct'])}</td>
-        <td class="num">{chg_span(e.get('ret_1m'))}</td>
-        <td class="num">{chg_span(e.get('ytd'))}</td></tr>"""
+        <tr><td class="fund" data-v="{e['short']}">{fund_link(e, nm)}{grp_badge(e)}</td>
+        <td class="num" data-v="{e.get('price') or -999}">{fmt(e['price'])} <span class="ccy">{e.get('ccy','')}</span></td>
+        <td class="num" data-v="{_chgv(e.get('change_pct'))}">{chg_span(e['change_pct'])}</td>
+        <td class="num" data-v="{_chgv(e.get('ret_1m'))}">{chg_span(e.get('ret_1m'))}</td>
+        <td class="num" data-v="{_chgv(e.get('ytd'))}">{chg_span(e.get('ytd'))}</td></tr>"""
 
-    # Stocks in focus (theme holdings by momentum)
+    # Stocks in focus (theme holdings by momentum) — sortable + click-for-popup.
     stocks_html = ""
     if rec.get("stocks_focus"):
         stocks_html += """
-        <tr class="hdr"><td>Stock</td><td class="num">Last</td><td class="num">Day</td>
-        <td class="num">1M</td><td class="num">vs 52w hi</td></tr>"""
+        <tr class="hdr"><td data-c="0" data-t="s">Stock</td>
+        <td class="num sortable" data-c="1" data-t="n">Last</td>
+        <td class="num sortable" data-c="2" data-t="n">Day</td>
+        <td class="num sortable" data-c="3" data-t="n">1M</td>
+        <td class="num sortable" data-c="4" data-t="n">vs 52w hi</td></tr>"""
     for s in rec.get("stocks_focus", []):
+        nm = f"<strong>{s['ticker']}</strong>"
         stocks_html += f"""
-        <tr><td><strong>{s['ticker']}</strong></td>
-        <td class="num">{fmt(s['price'])} <span class="ccy">{s.get('ccy','')}</span></td>
-        <td class="num">{chg_span(s['change_pct'])}</td>
-        <td class="num">{chg_span(s.get('ret_1m'))}</td>
-        <td class="num">{chg_span(s.get('from_hi'))}</td></tr>"""
+        <tr><td class="fund" data-v="{s['ticker']}">{fund_link(s, nm)}</td>
+        <td class="num" data-v="{s.get('price') or -999}">{fmt(s['price'])} <span class="ccy">{s.get('ccy','')}</span></td>
+        <td class="num" data-v="{_chgv(s.get('change_pct'))}">{chg_span(s['change_pct'])}</td>
+        <td class="num" data-v="{_chgv(s.get('ret_1m'))}">{chg_span(s.get('ret_1m'))}</td>
+        <td class="num" data-v="{_chgv(s.get('from_hi'))}">{chg_span(s.get('from_hi'))}</td></tr>"""
 
     # News links
     news_html = ""
@@ -572,33 +817,57 @@ def render_day(rec, open_default=False):
     etfs_block = (f"""
       <div class="card">
         <h3>ETFs in Focus (top momentum today)</h3>
-        <div class="scroll"><table>{etfs_html}</table></div>
+        <div class="scroll"><table class="sortable-tbl" data-tid="{rec['date']}-etf">{etfs_html}</table></div>
+        <p class="muted">Click / tap any name for its full return breakdown &amp; sparkline;
+        click any underlined column header to sort. Not financial advice.</p>
       </div>""" if etfs_html else "")
 
     stocks_block = (f"""
       <div class="card">
         <h3>Stocks in Focus (from today's themes)</h3>
-        <div class="scroll"><table>{stocks_html}</table></div>
+        <div class="scroll"><table class="sortable-tbl" data-tid="{rec['date']}-stk">{stocks_html}</table></div>
         <p class="muted">These are theme-ETF holdings surfaced by today's momentum —
-        shown for research, NOT buy recommendations. Speculative themes (e.g. quantum)
+        shown for research, NOT buy recommendations. Click / tap a name for its return
+        breakdown; click a header to sort. Speculative themes (e.g. quantum)
         are especially high-risk. Always do your own due diligence.</p>
       </div>""" if stocks_html else "")
 
-    # UCITS / LSE alternatives for the US-listed themes
+    # UCITS / LSE alternatives for the US-listed themes — sortable + click popup,
+    # now showing the London-listed UCITS's live price/returns alongside the
+    # US theme it replaces.
     ucits_html = ""
+    if rec.get("ucits_alts"):
+        ucits_html += """
+        <tr class="hdr"><td data-c="0" data-t="s">London UCITS (replaces US theme)</td>
+        <td class="num sortable" data-c="1" data-t="n">TER</td>
+        <td class="num sortable" data-c="2" data-t="n">Last</td>
+        <td class="num sortable" data-c="3" data-t="n">Day</td>
+        <td class="num sortable" data-c="4" data-t="n">YTD</td>
+        <td class="num sortable" data-c="5" data-t="n">1Y</td></tr>"""
     for a in rec.get("ucits_alts", []):
+        ter = a.get("ter")
+        ter_cell = (f'<span data-v="{ter}">{ter:.2f}%</span>' if ter is not None
+                    else '<span class="muted" data-v="999">—</span>')
+        nm = (f"<span class=\"lse\">{a['lse_ticker']}</span> "
+              f"<span class=\"muted\">&larr; {a['us_ticker']} (US)</span>")
         ucits_html += f"""
-        <tr><td><strong>{a['us_ticker']}</strong> <span class="muted">{a['us_name']} (US-listed)</span></td>
-        <td><span class="lse">{a['lse_ticker']}</span> <span class="muted">&middot; TER {fmt(a.get('ter'), '%')}</span><br><span class="muted">{a['ucits_name']}</span><br>
-        <span class="muted">{a['note']}</span></td></tr>"""
+        <tr><td class="fund" data-v="{a['lse_ticker']}">{fund_link(a, nm)}<br>
+        <span class="muted">{a['ucits_name']}</span><br>
+        <span class="muted">{a['note']}</span></td>
+        <td class="num" data-v="{ter if ter is not None else 999}">{ter_cell}</td>
+        <td class="num" data-v="{a.get('price') or -999}">{fmt(a.get('price'))} <span class="ccy">{a.get('ccy','')}</span></td>
+        <td class="num" data-v="{_chgv(a.get('change_pct'))}">{chg_span(a.get('change_pct'))}</td>
+        <td class="num" data-v="{_chgv(a.get('ytd'))}">{chg_span(a.get('ytd'))}</td>
+        <td class="num" data-v="{_chgv(a.get('ret_1y'))}">{chg_span(a.get('ret_1y'))}</td></tr>"""
     ucits_block = (f"""
       <div class="card">
         <h3>UCITS / LSE Alternative (Singapore + IBKR friendly)</h3>
-        <table class="ucits"><tr><td class="muted">US-listed theme</td><td class="muted">London-listed UCITS to consider</td></tr>{ucits_html}</table>
-        <p class="muted">For each US-domiciled theme above, this is the closest
+        <div class="scroll"><table class="sortable-tbl ucits" data-tid="{rec['date']}-ucits">{ucits_html}</table></div>
+        <p class="muted">For each US-domiciled theme today, this is the closest
         <strong>London-listed UCITS</strong> equivalent — Irish-domiciled funds pay
         15% (not 30%) US dividend withholding and avoid US estate-tax exposure for a
-        Singapore investor on IBKR. Some are imperfect proxies (e.g. there is no pure
+        Singapore investor on IBKR. Click / tap a name for its return breakdown;
+        click a header to sort. Some are imperfect proxies (e.g. there is no pure
         quantum-computing UCITS — AI is the nearest). Check TER, liquidity and tracking
         before buying. Not financial advice.</p>
       </div>""" if ucits_html else "")
@@ -630,41 +899,75 @@ def render_day(rec, open_default=False):
         cls = ' class="pos"' if v >= 0 else ' class="neg"'
         return f'<span{cls}>{v:.2f}</span>'
 
-    scored_html = """
-        <tr class="hdr"><td>Fund</td><td class="num">Score</td>
-        <td class="num">Tax</td><td class="num">TER</td><td class="num">Risk-adj (1Y/vol)</td>
-        <td class="num">Momentum (1Y)</td><td class="num">Volatility</td></tr>"""
+    # --- Unified Watchlist: Core metrics + Ranked (Pro Score) metrics merged
+    # into ONE table. Columns are tagged into two groups — "rank" (scoring
+    # model) and "watch" (day-to-day price action) — each toggle-able via a
+    # button so the user can show/hide either metric set. Fund / Score / Last
+    # are always visible. data-c indices are contiguous for the sort JS. ---
+    unified_html = """
+        <tr class="hdr">
+        <td data-c="0" data-t="s">Fund</td>
+        <td class="ctr sortable col-rank" data-c="1" data-t="n">Score</td>
+        <td class="num sortable" data-c="2" data-t="n">Last</td>
+        <td class="ctr col-rank" data-c="3">Tax</td>
+        <td class="num sortable col-rank" data-c="4" data-t="n">TER</td>
+        <td class="num sortable col-rank" data-c="5" data-t="n">Risk-adj (1Y/vol)</td>
+        <td class="num sortable col-rank" data-c="6" data-t="n">Momentum (1Y)</td>
+        <td class="num sortable col-rank" data-c="7" data-t="n">Volatility</td>
+        <td class="num sortable col-watch" data-c="8" data-t="n">Day</td>
+        <td class="num sortable col-watch" data-c="9" data-t="n">YTD</td>
+        <td class="num sortable col-watch" data-c="10" data-t="n">6M</td></tr>"""
     for r in rec.get("scored", []):
         ter = r.get("ter")
-        ter_cell = f"{ter:.2f}%" if ter is not None else '<span class="muted">—</span>'
-        scored_html += f"""
-        <tr><td><strong>{r['short']}</strong> <span class="muted">{r['ticker']}</span><br>
-        <span class="muted">{r.get('verdict','')}</span></td>
-        <td class="num">{score_badge(r['pro_score'])}</td>
-        <td class="num">{_tax_cell(r)}</td>
-        <td class="num">{ter_cell}</td>
-        <td class="num">{_ratio(r.get('sharpe_like'))}</td>
-        <td class="num">{_pct(r.get('ret_1y'), plus=True)}</td>
-        <td class="num">{_pct(r.get('vol'))}</td></tr>"""
+        ter_cell = (f'<span data-v="{ter}">{ter:.2f}%</span>' if ter is not None
+                    else '<span class="muted" data-v="-999">—</span>')
+        name_lbl = (f"<strong>{r['short']}</strong> "
+                    f"<span class=\"muted\">{r['ticker']}</span>")
+        last_cell = (f"{fmt(r.get('price'))} <span class=\"ccy\">{r.get('ccy','')}</span>"
+                     if r.get('price') is not None else '<span class="muted">—</span>')
+        sl = r.get('sharpe_like'); r1y = r.get('ret_1y'); vol = r.get('vol')
+        day = r.get('change_pct'); ytd = r.get('ytd'); r6m = r.get('ret_6m')
+        unified_html += f"""
+        <tr><td class="fund" data-v="{r['short']}">{fund_link(r, name_lbl)}{grp_badge(r)}<br>
+        <span class="muted">{r.get('verdict','')} · {r.get('why','')}</span></td>
+        <td class="ctr col-rank" data-v="{r['pro_score']}">{score_badge(r['pro_score'])}</td>
+        <td class="num" data-v="{r.get('price') or -999}">{last_cell}</td>
+        <td class="ctr col-rank">{_tax_cell(r)}</td>
+        <td class="num col-rank" data-v="{ter if ter is not None else 999}">{ter_cell}</td>
+        <td class="num col-rank" data-v="{sl if sl is not None else -999}">{_ratio(sl)}</td>
+        <td class="num col-rank" data-v="{r1y if r1y is not None else -999}">{_pct(r1y, plus=True)}</td>
+        <td class="num col-rank" data-v="{vol if vol is not None else 999}">{_pct(vol)}</td>
+        <td class="num col-watch" data-v="{day if day is not None else -1e9}">{chg_span(day)}</td>
+        <td class="num col-watch" data-v="{ytd if ytd is not None else -1e9}">{chg_span(ytd)}</td>
+        <td class="num col-watch" data-v="{r6m if r6m is not None else -1e9}">{chg_span(r6m)}</td></tr>"""
 
+    tid = rec['date']
     scored_block = (f"""
       <div class="card">
-        <h3>Ranked Watchlist &mdash; Pro Score (0&ndash;100)</h3>
-        <div class="scroll"><table>{scored_html}</table></div>
-        <p class="muted">A rules-based composite scoring each core UCITS on
-        <strong>SG tax efficiency (25%)</strong>, cost/TER (20%), risk-adjusted
-        return (25%), momentum (15%) and a liquidity proxy (15%). The
-        <strong>Pro Score</strong> is the weighted 0&ndash;100 composite; the
-        other columns show the <em>actual underlying data</em> &mdash; Tax
-        (Acc/Dist), TER (annual fee), Risk-adj (1Y return &divide; annualised
-        volatility, higher is better), Momentum (trailing 1Y return) and
-        Volatility (annualised, lower is calmer/more liquid). Same-index funds
-        (VWRA/FTAW/ALLW) score close together and separate mainly on cost.
-        Decision-support only &mdash; <strong>not financial advice</strong>, and
-        no model predicts markets.</p>
+        <h3>Watchlist &mdash; Pro Score + live metrics</h3>
+        <div class="toggles">
+          <span class="muted" style="margin-right:4px">Show:</span>
+          <button class="tgl on" data-grp="rank" data-tid="{tid}">Ranking metrics</button>
+          <button class="tgl on" data-grp="watch" data-tid="{tid}">Watchlist metrics</button>
+        </div>
+        <div class="scroll"><table class="sortable-tbl" data-tid="{tid}">{unified_html}</table></div>
+        <p class="muted">One unified table combining the <strong>Pro Score ranking
+        model</strong> with the day-to-day <strong>watchlist metrics</strong>. Use the
+        buttons above to show/hide each set. <em>Ranking metrics</em> — Score (weighted
+        0&ndash;100 composite: SG tax 25%, cost/TER 20%, risk-adjusted return 25%,
+        momentum 15%, liquidity 15%), Tax (Acc/Dist), TER, Risk-adj (1Y return &divide;
+        annualised volatility, higher is better) and Volatility. <em>Watchlist metrics</em>
+        — Day / YTD / 6-month price change. All rows are UCITS, London-listed, USD-quoted
+        (GBP lines removed), tax/cost-efficient for a Singapore IBKR investor (15% vs 30%
+        US dividend withholding, no US estate tax). Anything scoring below 50 is hidden.
+        <strong>Click any underlined header to sort; click a fund name for its full
+        breakdown &amp; DCA hint.</strong> Same-index badges (e.g.
+        <span class="grp">FTSE All-World</span>) mark interchangeable substitutes that
+        differ mainly on cost. Decision-support only &mdash;
+        <strong>not financial advice</strong>.</p>
       </div>""" if rec.get("scored") else "")
 
-    return f"""
+    return (f"""
   <details class="day"{openattr}>
     <summary>
       <span class="day-date">{rec['date_display']}</span>
@@ -681,26 +984,24 @@ def render_day(rec, open_default=False):
         Last {fmt(top['price'])} {top['ccy']} &nbsp;|&nbsp; {chg_span(top['change_pct'])}</div>
       </div>{etfs_block}{stocks_block}{ucits_block}{scored_block}
       <div class="card">
-        <h3>Core Watchlist</h3>
-        <div class="scroll"><table>{core_html}</table></div>
-        <p class="muted">All UCITS, London-listed (.L) — tax/cost-efficient for a
-        Singapore investor on IBKR (15% vs 30% US dividend withholding, no US estate
-        tax). Ranked by today's momentum. Not financial advice.</p>
-      </div>
-      <div class="card">
         <h3>Themed ETFs &amp; Tickers Today</h3>
         {themed_html}
         <p class="muted">Holdings shown for context, not individual buy advice.
         Niche themes are higher-risk satellites — size them small vs. your core.</p>
       </div>
     </div>
-  </details>"""
+  </details>""", payloads)
 
 
 def render_page(records):
     # records: list sorted newest-first
-    days_html = "".join(render_day(r, open_default=(i == 0))
-                        for i, r in enumerate(records))
+    days_html = ""
+    all_payloads = {}
+    for i, r in enumerate(records):
+        html, payloads = render_day(r, open_default=(i == 0))
+        days_html += html
+        all_payloads.update(payloads)
+    payloads_json = json.dumps(all_payloads, ensure_ascii=False)
     latest_refresh = records[0]["refreshed"] if records else "—"
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -710,7 +1011,8 @@ def render_page(records):
 <title>Daily Stock Market News</title>
 <style>
   :root {{ --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
-           --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff; }}
+           --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff;
+           --rowhi:#1c2430; }}
   * {{ box-sizing:border-box; }}
   body {{ margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
           background:var(--bg); color:var(--txt); line-height:1.5; }}
@@ -736,25 +1038,67 @@ def render_page(records):
   .day-date {{ font-weight:600; }}
   .day-meta {{ color:var(--muted); font-size:.8rem; }}
   .day-body {{ padding:0 18px 16px; }}
-  .card {{ border-top:1px solid var(--line); padding:14px 0; }}
-  h3 {{ font-size:1rem; margin:0 0 8px; color:var(--accent); }}
+  .card {{ border-top:1px solid var(--line); padding:16px 0; }}
+  h3 {{ font-size:1rem; margin:0 0 12px; color:var(--accent); }}
+  /* --- Clean, aligned data grid --- */
   table {{ width:100%; border-collapse:collapse; }}
-  /* Horizontal scroll wrapper so wide metric tables stay readable on mobile:
-     columns keep their width and you swipe sideways instead of squashing. */
-  .scroll {{ overflow-x:auto; -webkit-overflow-scrolling:touch; }}
-  .scroll table {{ min-width:540px; }}
-  td {{ padding:8px 6px; border-top:1px solid var(--line); vertical-align:top; }}
-  /* First column = fund/ticker name. Give it a sensible min width and let the
-     bold name stay on one line while the muted subtitle below may wrap. */
-  .scroll td:first-child {{ min-width:170px; }}
-  .scroll td:first-child strong {{ white-space:nowrap; }}
+  td {{ padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:middle; }}
   tr:first-child td {{ border-top:none; }}
-  .num {{ text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }}
+  /* zebra striping + hover for scannability (skip the header row) */
+  tbody-none {{}}
+  table tr:nth-child(odd):not(.hdr) td {{ background:rgba(255,255,255,.015); }}
+  table tr:not(.hdr):hover td {{ background:var(--rowhi); }}
+  tr.hdr td {{ color:var(--muted); font-size:.72rem; text-transform:uppercase;
+               letter-spacing:.04em; border-top:none; border-bottom:1px solid var(--line);
+               padding-bottom:8px; font-weight:600; }}
+  /* Numeric + label columns are CENTER-aligned so the header text sits directly
+     over its figures (previously right-flushed, which looked ragged vs. the
+     centred headers). Both .num and .ctr now center; header cells match. */
+  .num {{ text-align:center; white-space:nowrap; font-variant-numeric:tabular-nums; }}
+  .ctr {{ text-align:center; white-space:nowrap; font-variant-numeric:tabular-nums; }}
+  tr.hdr td.num, tr.hdr td.ctr {{ text-align:center; }}
+  /* Fund/name column: sensible min width; bold name on one line. */
+  td.fund {{ text-align:left; min-width:190px; }}
+  td.fund strong {{ white-space:nowrap; }}
+  /* Horizontal scroll whenever the table is wider than its container (e.g. the
+     unified Watchlist with BOTH metric groups shown) so the last column is
+     never clipped. Padding-bottom leaves room for the scrollbar. On mobile the
+     fund column also freezes so the name stays visible while swiping. */
+  .scroll {{ overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px; }}
+  @media (max-width:760px) {{
+    .scroll table {{ min-width:640px; }}
+    td.fund {{ position:sticky; left:0; background:var(--card);
+               box-shadow:2px 0 0 var(--line); }}
+    table tr:nth-child(odd):not(.hdr) td.fund {{ background:var(--card); }}
+  }}
   .up {{ color:var(--up); }} .down {{ color:var(--down); }}
   .pos {{ color:var(--up); font-variant-numeric:tabular-nums; }}
   .neg {{ color:var(--down); font-variant-numeric:tabular-nums; }}
   .muted {{ color:var(--muted); font-size:.85rem; }}
   .ccy {{ color:var(--muted); font-size:.8rem; }}
+  /* clickable fund name -> popup */
+  .lnk {{ cursor:pointer; border-bottom:1px dashed var(--muted); }}
+  .lnk:hover, .lnk:focus {{ color:var(--accent); border-color:var(--accent); outline:none; }}
+  /* same-index badge */
+  .grp {{ display:inline-block; font-size:.68rem; padding:1px 7px; border-radius:20px;
+         background:rgba(88,166,255,.14); color:var(--accent); border:1px solid rgba(88,166,255,.35);
+         vertical-align:middle; white-space:nowrap; }}
+  /* sortable header */
+  .sortable {{ cursor:pointer; user-select:none; }}
+  .sortable:hover {{ color:var(--accent); }}
+  .sortable::after {{ content:" \\2195"; opacity:.45; }}
+  .sortable.asc::after {{ content:" \\2191"; opacity:1; color:var(--accent); }}
+  .sortable.desc::after {{ content:" \\2193"; opacity:1; color:var(--accent); }}
+  /* metric-group toggle buttons + column show/hide */
+  .toggles {{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:0 0 12px; }}
+  .tgl {{ cursor:pointer; font-size:.8rem; padding:4px 12px; border-radius:20px;
+         background:transparent; color:var(--muted); border:1px solid var(--line);
+         font-family:inherit; }}
+  .tgl:hover {{ color:var(--txt); border-color:var(--muted); }}
+  .tgl.on {{ background:rgba(88,166,255,.14); color:var(--accent);
+            border-color:rgba(88,166,255,.45); }}
+  table.hide-rank .col-rank {{ display:none; }}
+  table.hide-watch .col-watch {{ display:none; }}
   .pick {{ border-left:3px solid var(--accent); padding-left:12px; }}
   .theme {{ border-left:3px solid var(--line); padding-left:12px; margin-bottom:12px; }}
   .theme-head {{ display:flex; justify-content:space-between; gap:10px; }}
@@ -763,19 +1107,33 @@ def render_page(records):
   .news a {{ color:var(--accent); text-decoration:none; }}
   .news a:hover {{ text-decoration:underline; }}
   .lse {{ color:var(--up); font-weight:600; font-variant-numeric:tabular-nums; }}
-  .ucits td {{ vertical-align:top; }}
-  .score {{ display:inline-block; min-width:34px; padding:2px 7px; border-radius:6px;
-            font-weight:700; font-variant-numeric:tabular-nums; color:#0d1117; }}
+  .ucits td.fund {{ vertical-align:top; }}
+  .score {{ display:inline-block; min-width:32px; padding:3px 8px; border-radius:7px;
+            font-weight:700; font-variant-numeric:tabular-nums; color:#0d1117;
+            text-align:center; }}
   .s-strong {{ background:var(--up); }}
   .s-solid  {{ background:#7ee787; }}
   .s-fair   {{ background:#d29922; color:#0d1117; }}
   .s-watch  {{ background:var(--down); color:#fff; }}
-  .mini {{ display:inline-block; width:46px; height:7px; border-radius:4px;
-           background:var(--line); overflow:hidden; vertical-align:middle; }}
-  .mini-fill {{ display:block; height:100%; background:var(--accent); }}
-  tr.hdr td {{ color:var(--muted); font-size:.75rem; text-transform:uppercase;
-               letter-spacing:.03em; border-top:none; padding-bottom:4px; }}
   footer {{ color:var(--muted); font-size:.78rem; margin-top:28px; }}
+  /* --- popup / modal --- */
+  .ov {{ position:fixed; inset:0; background:rgba(0,0,0,.62); display:none;
+        align-items:center; justify-content:center; padding:20px; z-index:50; }}
+  .ov.on {{ display:flex; }}
+  .modal {{ background:var(--card); border:1px solid var(--line); border-radius:14px;
+           max-width:470px; width:100%; padding:22px; position:relative; }}
+  .modal h4 {{ margin:0 0 2px; font-size:1.15rem; }}
+  .modal .tk2 {{ color:var(--muted); font-size:.85rem; margin-bottom:14px; }}
+  .modal .x {{ position:absolute; top:12px; right:16px; cursor:pointer;
+              color:var(--muted); font-size:1.4rem; line-height:1; background:none;
+              border:none; }}
+  .grid {{ display:grid; grid-template-columns:1fr 1fr; gap:10px 12px; margin:6px 0 14px; }}
+  .cell {{ background:var(--bg); border:1px solid var(--line); border-radius:9px;
+          padding:9px 12px; }}
+  .cell .lab {{ color:var(--muted); font-size:.7rem; text-transform:uppercase;
+               letter-spacing:.04em; }}
+  .cell .val {{ font-size:1.1rem; font-weight:700; font-variant-numeric:tabular-nums; }}
+  .foot {{ color:var(--muted); font-size:.78rem; margin-top:6px; }}
 </style>
 </head>
 <body>
@@ -789,6 +1147,102 @@ def render_page(records):
     <strong>Not financial advice.</strong> Data: Yahoo Finance (delayed). Always do your own research.
   </footer>
 </div>
+
+<!-- fund detail popup -->
+<div class="ov" id="ov" onclick="if(event.target===this)closePop()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="x" onclick="closePop()" aria-label="Close">&times;</button>
+    <h4 id="m-nm"></h4>
+    <div class="tk2" id="m-tk"></div>
+    <div id="m-grp" style="margin:-6px 0 12px"></div>
+    <div class="grid" id="m-grid"></div>
+    <svg id="m-spark" width="100%" height="46" viewBox="0 0 400 46" preserveAspectRatio="none" style="margin:2px 0"></svg>
+    <div class="foot" id="m-rng"></div>
+    <div class="foot" id="m-cagr" style="margin-top:6px"></div>
+    <div class="foot" id="m-dca" style="margin-top:6px"></div>
+  </div>
+</div>
+
+<script>
+  var POP = {payloads_json};
+  function fnum(v) {{
+    if (v === null || v === undefined) return '&mdash;';
+    var s = (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
+    return '<span class="' + (v >= 0 ? 'pos' : 'neg') + '">' + s + '</span>';
+  }}
+  function pop(el) {{
+    var d = POP[el.getAttribute('data-k')];
+    if (!d) return;
+    document.getElementById('m-nm').textContent = d.nm;
+    document.getElementById('m-tk').textContent = d.tk;
+    var g = document.getElementById('m-grid'); g.innerHTML = '';
+    d.r.forEach(function(row) {{
+      g.innerHTML += '<div class="cell"><div class="lab">' + row[0] +
+        '</div><div class="val">' + fnum(row[1]) + '</div></div>';
+    }});
+    // sparkline
+    var sv = document.getElementById('m-spark');
+    if (d.spark && d.spark.length > 1) {{
+      var n = d.spark.length, pts = d.spark.map(function(y, i) {{
+        var x = i / (n - 1) * 400;
+        var yy = 44 - (y / 100 * 40) - 2;   // invert; 0-100 -> 44..2
+        return x.toFixed(1) + ',' + yy.toFixed(1);
+      }}).join(' ');
+      var rising = d.spark[n - 1] >= d.spark[0];
+      sv.innerHTML = '<polyline fill="none" stroke="' +
+        (rising ? '#3fb950' : '#f85149') + '" stroke-width="2" points="' + pts + '"/>';
+      sv.style.display = '';
+    }} else {{ sv.style.display = 'none'; }}
+    document.getElementById('m-rng').textContent = d.rng || '';
+    var gp = document.getElementById('m-grp');
+    gp.innerHTML = d.grp ? '<span class="grp">Same index: ' + d.grp +
+      '</span> <span class="muted">— interchangeable with other ' + d.grp +
+      ' funds; choose on cost.</span>' : '';
+    document.getElementById('m-cagr').textContent = d.cagr || '';
+    document.getElementById('m-dca').innerHTML = d.dca
+      ? d.dca + ' <span class="muted">(live FX, illustrative)</span>' : '';
+    document.getElementById('ov').classList.add('on');
+  }}
+  function closePop() {{ document.getElementById('ov').classList.remove('on'); }}
+  document.addEventListener('keydown', function(e) {{
+    if (e.key === 'Escape') closePop();
+  }});
+
+  // --- Sortable Ranked Watchlist tables ---
+  document.querySelectorAll('table.sortable-tbl').forEach(function(tbl) {{
+    var hdr = tbl.querySelector('tr.hdr');
+    tbl.querySelectorAll('td.sortable').forEach(function(th) {{
+      th.addEventListener('click', function() {{
+        var col = +th.getAttribute('data-c');
+        var asc = !th.classList.contains('asc');
+        hdr.querySelectorAll('td').forEach(function(x) {{ x.classList.remove('asc','desc'); }});
+        th.classList.add(asc ? 'asc' : 'desc');
+        var rows = Array.prototype.slice.call(tbl.querySelectorAll('tr')).filter(function(r) {{
+          return !r.classList.contains('hdr');
+        }});
+        rows.sort(function(a, b) {{
+          var av = parseFloat(a.children[col].getAttribute('data-v'));
+          var bv = parseFloat(b.children[col].getAttribute('data-v'));
+          if (isNaN(av)) av = -1e9; if (isNaN(bv)) bv = -1e9;
+          return asc ? av - bv : bv - av;
+        }});
+        rows.forEach(function(r) {{ tbl.appendChild(r); }});
+      }});
+    }});
+  }});
+
+  // --- Metric-group toggles (show/hide the "rank" vs "watch" column sets) ---
+  document.querySelectorAll('button.tgl').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var grp = btn.getAttribute('data-grp');          // 'rank' | 'watch'
+      var tid = btn.getAttribute('data-tid');
+      var tbl = document.querySelector('table.sortable-tbl[data-tid="' + tid + '"]');
+      if (!tbl) return;
+      var on = btn.classList.toggle('on');
+      tbl.classList.toggle('hide-' + grp, !on);
+    }});
+  }});
+</script>
 </body>
 </html>"""
 
