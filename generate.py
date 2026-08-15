@@ -323,6 +323,8 @@ def score_etfs(core_rows):
         if ret is None or not vol:
             return None
         return ret / vol
+    for tic, r in keyed:
+        r["sharpe_like"] = sharpe_like(r)   # raw ratio for display
     riskadj = _pctile_scores([(t, sharpe_like(r)) for t, r in keyed])
 
     # --- Pillar 4: Momentum (blend of 1M, 3M, 1Y trend + proximity to 52w hi) ---
@@ -609,27 +611,41 @@ def render_day(rec, open_default=False):
                else "s-fair" if s >= 40 else "s-watch")
         return f'<span class="score {cls}">{s:.0f}</span>'
 
-    def bar(v):
+    def _pct(v, plus=False):
+        """Format a raw percentage value (already in %)."""
         if v is None:
             return '<span class="muted">—</span>'
-        return (f'<span class="mini"><span class="mini-fill" '
-                f'style="width:{max(0, min(100, v)):.0f}%"></span></span>')
+        sign = "+" if (plus and v >= 0) else ""
+        cls = "" if not plus else (' class="pos"' if v >= 0 else ' class="neg"')
+        return f'<span{cls}>{sign}{v:.1f}%</span>'
+
+    def _tax_cell(r):
+        d = r.get("dist", "")
+        label = {"Acc": "Acc", "Dist": "Dist"}.get(d, d or "—")
+        return f'<span>{label}</span>'
+
+    def _ratio(v):
+        if v is None:
+            return '<span class="muted">—</span>'
+        cls = ' class="pos"' if v >= 0 else ' class="neg"'
+        return f'<span{cls}>{v:.2f}</span>'
 
     scored_html = """
         <tr class="hdr"><td>Fund</td><td class="num">Score</td>
-        <td class="num">Tax</td><td class="num">Cost</td><td class="num">Risk-adj</td>
-        <td class="num">Mom.</td><td class="num">Liq.</td></tr>"""
+        <td class="num">Tax</td><td class="num">TER</td><td class="num">Risk-adj (1Y/vol)</td>
+        <td class="num">Momentum (1Y)</td><td class="num">Volatility</td></tr>"""
     for r in rec.get("scored", []):
-        p = r.get("pillars", {})
+        ter = r.get("ter")
+        ter_cell = f"{ter:.2f}%" if ter is not None else '<span class="muted">—</span>'
         scored_html += f"""
         <tr><td><strong>{r['short']}</strong> <span class="muted">{r['ticker']}</span><br>
         <span class="muted">{r.get('verdict','')}</span></td>
         <td class="num">{score_badge(r['pro_score'])}</td>
-        <td class="num">{bar(p.get('tax'))}</td>
-        <td class="num">{bar(p.get('cost'))}</td>
-        <td class="num">{bar(p.get('riskadj'))}</td>
-        <td class="num">{bar(p.get('momentum'))}</td>
-        <td class="num">{bar(p.get('liquidity'))}</td></tr>"""
+        <td class="num">{_tax_cell(r)}</td>
+        <td class="num">{ter_cell}</td>
+        <td class="num">{_ratio(r.get('sharpe_like'))}</td>
+        <td class="num">{_pct(r.get('ret_1y'), plus=True)}</td>
+        <td class="num">{_pct(r.get('vol'))}</td></tr>"""
 
     scored_block = (f"""
       <div class="card">
@@ -637,11 +653,15 @@ def render_day(rec, open_default=False):
         <div class="scroll"><table>{scored_html}</table></div>
         <p class="muted">A rules-based composite scoring each core UCITS on
         <strong>SG tax efficiency (25%)</strong>, cost/TER (20%), risk-adjusted
-        return (25%), momentum (15%) and a liquidity proxy (15%). Sub-scores are
-        percentile-ranked <em>within this watchlist</em>, so they compare the funds
-        against each other, not the whole market. Same-index funds (VWRA/FTAW/ALLW)
-        score close together and separate mainly on cost. Decision-support only &mdash;
-        <strong>not financial advice</strong>, and no model predicts markets.</p>
+        return (25%), momentum (15%) and a liquidity proxy (15%). The
+        <strong>Pro Score</strong> is the weighted 0&ndash;100 composite; the
+        other columns show the <em>actual underlying data</em> &mdash; Tax
+        (Acc/Dist), TER (annual fee), Risk-adj (1Y return &divide; annualised
+        volatility, higher is better), Momentum (trailing 1Y return) and
+        Volatility (annualised, lower is calmer/more liquid). Same-index funds
+        (VWRA/FTAW/ALLW) score close together and separate mainly on cost.
+        Decision-support only &mdash; <strong>not financial advice</strong>, and
+        no model predicts markets.</p>
       </div>""" if rec.get("scored") else "")
 
     return f"""
@@ -694,7 +714,13 @@ def render_page(records):
   * {{ box-sizing:border-box; }}
   body {{ margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
           background:var(--bg); color:var(--txt); line-height:1.5; }}
-  .wrap {{ max-width:880px; margin:0 auto; padding:24px 18px 60px; }}
+  /* Desktop: use (almost) the full browser width so data tables get room to
+     breathe instead of a narrow centred column. Fluid width with a generous
+     cap and side gutters; collapses to tighter padding on small screens. */
+  .wrap {{ width:100%; max-width:1600px; margin:0 auto; padding:24px 40px 60px; }}
+  @media (max-width: 640px) {{
+    .wrap {{ padding:20px 14px 48px; }}
+  }}
   h1 {{ font-size:1.7rem; margin:0 0 2px; }}
   .sub {{ color:var(--muted); margin-bottom:6px; }}
   .refresh {{ color:var(--accent); font-size:.85rem; margin-bottom:22px; }}
@@ -725,6 +751,8 @@ def render_page(records):
   tr:first-child td {{ border-top:none; }}
   .num {{ text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }}
   .up {{ color:var(--up); }} .down {{ color:var(--down); }}
+  .pos {{ color:var(--up); font-variant-numeric:tabular-nums; }}
+  .neg {{ color:var(--down); font-variant-numeric:tabular-nums; }}
   .muted {{ color:var(--muted); font-size:.85rem; }}
   .ccy {{ color:var(--muted); font-size:.8rem; }}
   .pick {{ border-left:3px solid var(--accent); padding-left:12px; }}
