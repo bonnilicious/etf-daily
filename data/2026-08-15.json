@@ -1,7 +1,7 @@
 {
   "date": "2026-08-15",
   "date_display": "Saturday, 15 August 2026",
-  "refreshed": "15 Aug 2026, 07:23 SGT",
+  "refreshed": "15 Aug 2026, 08:46 SGT",
   "newsletter": "Core watchlist was broadly higher (avg 0.54%). CNX1 led (1.17%); IDTM lagged (0.26%). Among themes, GDX stood out (1.93%).",
   "core": [
     {
@@ -200,6 +200,7 @@
       "ret_1m": 2.93437673096217,
       "ret_1y": 22.354931345285582,
       "vol": 11.085379832643559,
+      "sharpe_like": 2.016613925979886,
       "pro_score": 87.7,
       "pillars": {
         "tax": 100.0,
@@ -224,6 +225,7 @@
       "ret_1m": 3.3028184936745593,
       "ret_1y": 24.459336392845827,
       "vol": 11.02100315643588,
+      "sharpe_like": 2.2193384799606406,
       "pro_score": 85.0,
       "pillars": {
         "tax": 100.0,
@@ -248,6 +250,7 @@
       "ret_1m": 2.986301787912029,
       "ret_1y": 21.768704666874804,
       "vol": 12.291973834971042,
+      "sharpe_like": 1.770969004582663,
       "pro_score": 69.4,
       "pillars": {
         "tax": 100.0,
@@ -272,6 +275,7 @@
       "ret_1m": 2.995756664238205,
       "ret_1y": 21.77814592576736,
       "vol": 12.354416110859818,
+      "sharpe_like": 1.7627822901823638,
       "pro_score": 68.4,
       "pillars": {
         "tax": 100.0,
@@ -296,6 +300,7 @@
       "ret_1m": 3.1322518775174,
       "ret_1y": 23.581453696187722,
       "vol": 13.07287361658555,
+      "sharpe_like": 1.8038462229352497,
       "pro_score": 66.3,
       "pillars": {
         "tax": 100.0,
@@ -320,6 +325,7 @@
       "ret_1m": 3.320717524005165,
       "ret_1y": null,
       "vol": 12.479424618162268,
+      "sharpe_like": null,
       "pro_score": 66.1,
       "pillars": {
         "tax": 100.0,
@@ -344,6 +350,7 @@
       "ret_1m": 3.369396526273591,
       "ret_1y": null,
       "vol": 11.311930422908105,
+      "sharpe_like": null,
       "pro_score": 66.0,
       "pillars": {
         "tax": 100.0,
@@ -368,6 +375,7 @@
       "ret_1m": -0.1702427558151346,
       "ret_1y": -2.4773524505415043,
       "vol": 5.585675528330726,
+      "sharpe_like": -0.4435188614118906,
       "pro_score": 58.2,
       "pillars": {
         "tax": 100.0,
@@ -392,6 +400,7 @@
       "ret_1m": 2.2977761447512672,
       "ret_1y": 34.77725050936957,
       "vol": 22.222882466017975,
+      "sharpe_like": 1.5649297773386983,
       "pro_score": 57.0,
       "pillars": {
         "tax": 100.0,
@@ -416,6 +425,7 @@
       "ret_1m": 2.0584011488750598,
       "ret_1y": 27.030784508440913,
       "vol": 17.1783858640923,
+      "sharpe_like": 1.573534598785729,
       "pro_score": 52.5,
       "pillars": {
         "tax": 100.0,
@@ -440,6 +450,7 @@
       "ret_1m": 3.5622315488571874,
       "ret_1y": 19.930408321424252,
       "vol": 14.073286326747091,
+      "sharpe_like": 1.4161872258326305,
       "pro_score": 42.4,
       "pillars": {
         "tax": 100.0,
@@ -464,6 +475,7 @@
       "ret_1m": 3.221589317396582,
       "ret_1y": 22.536304179137566,
       "vol": 26.587777758287213,
+      "sharpe_like": 0.8476189467212305,
       "pro_score": 39.1,
       "pillars": {
         "tax": 100.0,
@@ -641,7 +653,7 @@
       "price": 44.0,
       "change_pct": 0.43368778989543233,
       "ccy": "USD",
-      "ret_1m": 11.223454177397109,
+      "ret_1m": 13.753877075622329,
       "from_hi": -31.400061710787657
     },
     {
@@ -681,19 +693,19 @@
   ],
   "news": [
     {
-      "title": "A $920,000 Portfolio That Quietly Pays You $5,400 a Month Without Touching Principal",
-      "link": "https://finance.yahoo.com/m/5fa5075f-74b7-3575-82be-6b8de2fda6f1/a-%24920%2C000-portfolio-that.html",
-      "publisher": "24/7 Wall St."
+      "title": "UK unveils £65 million drought support for farmers",
+      "link": "https://finance.yahoo.com/m/3bafc28a-d9eb-3b48-9c23-61ffe2656c79/uk-unveils-%C2%A365-million.html",
+      "publisher": "Investing.com"
     },
     {
-      "title": "What Could MeiraGTx Holdings (MGTX) New Hires And Profit Swing Signal?",
-      "link": "https://finance.yahoo.com/healthcare/articles/could-meiragtx-holdings-mgtx-hires-231214147.html",
-      "publisher": "Simply Wall St."
+      "title": "LA Olympics has to allow politicians on the bus, just not behind the wheel - Coe",
+      "link": "https://finance.yahoo.com/m/69289218-6917-3c03-815e-cab83e0603ef/la-olympics-has-to-allow.html",
+      "publisher": "AFP"
     },
     {
-      "title": "Middleby (MIDD), Why Is Its Latest Update Drawing Fresh Attention?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/middleby-midd-why-latest-drawing-231212864.html",
-      "publisher": "Simply Wall St."
+      "title": "Hawaiian Electric (HE) Q2 2026 Earnings Call Transcript",
+      "link": "https://finance.yahoo.com/m/0e42a7b1-7641-3e29-9e0c-dfdb7bd84427/hawaiian-electric-%28he%29-q2.html",
+      "publisher": "Motley Fool"
     },
     {
       "title": "Agricultural ETFs Top S&P 500 in July: Here's Why",
