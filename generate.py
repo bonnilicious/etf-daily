@@ -1009,6 +1009,7 @@ def render_page(records):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Stock Market News</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
 <style>
   :root {{ --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
            --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff;
@@ -1021,6 +1022,10 @@ def render_page(records):
      cap and side gutters; collapses to tighter padding on small screens. */
   .wrap {{ width:100%; max-width:1600px; margin:0 auto; padding:24px 40px 60px; }}
   @media (max-width: 640px) {{
+    /* "Zoom out" on phones: shrink the root font so every rem-based size
+       (text, padding, rows, badges) scales down proportionally — more fits
+       on screen at a glance without changing the layout. */
+    html {{ font-size:13px; }}
     .wrap {{ padding:20px 14px 48px; }}
   }}
   h1 {{ font-size:1.7rem; margin:0 0 2px; }}
@@ -1066,7 +1071,7 @@ def render_page(records):
      fund column also freezes so the name stays visible while swiping. */
   .scroll {{ overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px; }}
   @media (max-width:760px) {{
-    .scroll table {{ min-width:640px; }}
+    .scroll table {{ min-width:40rem; }}
     td.fund {{ position:sticky; left:0; background:var(--card);
                box-shadow:2px 0 0 var(--line); }}
     table tr:nth-child(odd):not(.hdr) td.fund {{ background:var(--card); }}
