@@ -1009,7 +1009,7 @@ def render_page(records):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Stock Market News</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2712%27%20fill%3D%27%230d1117%27%2F%3E%3Cpath%20d%3D%27M24%2014%20h16%20l-3%206%20q11%206%2011%2020%20a14%2014%200%200%201%20-32%200%20q0%20-14%2011%20-20%20z%27%20fill%3D%27%233fb950%27%2F%3E%3Cpath%20d%3D%27M24%2014%20q8%204%2016%200%20l-3%206%20q-5%202%20-10%200%20z%27%20fill%3D%27%232ea043%27%2F%3E%3Ctext%20x%3D%2732%27%20y%3D%2745%27%20font-size%3D%2722%27%20font-family%3D%27Arial%2CHelvetica%2Csans-serif%27%20font-weight%3D%27700%27%20fill%3D%27%230d1117%27%20text-anchor%3D%27middle%27%3E%24%3C%2Ftext%3E%3C%2Fsvg%3E">
 <style>
   :root {{ --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
            --muted:#8b949e; --up:#3fb950; --down:#f85149; --accent:#58a6ff;
